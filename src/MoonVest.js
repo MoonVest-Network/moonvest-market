@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
 import { connectWallet, metaMask } from "./utils/interact.js";
+import Amplify, { API, graphqlOperation } from 'aws-amplify';
+import awsconfig from './aws-exports';
+import * as queries from './graphql/queries';
+import * as mutations from './graphql/mutations';
+import * as subscriptions from './graphql/subscriptions';
+
+Amplify.configure(awsconfig);
 
 const MoonVest = (props) => {
 	// State hook variables.
@@ -12,9 +19,16 @@ const MoonVest = (props) => {
 	const [price, setPrice] = useState("0.00");
 	const [marketCap, setMarketCap] = useState("0.00");
 	const [anchorEl, setAnchorEl] = useState(null);
+	const [nftItems, setNftItems] = useState(null);
 	
 	// Similar to componentDidMount and componentDidUpdate.
 	useEffect(async () => {
+
+		//Get NFT Data
+		const nftItems = await API.graphql({ query: queries.listNftItems });
+		console.log(nftItems); 
+
+
 		// Is MetaMask installed?
 		if (window.ethereum)
 		{

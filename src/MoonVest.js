@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { connectWallet, metaMask } from "./utils/interact.js";
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
-import * as queries from './graphql/queries';
+import {listNftItems, listNftCollection, ListWallets} from './graphql/queries';
 import * as mutations from './graphql/mutations';
 import * as subscriptions from './graphql/subscriptions';
 
@@ -24,10 +24,8 @@ const MoonVest = (props) => {
 	// Similar to componentDidMount and componentDidUpdate.
 	useEffect(async () => {
 
-		//Get NFT Data
-		const nftItems = await API.graphql({ query: queries.listNftItems });
+		fetchNftItems();
 		console.log(nftItems); 
-
 
 		// Is MetaMask installed?
 		if (window.ethereum)
@@ -64,6 +62,15 @@ const MoonVest = (props) => {
 			}
 		}
 	});
+
+	async function fetchNftItems() {
+		console.log("fetchNFTStart");
+		//Get NFT Data
+		const apiData = await API.graphql(graphqlOperation(listNftItems));
+		console.log(apiData);
+		setNftItems(apiData.data.listNftItems.items);
+		console.log("fetchNFTEnd");
+  }
 	
 	// On click event of Connect Wallet Button.
 	const connectWalletClicked = async () => {
@@ -114,6 +121,7 @@ const MoonVest = (props) => {
 										<li><a href="#">Collectibles</a></li>
 										<li><a href="#">DeFi</a></li>
 										<li><a href="#">Gaming</a></li>
+										<li><a href="#">Charity</a></li>
 									</ul>
 								</div>
 							</div>

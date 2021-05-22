@@ -12,6 +12,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState, useEffect } from "react";
 import PowerOffIcon from '@material-ui/icons/PowerOff';
+import { connectWallet } from "./utils/interact.js";
 
 const headersData = [
   {
@@ -32,14 +33,14 @@ const useStyles = makeStyles(() => ({
   header: {
 		background: 'linear-gradient(to bottom right, #132639, #884dff)',
     paddingRight: "30px",
-    paddingLeft: "130px",
+    paddingLeft: "180px",
     "@media (max-width: 900px)": {
       paddingLeft: 0,
     },
   },
   logo: {
     fontFamily: "Work Sans, sans-serif",
-    fontWeight: 600,
+    fontWeight: 700,
     color: "#FFFEFE",
     textAlign: "left",
   },
@@ -59,6 +60,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Header() {
+	const [isConnected, setConnectedStatus] = useState(false);
   const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
 
   const [state, setState] = useState({
@@ -80,12 +82,26 @@ export default function Header() {
     window.addEventListener("resize", () => setResponsiveness());
   }, []);
 
+	const connectWalletClicked = async () => {
+		const walletResponse = await connectWallet();
+		
+		// // Update state hooks.
+		// setConnectedStatus(walletResponse.connectedStatus);
+		// setStatus(walletResponse.status);
+		
+		// if (isConnected) 
+		// {
+		// 	setWallet(walletResponse.address);
+		// 	await processWalletData();
+		// }
+	};
+
   const displayDesktop = () => {
     return (
       <Toolbar className={toolbar}>
         {Logo}
         <div>{getMenuButtons()}</div>
-				<Button variant="contained" size="medium" color="primary" endIcon={<PowerOffIcon />}>Connect Wallet</Button>
+				<Button onClick={connectWalletClicked()} variant="contained" size="medium" color="primary" endIcon={<PowerOffIcon />}>Connect Wallet</Button>
       </Toolbar>
     );
   };

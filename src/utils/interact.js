@@ -1,38 +1,81 @@
 import Web3 from 'web3';
+import Web3Modal from "web3modal";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+
+// const bsc = {
+//     name: "Binance Smart Chain",
+//     short_name: "bsc",
+//     chain: "smartchain",
+//     network: "mainnet",
+//     chain_id: 56,
+//     network_id: 56,
+//     rpc_url: "https://bsc-dataseed1.defibit.io/",
+//     native_currency: {
+//       symbol: "BNB",
+//       name: "BNB",
+//       decimals: "18",
+//       contractAddress: "",
+//       balance: ""
+//     };
+
+const providerOptions = {
+	walletconnect: {
+		package: WalletConnectProvider,
+		options: {
+			rpc: {
+				56: 'https://bsc-dataseed.binance.org/'
+			},
+			network: 'binance',
+			chainId: 56
+		}
+	}
+};
 
 export const connectWallet = async () => {
-    // Is MetaMask installed on browser?
-    if (window.ethereum) 
-    {
-		// Yes.
-        try 
-        {
-			// Connect MetaMask.
-            const address = await window.ethereum.enable();
-            const obj = {
-                connectedStatus: true,
-                status: "",
-                address: address
-            }
+    //this.toggleModal();
+    
+    const web3Modal = new Web3Modal({
+        cacheProvider: true, // optional
+        providerOptions // required
+    });
+    
+    const provider = await web3Modal.connect();
+    const web3 = new Web3(provider);
 
-            return obj;   
-        } 
-        catch (error) 
-        {
-            return {
-                connectedStatus: false,
-                status: "🦊 Connect to Metamask using the Connect Wallet button."
-            }
-        }
-    } 
-    else 
-    {
-		// No.
-        return {
-            connectedStatus: false,
-            status: "🦊 You must install Metamask into your browser: https://metamask.io/download.html"
-        }
-    }
+    console.log(web3);
+
+    // // Is MetaMask installed on browser?
+    // if (window.ethereum) 
+    // {
+	// 	// Yes.
+    //     try 
+    //     {
+	// 		// Connect MetaMask.
+    //         const address = await window.ethereum.enable();
+    //         const obj = {
+    //             connectedStatus: true,
+    //             status: "",
+    //             address: address
+    //         }
+
+    //         return obj;   
+    //     } 
+    //     catch (error) 
+    //     {
+    //         return {
+    //             connectedStatus: false,
+    //             status: "🦊 Connect to Metamask using the Connect Wallet button."
+    //         }
+    //     }
+    // } 
+    // else 
+    // {
+	// 	// No.
+    //     return {
+    //         connectedStatus: false,
+    //         status: "🦊 You must install Metamask into your browser: https://metamask.io/download.html"
+    //     }
+    // }
 };
 
 export const metaMask = async (walletAddress) => {

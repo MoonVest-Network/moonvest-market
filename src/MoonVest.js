@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
 import { connectWallet, metaMask } from "./utils/interact.js";
-import Amplify, { API, graphqlOperation } from 'aws-amplify';
-import awsconfig from './aws-exports';
-import {listNftItems, listNftCollection, ListWallets} from './graphql/queries';
-import * as mutations from './graphql/mutations';
-import * as subscriptions from './graphql/subscriptions';
-
-Amplify.configure(awsconfig);
 
 const MoonVest = (props) => {
 	// State hook variables.
@@ -19,14 +12,9 @@ const MoonVest = (props) => {
 	const [price, setPrice] = useState("0.00");
 	const [marketCap, setMarketCap] = useState("0.00");
 	const [anchorEl, setAnchorEl] = useState(null);
-	const [nftItems, setNftItems] = useState(null);
 	
 	// Similar to componentDidMount and componentDidUpdate.
 	useEffect(async () => {
-
-		fetchNftItems();
-		console.log(nftItems); 
-
 		// Is MetaMask installed?
 		if (window.ethereum)
 		{
@@ -63,18 +51,6 @@ const MoonVest = (props) => {
 		}
 	});
 
-<<<<<<< HEAD
-=======
-	async function fetchNftItems() {
-		console.log("fetchNFTStart");
-		//Get NFT Data
-		const apiData = await API.graphql(graphqlOperation(listNftItems));
-		console.log(apiData);
-		setNftItems(apiData.data.listNftItems.items);
-		console.log("fetchNFTEnd");
-  }
-	
->>>>>>> 0f53240ec897c540dd9aea5000d39e738980579c
 	// On click event of Connect Wallet Button.
 	const connectWalletClicked = async () => {
 		const walletResponse = await connectWallet();
@@ -124,7 +100,6 @@ const MoonVest = (props) => {
 										<li><a href="#">Collectibles</a></li>
 										<li><a href="#">DeFi</a></li>
 										<li><a href="#">Gaming</a></li>
-										<li><a href="#">Charity</a></li>
 									</ul>
 								</div>
 							</div>

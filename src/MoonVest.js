@@ -50,7 +50,7 @@ const MoonVest = (props) => {
 			}
 		}
 	});
-	
+
 	// On click event of Connect Wallet Button.
 	const connectWalletClicked = async () => {
 		const walletResponse = await connectWallet();
@@ -78,7 +78,7 @@ const MoonVest = (props) => {
 	return (
 		<>
 			{/* <!-- ============================ Hero Banner  Start================================== --> */}
-			<div className="hero-banner bg-cover" style={{background: "linear-gradient(0deg, rgba(0, 0, 0, 0.85), rgba(78, 92, 124, 0.7)), url(img/gallery.jpg) no-repeat" }} data-overlay="5">
+			<div className="hero-banner bg-cover" style={{ background: "linear-gradient(0deg, rgba(0, 0, 0, 0.85), rgba(78, 92, 124, 0.7)), url(img/gallery.jpg) no-repeat" }} data-overlay="5">
 				<div className="container">
 					<h1>Collect and Trade NFTs</h1>
 					<p className="lead">Digital Assets Secured by Blockchain Technology</p>
@@ -110,7 +110,7 @@ const MoonVest = (props) => {
 			{/* <!-- ============================ Hero Banner End ================================== --> */}
 
 			{/* <!-- ============================ All Images List Start ================================== --> */}
-			<section>
+			{/* <section>
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-12 col-md-12">
@@ -118,7 +118,6 @@ const MoonVest = (props) => {
 							<div className="urip_column_wrap">
 								
 								<div className="urip_column_single">
-									{/* <!-- Single Image Product --> */}
 									<div className="urip_column_three">
 										<div className="item_image_urip">
 											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
@@ -149,7 +148,6 @@ const MoonVest = (props) => {
 										</div>
 									</div>
 									
-									{/* <!-- Single Image Product --> */}
 									<div className="urip_column_three">
 										<div className="item_image_urip">
 											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
@@ -180,7 +178,6 @@ const MoonVest = (props) => {
 										</div>
 									</div>
 									
-									{/* <!-- Single Image Product --> */}
 									<div className="urip_column_three">
 										<div className="item_image_urip">
 											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
@@ -214,7 +211,6 @@ const MoonVest = (props) => {
 								</div>
 								
 								<div className="urip_column_single">
-									{/* <!-- Single Image Product --> */}
 									<div className="urip_column_three">
 										<div className="item_image_urip">
 											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
@@ -245,7 +241,6 @@ const MoonVest = (props) => {
 										</div>
 									</div>
 									
-									{/* <!-- Single Image Product --> */}
 									<div className="urip_column_three">
 										<div className="item_image_urip">
 											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
@@ -276,7 +271,6 @@ const MoonVest = (props) => {
 										</div>
 									</div>
 									
-									{/* <!-- Single Image Product --> */}
 									<div className="urip_column_three">
 										<div className="item_image_urip">
 											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
@@ -310,7 +304,6 @@ const MoonVest = (props) => {
 								</div>
 								
 								<div className="urip_column_single">
-									{/* <!-- Single Image Product --> */}
 									<div className="urip_column_three">
 										<div className="item_image_urip">
 											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
@@ -341,7 +334,6 @@ const MoonVest = (props) => {
 										</div>
 									</div>
 									
-									{/* <!-- Single Image Product --> */}
 									<div className="urip_column_three">
 										<div className="item_image_urip">
 											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
@@ -372,7 +364,6 @@ const MoonVest = (props) => {
 										</div>
 									</div>
 									
-									{/* <!-- Single Image Product --> */}
 									<div className="urip_column_three">
 										<div className="item_image_urip">
 											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
@@ -417,6 +408,35 @@ const MoonVest = (props) => {
 					</div>
 					
 				</div>
+			</section> */}
+
+			<section className="min-sec">
+				<div className="container">
+					<div className="row justify-content-center">
+						<div className="card-columns col-sm-12">
+							<div className="card">
+								<img src="https://picsum.photos/400/300" className="card-img-top" alt="..." />
+							</div>
+							<div className="card">
+								<img src="https://picsum.photos/380/410" className="card-img-top" alt="..." />
+							</div>
+							<div className="card">
+								<img src="https://picsum.photos/400/300" className="card-img-top" alt="..." />
+							</div>
+							<div className="card">
+								<img src="https://picsum.photos/300/410" className="card-img-top" alt="..." />
+							</div>
+							<div className="card">
+								<img src="https://picsum.photos/400/300" className="card-img-top" alt="..." />
+							</div>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-lg-12 col-md-12 text-center mt-4">
+							<a href="#" className="btn btn-secondary border-0">Browse More</a>
+						</div>
+					</div>
+				</div>
 			</section>
 			{/* <!-- ============================ All Images List End ================================== --> */}
 
@@ -424,29 +444,25 @@ const MoonVest = (props) => {
 			<section className="gray-light min-sec">
 				<div className="container">
 					<div className="row justify-content-center">
-					
-						{/* <!-- Single --> */}
+
 						<div className="col-lg-2 col-md-3 col-sm-4">
 							<div className="royh9">
-								<img src="img/mvn-blue.png" className="img-fluid" alt="" />
-							</div>
-						</div>	
-						{/* <!-- Single --> */}
-						<div className="col-lg-2 col-md-3 col-sm-4">
-							<div className="royh9">
-								<img src="img/binance-smart-chain-logo.png" className="img-fluid" alt="" />
+								<img src="img/mvn-blue.png" className="img-fluid" alt=""/>
 							</div>
 						</div>
-						{/* <!-- Single --> */}
 						<div className="col-lg-2 col-md-3 col-sm-4">
 							<div className="royh9">
-								<img src="img/pancakeswap.png" className="img-fluid" alt="" />
+								<img src="img/binance-smart-chain-logo.png" className="img-fluid" alt=""/>
 							</div>
 						</div>
-						{/* <!-- Single --> */}
 						<div className="col-lg-2 col-md-3 col-sm-4">
 							<div className="royh9">
-								<img src="img/bscscan.png" className="img-fluid" alt="" />
+								<img src="img/pancakeswap.png" className="img-fluid" alt=""/>
+							</div>
+						</div>
+						<div className="col-lg-2 col-md-3 col-sm-4">
+							<div className="royh9">
+								<img src="img/bscscan.png" className="img-fluid" alt=""/>
 							</div>
 						</div>
 					</div>
@@ -455,7 +471,7 @@ const MoonVest = (props) => {
 			{/* <!-- ============================ Author Lists End ================================== --></div> */}
 
 			{/* <!-- ============================ Photo category List ================================== --> */}
-			<section className="min-sec">
+			{/* <section className="min-sec">
 				<div className="container">
 					
 					<div className="row justify-content-center">
@@ -469,7 +485,6 @@ const MoonVest = (props) => {
 					
 					<div className="row">
 					
-						{/* <!-- Single Pricing Box --> */}
 						<div className="col-lg-4 col-md-6 col-sm-12">
 							<div className="_45lio">
 								<div className="_jk58o">
@@ -490,7 +505,6 @@ const MoonVest = (props) => {
 							</div>
 						</div>
 						
-						{/* <!-- Single Pricing Box --> */}
 						<div className="col-lg-4 col-md-6 col-sm-12">
 							<div className="_45lio">
 								<div className="_jk58o">
@@ -511,7 +525,6 @@ const MoonVest = (props) => {
 							</div>
 						</div>
 						
-						{/* <!-- Single Pricing Box --> */}
 						<div className="col-lg-4 col-md-6 col-sm-12">
 							<div className="_45lio">
 								<div className="_jk58o">
@@ -532,7 +545,6 @@ const MoonVest = (props) => {
 							</div>
 						</div>
 						
-						{/* <!-- Single Pricing Box --> */}
 						<div className="col-lg-4 col-md-6 col-sm-12">
 							<div className="_45lio">
 								<div className="_jk58o">
@@ -553,7 +565,6 @@ const MoonVest = (props) => {
 							</div>
 						</div>
 						
-						{/* <!-- Single Pricing Box --> */}
 						<div className="col-lg-4 col-md-6 col-sm-12">
 							<div className="_45lio">
 								<div className="_jk58o">
@@ -574,7 +585,6 @@ const MoonVest = (props) => {
 							</div>
 						</div>
 						
-						{/* <!-- Single Pricing Box --> */}
 						<div className="col-lg-4 col-md-6 col-sm-12">
 							<div className="_45lio">
 								<div className="_jk58o">
@@ -598,18 +608,118 @@ const MoonVest = (props) => {
 					</div>
 					
 				</div>
+			</section> */}
+
+			<section className="min-sec image-section">
+				<div className="container">
+					<div className="row justify-content-center">
+						<div className="col-lg-7 col-md-9">
+							<div className="sec-heading">
+								<h2>Featured Images with Tags</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							</div>
+						</div>
+					</div>
+					<div className="row">
+						<div className="card-columns col-sm-12">
+							<div className="card">
+								<img src="https://picsum.photos/700/400" className="card-img-top" alt="..." />
+								<div className="text-block">
+									<div className="card-body px-2">
+										<p>
+											<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
+										</p>
+										<button className="btn-sm bg-light mr-1">This is a tag</button>
+										<button className="btn-sm bg-light mr-1">Another tag</button>
+										<button className="btn-sm bg-light mr-1">Last tag</button>
+									</div>
+								</div>
+							</div>
+							<div className="card">
+								<img src="https://picsum.photos/500/400" className="card-img-top" alt="..." />
+								<div className="text-block">
+									<div className="card-body px-2">
+										<p>
+											<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
+										</p>
+										<button className="btn-sm bg-light mr-1">This is a tag</button>
+										<button className="btn-sm bg-light mr-1">Another tag</button>
+										<button className="btn-sm bg-light mr-1">Last tag</button>
+									</div>
+								</div>
+							</div>
+							<div className="card">
+								<img src="https://picsum.photos/450/400" className="card-img-top" alt="..." />
+								<div className="text-block">
+									<div className="card-body px-2">
+										<p>
+											<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
+										</p>
+										<button className="btn-sm bg-light mr-1">This is a tag</button>
+										<button className="btn-sm bg-light mr-1">Another tag</button>
+										<button className="btn-sm bg-light mr-1">Last tag</button>
+									</div>
+								</div>
+							</div>
+							<div className="card">
+								<img src="https://picsum.photos/400/410" className="card-img-top" alt="..." />
+								<div className="text-block">
+									<div className="card-body px-2">
+										<p>
+											<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
+										</p>
+										<button className="btn-sm bg-light mr-1">This is a tag</button>
+										<button className="btn-sm bg-light mr-1">Another tag</button>
+										<button className="btn-sm bg-light mr-1">Last tag</button>
+									</div>
+								</div>
+							</div>
+							<div className="card">
+								<img src="https://picsum.photos/400/405" className="card-img-top" alt="..." />
+								<div className="text-block">
+									<div className="card-body px-2">
+										<p>
+											<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
+										</p>
+										<button className="btn-sm bg-light mr-1">This is a tag</button>
+										<button className="btn-sm bg-light mr-1">Another tag</button>
+										<button className="btn-sm bg-light mr-1">Last tag</button>
+									</div>
+								</div>
+							</div>
+							<div className="card">
+								<img src="https://picsum.photos/430/400" className="card-img-top" alt="..." />
+								<div className="text-block">
+									<div className="card-body px-2">
+										<p>
+											<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
+										</p>
+										<button className="btn-sm bg-light mr-1">This is a tag</button>
+										<button className="btn-sm bg-light mr-1">Another tag</button>
+										<button className="btn-sm bg-light mr-1">Last tag</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-lg-12 col-md-12 text-center">
+							<a href="#" className="btn btn-secondary border-0">Browse More</a>
+						</div>
+					</div>
+				</div>
 			</section>
 			{/* <!-- ============================ Photo category End ================================== --></div> */}
 
 			{/* <!-- ============================ Call To Action Start ================================== --> */}
-			<section className="call-to-act" style={{background: "#5d47dd url(img/landing-bg.png) no-repeat"}}>
+			<section className="call-to-act" style={{background:"#5d47dd url(img/landing-bg.png) no-repeat"}}>
 				<div className="container">
 					<div className="row justify-content-center">
-					
+
 						<div className="col-lg-7 col-md-8">
 							<div className="clt-caption text-center mb-4">
 								<h3>Find NFTs</h3>
-				
+
 							</div>
 							<div className="inner-flexible-box subscribe-box">
 								<div className="input-group">
@@ -617,7 +727,7 @@ const MoonVest = (props) => {
 									<button className="btn btn-subscribe" type="button"><i className="fa fa-arrow-right"></i></button>
 								</div>
 							</div>
-						</div>				
+						</div>
 					</div>
 				</div>
 			</section>

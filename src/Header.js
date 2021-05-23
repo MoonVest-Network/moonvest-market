@@ -60,7 +60,10 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Header() {
-	const [isConnected, setConnectedStatus] = useState(false);
+  // State hook variables.
+	const [connected, setConnected] = useState(false);
+	const [walletAddress, setWalletAddress] = useState("");
+	const [walletBalance, setWalletBalance] = useState(0);
   const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
 
   const [state, setState] = useState({
@@ -84,12 +87,21 @@ export default function Header() {
 
 	const connectWalletClicked = async () => {
 		const walletResponse = await connectWallet();
+
+    console.log(walletResponse);
 		
-		// // Update state hooks.
+    if (walletResponse.isConnected) {
+      setConnected(true);
+      setWalletAddress(walletResponse.address);
+    } else {
+      setConnected(false);
+    }
+
+		// Update state hooks.
 		// setConnectedStatus(walletResponse.connectedStatus);
 		// setStatus(walletResponse.status);
 		
-		// if (isConnected) 
+		// if (connected) 
 		// {
 		// 	setWallet(walletResponse.address);
 		// 	await processWalletData();
@@ -101,7 +113,7 @@ export default function Header() {
       <Toolbar className={toolbar}>
         {Logo}
         <div>{getMenuButtons()}</div>
-				<Button onClick={connectWalletClicked} variant="contained" size="medium" color="primary" endIcon={<PowerOffIcon />}>Connect Wallet</Button>
+        <div>{getConnectWalletButton("medium")}</div>
       </Toolbar>
     );
   };
@@ -137,7 +149,7 @@ export default function Header() {
         </Drawer>
 
         <div>{Logo}</div>
-				<Button variant="contained" size="small" color="primary" endIcon={<PowerOffIcon />}>Connect Wallet</Button>
+				<div>{getConnectWalletButton("small")}</div>
       </Toolbar>
     );
   };
@@ -172,6 +184,22 @@ export default function Header() {
       );
     });
   };
+
+  const getConnectWalletButton = (size) => {
+    if (connected){
+      return (
+        <Button onClick={connectWalletClicked} size="{size}" variant="contained" color="primary">
+          {walletAddress}
+        </Button>
+      )
+    }
+
+    return (
+      <Button onClick={connectWalletClicked} variant="contained" size="{size}" color="primary" endIcon={<PowerOffIcon />}>
+        Connect Wallet
+      </Button>
+    )
+  }
 
   return (
     <header>

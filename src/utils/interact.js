@@ -18,8 +18,6 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 //       balance: ""
 //     };
 
-
-
 export const connectWallet = async () => {
     //this.toggleModal();
     const providerOptions = {
@@ -50,7 +48,22 @@ export const connectWallet = async () => {
     const provider = await web3Modal.connect();
     const web3 = new Web3(provider);
 
+    const accounts = await web3.eth.getAccounts();
+    const address = accounts[0];
+    const networkId = await web3.eth.net.getId();
+
     console.log(web3);
+
+    if (networkId) {
+        return {
+            isConnected: true,
+            networkId: networkId,
+            address: address
+        }
+    } 
+    return {
+        isConnected: false
+    }
 
     // // Is MetaMask installed on browser?
     // if (window.ethereum) 

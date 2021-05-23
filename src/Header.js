@@ -101,7 +101,7 @@ export default function Header() {
       <Toolbar className={toolbar}>
         {Logo}
         <div>{getMenuButtons()}</div>
-				<Button onClick={connectWalletClicked()} variant="contained" size="medium" color="primary" endIcon={<PowerOffIcon />}>Connect Wallet</Button>
+				<Button onClick={connectWalletClicked} variant="contained" size="medium" color="primary" endIcon={<PowerOffIcon />}>Connect Wallet</Button>
       </Toolbar>
     );
   };

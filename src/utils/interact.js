@@ -18,25 +18,33 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 //       balance: ""
 //     };
 
-const providerOptions = {
-	walletconnect: {
-		package: WalletConnectProvider,
-		options: {
-			rpc: {
-				56: 'https://bsc-dataseed.binance.org/'
-			},
-			network: 'binance',
-			chainId: 56
-		}
-	}
-};
+
 
 export const connectWallet = async () => {
     //this.toggleModal();
+    const providerOptions = {
+        walletconnect: {
+            package: WalletConnectProvider,
+            options: {
+                rpc: {
+                    56: 'https://bsc-dataseed.binance.org/'
+                },
+                network: 'binance',
+                chainId: 56
+            }
+        }
+    };
     
     const web3Modal = new Web3Modal({
         cacheProvider: true, // optional
-        providerOptions // required
+        providerOptions,
+        theme: {
+            background: "rgb(39, 49, 56)",
+            main: "rgb(199, 199, 199)",
+            secondary: "rgb(136, 136, 136)",
+            border: "rgba(195, 195, 195, 0.14)",
+            hover: "rgb(16, 26, 32)"
+          }
     });
     
     const provider = await web3Modal.connect();

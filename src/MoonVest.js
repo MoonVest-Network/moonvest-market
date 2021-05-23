@@ -28,39 +28,39 @@ const MoonVest = (props) => {
 		console.log(nftItems); 
 
 		// Is MetaMask installed?
-		if (window.ethereum)
-		{
-			// Yes.
-			try
-			{
-				// Get MetaMask wallet.
-				const accounts = await window.ethereum.request({
-					method: "eth_accounts"
-				});
+		// if (window.ethereum)
+		// {
+		// 	// Yes.
+		// 	try
+		// 	{
+		// 		// Get MetaMask wallet.
+		// 		const accounts = await window.ethereum.request({
+		// 			method: "eth_accounts"
+		// 		});
 				
-				// Is MetaMask account connected?
-				if (accounts.length)
-				{
-					// Yes.
-					setConnectedStatus(true);
-					setWallet(accounts[0]);
+		// 		// Is MetaMask account connected?
+		// 		if (accounts.length)
+		// 		{
+		// 			// Yes.
+		// 			setConnectedStatus(true);
+		// 			setWallet(accounts[0]);
 
-					await processWalletData();
-				}
-				else
-				{
-					// No.
-					setConnectedStatus(false);
-					setStatus("🦊 Connect to MetaMask using the Connect Wallet button.");
-				}
-			}
-			catch
-			{
-				// An error occured while trying to connect wallet.
-				setConnectedStatus(false);
-				setStatus("🦊 Disconnect wallet from Metamask then reconnect with Connect Wallet button. " + walletAddress);
-			}
-		}
+		// 			await processWalletData();
+		// 		}
+		// 		else
+		// 		{
+		// 			// No.
+		// 			setConnectedStatus(false);
+		// 			setStatus("🦊 Connect to MetaMask using the Connect Wallet button.");
+		// 		}
+		// 	}
+		// 	catch
+		// 	{
+		// 		// An error occured while trying to connect wallet.
+		// 		setConnectedStatus(false);
+		// 		setStatus("🦊 Disconnect wallet from Metamask then reconnect with Connect Wallet button. " + walletAddress);
+		// 	}
+		// }
 	});
 
 	async function fetchNftItems() {

@@ -1,6 +1,5 @@
 import Header from './Header';
 import Footer from './Footer';
-import MoonVest from './MoonVest';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/plugins.css';
 import './assets/styles.css';
@@ -14,7 +13,6 @@ function App() {
       <div className="Loader"></div>
       <div className="App main-wrapper">
         <Header></Header>
-        {/* <MoonVest></MoonVest> */}
         <Footer></Footer>
       </div>
     </>

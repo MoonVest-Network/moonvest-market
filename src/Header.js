@@ -5,7 +5,7 @@ import { AppBar, Toolbar, Typography, makeStyles, Button, IconButton, Drawer, Li
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState, useEffect } from "react";
 import PowerOffIcon from '@material-ui/icons/PowerOff';
-import { connectWallet } from "./utils/interact.js";
+import { connectWallet, disconnectWallet } from "./utils/interact.js";
 
 const headersData = [
   {
@@ -66,7 +66,7 @@ export default function Header() {
 
   const { mobileView, drawerOpen } = state;
 
-  useEffect(() => {
+  useEffect(async () => {
     const setResponsiveness = () => {
       return window.innerWidth < 900
         ? setState((prevState) => ({ ...prevState, mobileView: true }))
@@ -76,19 +76,27 @@ export default function Header() {
     setResponsiveness();
 
     window.addEventListener("resize", () => setResponsiveness());
+
+    // Is MetaMask installed?
+		// if (window.ethereum)
+		// {
+		// 	// Yes.
+		// 	const walletResponse = connectWallet();
+
+    //   setConnected(walletResponse.isConnected);
+
+    //   if (walletResponse.isConnected)
+    //     setWalletAddress(walletResponse.address);
+		// }
   }, []);
 
 	const connectWalletClicked = async () => {
-		const walletResponse = await connectWallet();
+    const walletResponse = await connectWallet();
+  
+    setConnected(walletResponse.isConnected);
 
-    console.log(walletResponse);
-		
-    if (walletResponse.isConnected) {
-      setConnected(true);
+    if (walletResponse.isConnected)
       setWalletAddress(walletResponse.address);
-    } else {
-      setConnected(false);
-    }
 
 		// Update state hooks.
 		// setConnectedStatus(walletResponse.connectedStatus);
@@ -101,104 +109,191 @@ export default function Header() {
 		// }
 	};
 
-  const displayDesktop = () => {
-    return (
-      <Toolbar className={toolbar}>
-        {Logo}
-        <div>{getMenuButtons()}</div>
-        <div>{getConnectWalletButton("medium")}</div>
-      </Toolbar>
-    );
+  const disconnectWalletClicked = async () => {
+    await disconnectWallet();
+    setConnected(false);
+    setWalletAddress("");
   };
 
-  const displayMobile = () => {
-    const handleDrawerOpen = () =>
-      setState((prevState) => ({ ...prevState, drawerOpen: true }));
-    const handleDrawerClose = () =>
-      setState((prevState) => ({ ...prevState, drawerOpen: false }));
+  // const displayDesktop = () => {
+  //   return (
+  //     <Toolbar className={toolbar}>
+  //       {Logo}
+  //       <div>{getMenuButtons()}</div>
+  //       <div>{getConnectWalletButton("medium")}</div>
+  //     </Toolbar>
+  //   );
+  // };
 
-    return (
-      <Toolbar>
-        <IconButton
-          {...{
-            edge: "start",
-            color: "inherit",
-            "aria-label": "menu",
-            "aria-haspopup": "true",
-            onClick: handleDrawerOpen,
-          }}
-        >
-          <MenuIcon />
-        </IconButton>
+  // const displayMobile = () => {
+  //   const handleDrawerOpen = () =>
+  //     setState((prevState) => ({ ...prevState, drawerOpen: true }));
+  //   const handleDrawerClose = () =>
+  //     setState((prevState) => ({ ...prevState, drawerOpen: false }));
 
-        <Drawer
-          {...{
-            anchor: "left",
-            open: drawerOpen,
-            onClose: handleDrawerClose,
-          }}
-        >
-          <div className={drawerContainer}>{getDrawerChoices()}</div>
-        </Drawer>
+  //   return (
+  //     <Toolbar>
+  //       <IconButton
+  //         {...{
+  //           edge: "start",
+  //           color: "inherit",
+  //           "aria-label": "menu",
+  //           "aria-haspopup": "true",
+  //           onClick: handleDrawerOpen,
+  //         }}
+  //       >
+  //         <MenuIcon />
+  //       </IconButton>
 
-        <div>{Logo}</div>
-				<div>{getConnectWalletButton("small")}</div>
-      </Toolbar>
-    );
-  };
+  //       <Drawer
+  //         {...{
+  //           anchor: "left",
+  //           open: drawerOpen,
+  //           onClose: handleDrawerClose,
+  //         }}
+  //       >
+  //         <div className={drawerContainer}>{getDrawerChoices()}</div>
+  //       </Drawer>
 
-  const getDrawerChoices = () => {
-    return headersData.map(({ label, href }) => {
-      return (
-        <MenuItem>{label}</MenuItem>
-      );
-    });
-  };
+  //       <div>{Logo}</div>
+	// 			<div>{getConnectWalletButton("small")}</div>
+  //     </Toolbar>
+  //   );
+  // };
 
-  const Logo = (
-    <Typography variant="h6" component="h1" className={logo}>
-      Moonvest Market
-    </Typography>
-  );
+  // const getDrawerChoices = () => {
+  //   return headersData.map(({ label, href }) => {
+  //     return (
+  //       <MenuItem>{label}</MenuItem>
+  //     );
+  //   });
+  // };
 
-  const getMenuButtons = () => {
-    return headersData.map(({ label, href }) => {
-      return (
-        <Button
-          {...{
-            key: label,
-            color: "inherit",
-            to: href,
-            className: menuButton,
-          }}
-        >
-          {label}
-        </Button>
-      );
-    });
-  };
+  // const Logo = (
+  //   <Typography variant="h6" component="h1" className={logo}>
+  //     Moonvest Market
+  //   </Typography>
+  // );
 
-  const getConnectWalletButton = (size) => {
-    if (connected){
-      return (
-        <Button onClick={connectWalletClicked} size="{size}" variant="contained" color="primary">
-          {walletAddress}
-        </Button>
-      )
-    }
+  // const getMenuButtons = () => {
+  //   return headersData.map(({ label, href }) => {
+  //     return (
+  //       <Button
+  //         {...{
+  //           key: label,
+  //           color: "inherit",
+  //           to: href,
+  //           className: menuButton,
+  //         }}
+  //       >
+  //         {label}
+  //       </Button>
+  //     );
+  //   });
+  // };
 
-    return (
-      <Button onClick={connectWalletClicked} variant="contained" size="{size}" color="primary" endIcon={<PowerOffIcon />}>
-        Connect Wallet
-      </Button>
-    )
-  }
+  // const getConnectWalletButton = (size) => {
+  //   return (
+  //     <Button onClick={connectWalletClicked} size={size} variant="contained" color="primary" endIcon={connected ? "" : (<PowerOffIcon />)}>
+  //       {connected ? (String(walletAddress).substring(0, 6) + "..." + String(walletAddress).substring(38)) : "Connect Wallet"}
+  //     </Button>
+  //   );
+  // }
 
   return (
-    <header>
-      <AppBar className={header}>
-        {mobileView ? displayMobile() : displayDesktop()}
-      </AppBar>
-    </header>
+    // <header>
+    //   <AppBar className={header}>
+    //     {mobileView ? displayMobile() : displayDesktop()}
+    //   </AppBar>
+    // </header>
+    <HashRouter>
+      <div className="header header-light navbar-light bg-white">
+        <div className="container px-0">
+          <nav className="navbar navbar-expand-md navbar-light bg-white">
+                  <NavLink className="navbar-brand" to="/"><img src={"img/Logo.png"} height="20" className="logo" alt="" /></NavLink>
+                  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                      <span className="navbar-toggler-icon"></span>
+                  </button>
+                  <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                      <ul className="navbar-nav col">
+                          <li className="nav-item border-bottom-sm">
+                              <NavLink to="/" className="nav-link">Home <span className="sr-only">(current)</span></NavLink>
+                          </li>
+                          <li className="nav-item dropdown border-bottom-sm">
+                              <NavLink className="nav-link dropdown-toggle" id="itemDetailsDropdown" to="/item-detail">Item Details <span className="sr-only">(current)</span></NavLink>
+                              <ul className="dropdown-menu rounded-0" aria-labelledby="itemDetailsDropdown">
+                                  <li><a className="dropdown-item">Checkout</a></li>
+                              </ul>
+                          </li>
+                          <li className="nav-item dropdown border-bottom-sm">
+                              <a className="nav-link dropdown-toggle" href="#" id="aboutUsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  About Us
+                              </a>
+                              <ul className="dropdown-menu rounded-0" aria-labelledby="aboutUsDropdown">
+                                  <li><a className="dropdown-item">Booking</a></li>
+                                  <li><a className="dropdown-item">Stays</a></li>
+                                  <li><a className="dropdown-item">Adventures</a></li>
+                                  <li><a className="dropdown-item">Author Detail</a></li>
+                                  <li><a className="dropdown-item">FAQs</a></li>
+                                  <li><a className="dropdown-item">Jobs</a></li>
+                                  <li><a className="dropdown-item">Events</a></li>
+                                  <li><a className="dropdown-item">Press</a></li>
+                                  <li><a className="dropdown-item">Privacy & Terms</a></li>
+                                  {/* <li className="dropdown-submenu"><a className="dropdown-item dropdown-toggle" href="">Hello</a>
+                                      <ul className="dropdown-menu border-left-0 border-right-0 bg-light rounded-0">
+                                          <li><a className="dropdown-item" href="#">Submenu</a></li>
+                                          <li><a className="dropdown-item" href="#">Submenu0</a></li>
+                                      </ul>
+                                  </li> */}
+                              </ul>
+                          </li>
+                          <li className="nav-item dropdown border-bottom-sm">
+                              <a className="nav-link dropdown-toggle" href="#" id="contactUsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Contact Us
+                              </a>
+                              <ul className="dropdown-menu rounded-0" aria-labelledby="contactUsDropdown">
+                                  <li><a className="dropdown-item" href="#">Support</a></li>
+                                  <li><a className="dropdown-item" href="#">Stays</a></li>
+                                  <li><a className="dropdown-item" href="#">Adventures</a></li>
+                                  <li><a className="dropdown-item" href="#">Author Detail</a></li>
+                                  {/* <li className="dropdown-submenu"><a className="dropdown-item dropdown-toggle" href="">Hello</a>
+                                      <ul className="dropdown-menu border-left-0 border-right-0 bg-light rounded-0">
+                                          <li><a className="dropdown-item" href="#">Submenu</a></li>
+                                          <li><a className="dropdown-item" href="#">Submenu0</a></li>
+                                      </ul>
+                                  </li> */}
+                              </ul>
+                          </li>
+                      </ul>
+                      <ul className="navbar-nav col d-sm-flex-spacing connect-wallet justify-content-md-end" style={{cursor: "pointer"}}>
+                          <li className="dropdown col-xs-4">
+                              <a className="hv-red dropdown-toggle" id="connectWalletDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i className="fa fa-arrow-circle-right mr-1"></i>Wallet
+                              </a>
+                              <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
+                                  <li>
+                                    <a onClick={connectWalletClicked} className="dropdown-item">
+                                      {connected ? "Address: " + (String(walletAddress).substring(0, 6) + "..." + String(walletAddress).substring(38)) : ("Connect")}
+                                    </a>
+                                  </li>
+                                  <li><a onClick={disconnectWalletClicked} className="dropdown-item">Disconnect</a></li>
+                              </ul>
+                          </li>
+                          {/* <li className="col-xs-4">
+                              <a href="#" className="btn red-bg btn-sm mx-3">Create</a>
+                          </li>
+                          <li className="col-xs-4">
+                              <a href="#" className="btn theme-bg btn-sm">Explore</a>
+                          </li> */}
+                      </ul>
+                  </div>
+              </nav>
+          </div>
+      </div>
+      <div className="clearfix"></div>
+
+      <Route exact path="/" component={MoonVest}/>
+      <Route path="/item-detail" component={ItemDetail}/>
+    </HashRouter>
   );
 }

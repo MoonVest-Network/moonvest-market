@@ -5,6 +5,7 @@ import { AppBar, Toolbar, Typography, makeStyles, Button, IconButton, Drawer, Li
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState, useEffect } from "react";
 import PowerOffIcon from '@material-ui/icons/PowerOff';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { connectWallet, disconnectWallet } from "./utils/interact.js";
 
 const headersData = [
@@ -50,6 +51,12 @@ const useStyles = makeStyles(() => ({
   drawerContainer: {
     padding: "5px 10px",
   },
+  connectedButton: {
+    background: 'linear-gradient(to bottom, rgba(255,235,250,0.8), rgba(150,100,250,0.6))',
+    color: "#212F3C",
+    border: '1px solid #6849C4',
+    textTransform: "none",
+  },
 }));
 
 export default function Header() {
@@ -57,7 +64,7 @@ export default function Header() {
 	const [connected, setConnected] = useState(false);
 	const [walletAddress, setWalletAddress] = useState("");
 	const [walletBalance, setWalletBalance] = useState(0);
-  const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
+  const { header, logo, menuButton, toolbar, drawerContainer, connectedButton } = useStyles();
 
   const [state, setState] = useState({
     mobileView: false,
@@ -199,6 +206,27 @@ export default function Header() {
   //     </Button>
   //   );
   // }
+  const shortAddress = (address, startChars, endChars) => {
+    if (!address) return "";
+    
+    return address.substring(2).slice(0,startChars) + "..." + address.slice(-endChars);    
+  }
+
+  const walletButton = () => {
+    if (connected){
+      return (
+        <Button {...{className: connectedButton}} onClick={connectWalletClicked} variant="contained" color="primary" endIcon={<AccountCircleIcon />}>
+          0x{shortAddress(walletAddress,8,5)}
+        </Button>
+      )
+    }
+
+    return (
+      <Button onClick={connectWalletClicked} variant="contained" color="primary" endIcon={<PowerOffIcon />}>
+        Connect Wallet
+      </Button>
+    )
+  }
 
   return (
     // <header>
@@ -227,7 +255,7 @@ export default function Header() {
                           </li>
                           <li className="nav-item dropdown border-bottom-sm">
                               <a className="nav-link dropdown-toggle" href="#" id="aboutUsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  About Us
+                                  Resources
                               </a>
                               <ul className="dropdown-menu rounded-0" aria-labelledby="aboutUsDropdown">
                                   <li><a className="dropdown-item">Booking</a></li>
@@ -249,13 +277,12 @@ export default function Header() {
                           </li>
                           <li className="nav-item dropdown border-bottom-sm">
                               <a className="nav-link dropdown-toggle" href="#" id="contactUsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Contact Us
+                                  About
                               </a>
                               <ul className="dropdown-menu rounded-0" aria-labelledby="contactUsDropdown">
-                                  <li><a className="dropdown-item" href="#">Support</a></li>
-                                  <li><a className="dropdown-item" href="#">Stays</a></li>
-                                  <li><a className="dropdown-item" href="#">Adventures</a></li>
-                                  <li><a className="dropdown-item" href="#">Author Detail</a></li>
+                                  <li><a className="dropdown-item" href="#">MVN Token</a></li>
+                                  <li><a className="dropdown-item" href="#">Social</a></li>
+                                  <li><a className="dropdown-item" href="#">Contact Us</a></li>
                                   {/* <li className="dropdown-submenu"><a className="dropdown-item dropdown-toggle" href="">Hello</a>
                                       <ul className="dropdown-menu border-left-0 border-right-0 bg-light rounded-0">
                                           <li><a className="dropdown-item" href="#">Submenu</a></li>
@@ -267,15 +294,11 @@ export default function Header() {
                       </ul>
                       <ul className="navbar-nav col d-sm-flex-spacing connect-wallet justify-content-md-end" style={{cursor: "pointer"}}>
                           <li className="dropdown col-xs-4">
-                              <a className="hv-red dropdown-toggle" id="connectWalletDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              {/* <a className="hv-red dropdown-toggle" id="connectWalletDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i className="fa fa-arrow-circle-right mr-1"></i>Wallet
-                              </a>
+                              </a> */}
+                              <div>{walletButton()}</div>
                               <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
-                                  <li>
-                                    <a onClick={connectWalletClicked} className="dropdown-item">
-                                      {connected ? "Address: " + (String(walletAddress).substring(0, 6) + "..." + String(walletAddress).substring(38)) : ("Connect")}
-                                    </a>
-                                  </li>
                                   <li><a onClick={disconnectWalletClicked} className="dropdown-item">Disconnect</a></li>
                               </ul>
                           </li>

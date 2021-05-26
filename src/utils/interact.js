@@ -1,102 +1,38 @@
 import Web3 from 'web3';
-import Web3Modal from "web3modal";
-import WalletConnectProvider from "@walletconnect/web3-provider";
-
-// const bsc = {
-//     name: "Binance Smart Chain",
-//     short_name: "bsc",
-//     chain: "smartchain",
-//     network: "mainnet",
-//     chain_id: 56,
-//     network_id: 56,
-//     rpc_url: "https://bsc-dataseed1.defibit.io/",
-//     native_currency: {
-//       symbol: "BNB",
-//       name: "BNB",
-//       decimals: "18",
-//       contractAddress: "",
-//       balance: ""
-//     };
 
 export const connectWallet = async () => {
-    //this.toggleModal();
-    const providerOptions = {
-        walletconnect: {
-            package: WalletConnectProvider,
-            options: {
-                rpc: {
-                    56: 'https://bsc-dataseed.binance.org/'
-                },
-                network: 'binance',
-                chainId: 56
+    // Is MetaMask installed on browser?
+    if (window.ethereum) 
+    {
+		// Yes.
+        try 
+        {
+			// Connect MetaMask.
+            const address = await window.ethereum.enable();
+            const obj = {
+                connectedStatus: true,
+                status: "",
+                address: address
+            }
+
+            return obj;   
+        } 
+        catch (error) 
+        {
+            return {
+                connectedStatus: false,
+                status: "🦊 Connect to Metamask using the Connect Wallet button."
             }
         }
-    };
-    
-    const web3Modal = new Web3Modal({
-        cacheProvider: true, // optional
-        providerOptions,
-        theme: {
-            background: "rgb(39, 49, 56)",
-            main: "rgb(199, 199, 199)",
-            secondary: "rgb(136, 136, 136)",
-            border: "rgba(195, 195, 195, 0.14)",
-            hover: "rgb(16, 26, 32)"
-          }
-    });
-    
-    const provider = await web3Modal.connect();
-    const web3 = new Web3(provider);
-
-    const accounts = await web3.eth.getAccounts();
-    const address = accounts[0];
-    const networkId = await web3.eth.net.getId();
-
-    console.log(web3);
-
-    if (networkId) {
-        return {
-            isConnected: true,
-            networkId: networkId,
-            address: address
-        }
     } 
-    return {
-        isConnected: false
+    else 
+    {
+		// No.
+        return {
+            connectedStatus: false,
+            status: "🦊 You must install Metamask into your browser: https://metamask.io/download.html"
+        }
     }
-
-    // // Is MetaMask installed on browser?
-    // if (window.ethereum) 
-    // {
-	// 	// Yes.
-    //     try 
-    //     {
-	// 		// Connect MetaMask.
-    //         const address = await window.ethereum.enable();
-    //         const obj = {
-    //             connectedStatus: true,
-    //             status: "",
-    //             address: address
-    //         }
-
-    //         return obj;   
-    //     } 
-    //     catch (error) 
-    //     {
-    //         return {
-    //             connectedStatus: false,
-    //             status: "🦊 Connect to Metamask using the Connect Wallet button."
-    //         }
-    //     }
-    // } 
-    // else 
-    // {
-	// 	// No.
-    //     return {
-    //         connectedStatus: false,
-    //         status: "🦊 You must install Metamask into your browser: https://metamask.io/download.html"
-    //     }
-    // }
 };
 
 export const metaMask = async (walletAddress) => {

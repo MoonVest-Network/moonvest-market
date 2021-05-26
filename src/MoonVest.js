@@ -19,6 +19,7 @@ const MoonVest = (props) => {
 	const [price, setPrice] = useState("0.00");
 	const [marketCap, setMarketCap] = useState("0.00");
 	const [anchorEl, setAnchorEl] = useState(null);
+	const [nftItems, setNftItems] = useState(null);
 	
 	// Similar to componentDidMount and componentDidUpdate.
 	useEffect(async () => {

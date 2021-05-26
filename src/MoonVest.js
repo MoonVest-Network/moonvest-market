@@ -471,7 +471,7 @@ const MoonVest = (props) => {
 			{/* <!-- ============================ Author Lists End ================================== --></div> */}
 
 			{/* <!-- ============================ Photo category List ================================== --> */}
-			<section className="min-sec">
+			{/* <section className="min-sec">
 				<div className="container">
 					
 					{/* <div className="row justify-content-center">
@@ -608,7 +608,7 @@ const MoonVest = (props) => {
 					</div>
 					
 				</div>
-			</section>
+			</section> */}
 
 			<section className="min-sec image-section">
 				<div className="container">

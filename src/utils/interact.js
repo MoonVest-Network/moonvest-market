@@ -2,9 +2,6 @@ import Web3 from 'web3';
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
-var provider;
-var web3Modal;
-
 // const bsc = {
 //     name: "Binance Smart Chain",
 //     short_name: "bsc",
@@ -22,6 +19,7 @@ var web3Modal;
 //     };
 
 export const connectWallet = async () => {
+    //this.toggleModal();
     const providerOptions = {
         walletconnect: {
             package: WalletConnectProvider,
@@ -35,7 +33,7 @@ export const connectWallet = async () => {
         }
     };
     
-    web3Modal = new Web3Modal({
+    const web3Modal = new Web3Modal({
         cacheProvider: true, // optional
         providerOptions,
         theme: {
@@ -46,27 +44,23 @@ export const connectWallet = async () => {
             hover: "rgb(16, 26, 32)"
           }
     });
+    
+    const provider = await web3Modal.connect();
+    const web3 = new Web3(provider);
 
-    try{
-        provider = await web3Modal.connect();
-        const web3 = new Web3(provider);
+    const accounts = await web3.eth.getAccounts();
+    const address = accounts[0];
+    const networkId = await web3.eth.net.getId();
 
-        const accounts = await web3.eth.getAccounts();
-        const address = accounts[0];
-        const networkId = await web3.eth.net.getId();
+    console.log(web3);
 
-        if (networkId) {
-            return {
-                isConnected: true,
-                networkId: networkId,
-                address: address
-            }
+    if (networkId) {
+        return {
+            isConnected: true,
+            networkId: networkId,
+            address: address
         }
-    }
-    catch (error){
-        console.log(error);
-    }
-
+    } 
     return {
         isConnected: false
     }
@@ -103,11 +97,6 @@ export const connectWallet = async () => {
     //         status: "🦊 You must install Metamask into your browser: https://metamask.io/download.html"
     //     }
     // }
-};
-
-export const disconnectWallet = async () => {
-    await web3Modal.clearCachedProvider();
-    provider = null;
 };
 
 export const metaMask = async (walletAddress) => {

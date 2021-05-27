@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { connectWallet, metaMask } from "./utils/interact.js";
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
+//import nftItems from './nftItems.json';
 import {listNftItems, listNftCollection, ListWallets} from './graphql/queries';
 import * as mutations from './graphql/mutations';
 import * as subscriptions from './graphql/subscriptions';
@@ -24,7 +25,8 @@ const MoonVest = (props) => {
 	// Similar to componentDidMount and componentDidUpdate.
 	useEffect(async () => {
 
-		await fetchNftItems();
+		//await fetchNftItems();
+		//console.log(nftItems);
 
 		// Is MetaMask installed?
 		// if (window.ethereum)

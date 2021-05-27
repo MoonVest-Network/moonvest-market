@@ -1,0 +1,30 @@
+[
+	{
+		"id":"1",
+		"name":"Bakery Swap",
+		"nftcollectionID":"1",
+		"tokenId":"2",
+		"image":"https://d3ggs2vjn5heyw.cloudfront.net/static/nfts/artworks/1f15052fad9548c68555773e9c6797f0.png",
+		"properties":{"artist":"Mariaggelo","image_min":"https://d3ggs2vjn5heyw.cloudfront.net/static/nfts/artworks/1f15052fad9548c68555773e9c6797f0.png"},
+		"description":"Bakery Swap's logo Pixelated Artwork.\nMade by Mariaggelo for the best NFT marketplace in Smart Chain"
+	},
+	{
+		"id":"2",
+		"name":"Clarity",
+		"nftcollectionID":"1",
+		"tokenId":"3",
+		"image":"https://d3ggs2vjn5heyw.cloudfront.net/static/nfts/artworks/7b422c32e4b349e5a031db4c0d578de4.jpg",
+		"properties":{"artist":"Nataliya","image_min":"https://d3ggs2vjn5heyw.cloudfront.net/static/nfts/artworks/7b422c32e4b349e5a031db4c0d578de4.jpg"},
+		"description":"When it all comes together and makes sense.\n\nOriginally oil on canvas, this is Edition 1 of 1."
+	},
+	{
+		"id":"3",
+		"name":"From Ukraine, With Love",
+		"nftcollectionID":"1",
+		"tokenId":"4",
+		"image":"https://d3ggs2vjn5heyw.cloudfront.net/static/nfts/artworks/f9c2bfd0e1e943ec855d06fc34286db4.jpg",
+		"properties":{"artist":"Nataliya","image_min":"https://d3ggs2vjn5heyw.cloudfront.net/static/nfts/artworks/f9c2bfd0e1e943ec855d06fc34286db4.jpg"},
+		"description":"or, Diamonds are Forever?\n\nEdition 1 of 1."
+	}
+
+]

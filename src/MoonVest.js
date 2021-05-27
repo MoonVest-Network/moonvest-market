@@ -24,7 +24,7 @@ const MoonVest = (props) => {
 	// Similar to componentDidMount and componentDidUpdate.
 	useEffect(async () => {
 
-		fetchNftItems();
+		await fetchNftItems();
 
 		// Is MetaMask installed?
 		// if (window.ethereum)
@@ -64,12 +64,21 @@ const MoonVest = (props) => {
 
 	async function fetchNftItems() {
 		console.log("fetchNFTStart");
+
 		//Get NFT Data
-		const apiData = await API.graphql(graphqlOperation(listNftItems));
-		console.log(apiData);
-		setNftItems(apiData.data.listNftItems.items);
+		try{
+			const apiData = await API.graphql(graphqlOperation(listNftItems));
+			console.log("apiData: " + apiData);
+			setNftItems(apiData.data.listNftItems.items);
+		}
+		catch (error){
+			console.log("===== error start =====");
+			console.log(error);
+			console.log("===== error end =====");
+		}
+
 		console.log("fetchNFTEnd");
-  }
+  	}
 
 	// On click event of Connect Wallet Button.
 	const connectWalletClicked = async () => {
@@ -130,324 +139,170 @@ const MoonVest = (props) => {
 			{/* <!-- ============================ Hero Banner End ================================== --> */}
 
 			{/* <!-- ============================ All Images List Start ================================== --> */}
-			{/* <section>
-				<div className="container">
-					<div className="row">
-						<div className="col-lg-12 col-md-12">
-							
-							<div className="urip_column_wrap">
-								
-								<div className="urip_column_single">
-									<div className="urip_column_three">
-										<div className="item_image_urip">
-											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
-											<a href="premium-stock-detail.html" className="item-img">
-												<img src="https://picsum.photos/500/400" className="img-fluid" alt="" />
-											</a>
-											<div className="image_urip_caption">
-												<div className="urip_caption_flex">
-													<div className="urip_author">
-														<div className="urip_avater">
-															<a href="author-detail.html.html" className="author-img">
-																<img src="https://picsum.photos/400/400" className="img-fluid" alt="" />
-															</a>
-														</div>
-														<div className="urip_avater_place">
-															<h3 className="urip_title"><a href="author-detail.html.html">Adam vilson</a></h3>
-															<span>Liverpool, London</span>
-														</div>
-													</div>
-												</div>
-												<div className="urip_caption_last">
-													<div className="item_list_links">
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-plus-circle"></i></a>
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-heart"></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<div className="urip_column_three">
-										<div className="item_image_urip">
-											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
-											<a href="premium-stock-detail.html" className="item-img">
-												<img src="https://picsum.photos/400/400" className="img-fluid" alt="" />
-											</a>
-											<div className="image_urip_caption">
-												<div className="urip_caption_flex">
-													<div className="urip_author">
-														<div className="urip_avater">
-															<a href="author-detail.html.html" className="author-img">
-																<img src="https://picsum.photos/400/400" className="img-fluid" alt="" />
-															</a>
-														</div>
-														<div className="urip_avater_place">
-															<h3 className="urip_title"><a href="author-detail.html.html">Adam vilson</a></h3>
-															<span>Liverpool, London</span>
-														</div>
-													</div>
-												</div>
-												<div className="urip_caption_last">
-													<div className="item_list_links">
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-plus-circle"></i></a>
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-heart"></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<div className="urip_column_three">
-										<div className="item_image_urip">
-											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
-											<a href="premium-stock-detail.html" className="item-img">
-												<img src="https://picsum.photos/300/400" className="img-fluid" alt="" />
-											</a>
-											<div className="image_urip_caption">
-												<div className="urip_caption_flex">
-													<div className="urip_author">
-														<div className="urip_avater">
-															<a href="author-detail.html.html" className="author-img">
-																<img src="https://picsum.photos/400/400" className="img-fluid" alt="" />
-															</a>
-														</div>
-														<div className="urip_avater_place">
-															<h3 className="urip_title"><a href="author-detail.html.html">Adam vilson</a></h3>
-															<span>Liverpool, London</span>
-														</div>
-													</div>
-												</div>
-												<div className="urip_caption_last">
-													<div className="item_list_links">
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-plus-circle"></i></a>
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-heart"></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								
-								</div>
-								
-								<div className="urip_column_single">
-									<div className="urip_column_three">
-										<div className="item_image_urip">
-											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
-											<a href="premium-stock-detail.html" className="item-img">
-												<img src="https://picsum.photos/400/300" className="img-fluid" alt="" />
-											</a>
-											<div className="image_urip_caption">
-												<div className="urip_caption_flex">
-													<div className="urip_author">
-														<div className="urip_avater">
-															<a href="author-detail.html.html" className="author-img">
-																<img src="https://picsum.photos/400/400" className="img-fluid" alt="" />
-															</a>
-														</div>
-														<div className="urip_avater_place">
-															<h3 className="urip_title"><a href="author-detail.html.html">Adam vilson</a></h3>
-															<span>Liverpool, London</span>
-														</div>
-													</div>
-												</div>
-												<div className="urip_caption_last">
-													<div className="item_list_links">
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-plus-circle"></i></a>
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-heart"></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<div className="urip_column_three">
-										<div className="item_image_urip">
-											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
-											<a href="premium-stock-detail.html" className="item-img">
-												<img src="https://picsum.photos/500/450" className="img-fluid" alt="" />
-											</a>
-											<div className="image_urip_caption">
-												<div className="urip_caption_flex">
-													<div className="urip_author">
-														<div className="urip_avater">
-															<a href="author-detail.html.html" className="author-img">
-																<img src="https://picsum.photos/400/400" className="img-fluid" alt="" />
-															</a>
-														</div>
-														<div className="urip_avater_place">
-															<h3 className="urip_title"><a href="author-detail.html.html">Adam vilson</a></h3>
-															<span>Liverpool, London</span>
-														</div>
-													</div>
-												</div>
-												<div className="urip_caption_last">
-													<div className="item_list_links">
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-plus-circle"></i></a>
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-heart"></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<div className="urip_column_three">
-										<div className="item_image_urip">
-											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
-											<a href="premium-stock-detail.html" className="item-img">
-												<img src="https://picsum.photos/300/410" className="img-fluid" alt="" />
-											</a>
-											<div className="image_urip_caption">
-												<div className="urip_caption_flex">
-													<div className="urip_author">
-														<div className="urip_avater">
-															<a href="author-detail.html.html" className="author-img">
-																<img src="https://picsum.photos/400/400" className="img-fluid" alt="" />
-															</a>
-														</div>
-														<div className="urip_avater_place">
-															<h3 className="urip_title"><a href="author-detail.html.html">Adam vilson</a></h3>
-															<span>Liverpool, London</span>
-														</div>
-													</div>
-												</div>
-												<div className="urip_caption_last">
-													<div className="item_list_links">
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-plus-circle"></i></a>
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-heart"></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								
-								</div>
-								
-								<div className="urip_column_single">
-									<div className="urip_column_three">
-										<div className="item_image_urip">
-											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
-											<a href="premium-stock-detail.html" className="item-img">
-												<img src="https://picsum.photos/330/410" className="img-fluid" alt="" />
-											</a>
-											<div className="image_urip_caption">
-												<div className="urip_caption_flex">
-													<div className="urip_author">
-														<div className="urip_avater">
-															<a href="author-detail.html.html" className="author-img">
-																<img src="https://picsum.photos/400/400" className="img-fluid" alt="" />
-															</a>
-														</div>
-														<div className="urip_avater_place">
-															<h3 className="urip_title"><a href="author-detail.html.html">Adam vilson</a></h3>
-															<span>Liverpool, London</span>
-														</div>
-													</div>
-												</div>
-												<div className="urip_caption_last">
-													<div className="item_list_links">
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-plus-circle"></i></a>
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-heart"></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<div className="urip_column_three">
-										<div className="item_image_urip">
-											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
-											<a href="premium-stock-detail.html" className="item-img">
-												<img src="https://picsum.photos/400/300" className="img-fluid" alt="" />
-											</a>
-											<div className="image_urip_caption">
-												<div className="urip_caption_flex">
-													<div className="urip_author">
-														<div className="urip_avater">
-															<a href="author-detail.html.html" className="author-img">
-																<img src="https://picsum.photos/400/400" className="img-fluid" alt="" />
-															</a>
-														</div>
-														<div className="urip_avater_place">
-															<h3 className="urip_title"><a href="author-detail.html.html">Adam vilson</a></h3>
-															<span>Liverpool, London</span>
-														</div>
-													</div>
-												</div>
-												<div className="urip_caption_last">
-													<div className="item_list_links">
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-plus-circle"></i></a>
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-heart"></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<div className="urip_column_three">
-										<div className="item_image_urip">
-											<a href="item-detail.html" className="urip_link download"><i className="fa fa-download"></i></a>
-											<a href="premium-stock-detail.html" className="item-img">
-												<img src="https://picsum.photos/380/410" className="img-fluid" alt="" />
-											</a>
-											<div className="image_urip_caption">
-												<div className="urip_caption_flex">
-													<div className="urip_author">
-														<div className="urip_avater">
-															<a href="author-detail.html.html" className="author-img">
-																<img src="https://picsum.photos/400/400" className="img-fluid" alt="" />
-															</a>
-														</div>
-														<div className="urip_avater_place">
-															<h3 className="urip_title"><a href="author-detail.html.html">Adam vilson</a></h3>
-															<span>Liverpool, London</span>
-														</div>
-													</div>
-												</div>
-												<div className="urip_caption_last">
-													<div className="item_list_links">
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-plus-circle"></i></a>
-														<a href="premium-stock-detail.html" className="urip_link"><i className="fa fa-heart"></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								
-								</div>
-							
-							</div>
-							
-						</div>
-					</div>
-					
-					<div className="row">
-						<div className="col-lg-12 col-md-12 text-center">
-							<a href="#" className="ure09w">Browse More</a>
-						</div>
-					</div>
-					
-				</div>
-			</section> */}
 
 			<section className="min-sec">
 				<div className="container">
 					<div className="row justify-content-center">
 						<div className="card-columns col-sm-12">
-							<div className="card">
+							<div className="card card-image">
 								<img src="https://picsum.photos/400/300" className="card-img-top" alt="..." />
+								<div className="top-right pr-2 pt-2">
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-download fa-stack-1x fa-inverse"></i>
+									</a>
+								</div>
+								<div className="bottom-right pr-2 pb-2">
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-heart fa-stack-1x fa-inverse"></i>
+									</a>
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-plus fa-stack-1x fa-inverse"></i>
+									</a>
+								</div>
+								<div className="bottom-left pl-2 pb-2">
+									<div className="media">
+										<img src="http://via.placeholder.com/50x50" className="circle d-inline-block" />
+										<span className="d-inline-block pl-1">
+										<span className="font-bold d-block">
+											Text Here
+										</span>
+										<span className="font-light d-block">
+											Text Here
+										</span>
+										</span>
+									</div>
+								</div>
 							</div>
-							<div className="card">
+							<div className="card card-image">
 								<img src="https://picsum.photos/380/410" className="card-img-top" alt="..." />
+								<div className="top-right pr-2 pt-2">
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-download fa-stack-1x fa-inverse"></i>
+									</a>
+								</div>
+								<div className="bottom-right pr-2 pb-2">
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-heart fa-stack-1x fa-inverse"></i>
+									</a>
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-plus fa-stack-1x fa-inverse"></i>
+									</a>
+								</div>
+								<div className="bottom-left pl-2 pb-2">
+									<div className="media">
+										<img src="http://via.placeholder.com/50x50" className="circle d-inline-block" />
+										<span className="d-inline-block pl-1">
+										<span className="font-bold d-block">
+											Text Here
+										</span>
+										<span className="font-light d-block">
+											Text Here
+										</span>
+										</span>
+									</div>
+								</div>
 							</div>
-							<div className="card">
+							<div className="card card-image">
 								<img src="https://picsum.photos/400/300" className="card-img-top" alt="..." />
+								<div className="top-right pr-2 pt-2">
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-download fa-stack-1x fa-inverse"></i>
+									</a>
+								</div>
+								<div className="bottom-right pr-2 pb-2">
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-heart fa-stack-1x fa-inverse"></i>
+									</a>
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-plus fa-stack-1x fa-inverse"></i>
+									</a>
+								</div>
+								<div className="bottom-left pl-2 pb-2">
+									<div className="media">
+										<img src="http://via.placeholder.com/50x50" className="circle d-inline-block" />
+										<span className="d-inline-block pl-1">
+										<span className="font-bold d-block">
+											Text Here
+										</span>
+										<span className="font-light d-block">
+											Text Here
+										</span>
+										</span>
+									</div>
+								</div>
 							</div>
-							<div className="card">
+							<div className="card card-image">
 								<img src="https://picsum.photos/300/410" className="card-img-top" alt="..." />
+								<div className="top-right pr-2 pt-2">
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-download fa-stack-1x fa-inverse"></i>
+									</a>
+								</div>
+								<div className="bottom-right pr-2 pb-2">
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-heart fa-stack-1x fa-inverse"></i>
+									</a>
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-plus fa-stack-1x fa-inverse"></i>
+									</a>
+								</div>
+								<div className="bottom-left pl-2 pb-2">
+									<div className="media">
+										<img src="http://via.placeholder.com/50x50" className="circle d-inline-block" />
+										<span className="d-inline-block pl-1">
+										<span className="font-bold d-block">
+											Text Here
+										</span>
+										<span className="font-light d-block">
+											Text Here
+										</span>
+										</span>
+									</div>
+								</div>
 							</div>
-							<div className="card">
+							<div className="card card-image">
 								<img src="https://picsum.photos/400/300" className="card-img-top" alt="..." />
+								<div className="top-right pr-2 pt-2">
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-download fa-stack-1x fa-inverse"></i>
+									</a>
+								</div>
+								<div className="bottom-right pr-2 pb-2">
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-heart fa-stack-1x fa-inverse"></i>
+									</a>
+									<a href="" className="fa-stack fa-2x">
+										<i className="fa fa-square fa-stack-2x"></i>
+										<i className="fa fa-plus fa-stack-1x fa-inverse"></i>
+									</a>
+								</div>
+								<div className="bottom-left pl-2 pb-2">
+									<div className="media">
+										<img src="http://via.placeholder.com/50x50" className="circle d-inline-block" />
+										<span className="d-inline-block pl-1">
+										<span className="font-bold d-block">
+											Text Here
+										</span>
+										<span className="font-light d-block">
+											Text Here
+										</span>
+										</span>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

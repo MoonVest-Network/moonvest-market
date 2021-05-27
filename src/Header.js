@@ -1,6 +1,5 @@
-import MoonVest from './MoonVest';
-import ItemDetail from './ItemDetail';
-import { HashRouter, NavLink, Route } from "react-router-dom";
+import Routes from './utils/Routes';
+import { HashRouter, NavLink } from "react-router-dom";
 import { AppBar, Toolbar, Typography, makeStyles, Button, IconButton, Drawer, Link, MenuItem } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState, useEffect } from "react";
@@ -213,19 +212,11 @@ export default function Header() {
   }
 
   const walletButton = () => {
-    if (connected){
       return (
-        <Button {...{className: connectedButton}} onClick={connectWalletClicked} variant="contained" color="primary" endIcon={<AccountCircleIcon />}>
-          0x{shortAddress(walletAddress,8,5)}
+        <Button {...connected ? {className: connectedButton} : ""} onClick={connectWalletClicked} variant="contained" color="primary" endIcon={connected ? (<AccountCircleIcon />) : (<PowerOffIcon />)}>
+          {connected ? ("0x"+shortAddress(walletAddress,8,5)) : "Connect Wallet"}
         </Button>
       )
-    }
-
-    return (
-      <Button onClick={connectWalletClicked} variant="contained" color="primary" endIcon={<PowerOffIcon />}>
-        Connect Wallet
-      </Button>
-    )
   }
 
   return (
@@ -258,7 +249,7 @@ export default function Header() {
                                   Resources
                               </a>
                               <ul className="dropdown-menu rounded-0" aria-labelledby="aboutUsDropdown">
-                                  <li><a className="dropdown-item">Booking</a></li>
+                                  <li><NavLink to="/users" className="dropdown-item">Users List</NavLink></li>
                                   <li><a className="dropdown-item">Stays</a></li>
                                   <li><a className="dropdown-item">Adventures</a></li>
                                   <li><a className="dropdown-item">Author Detail</a></li>
@@ -315,8 +306,8 @@ export default function Header() {
       </div>
       <div className="clearfix"></div>
 
-      <Route exact path="/" component={MoonVest}/>
-      <Route path="/item-detail" component={ItemDetail}/>
+      {/* Route paths can be found in /utils/Routes.js */}
+      <Routes></Routes>
     </HashRouter>
   );
 }

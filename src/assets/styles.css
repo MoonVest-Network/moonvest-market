@@ -9490,3 +9490,105 @@ textarea.form-control::placeholder {
     text-decoration: underline;
     transform: rotate(-90deg);
 }
+
+
+/* image fx */
+
+.card-image {
+    position: relative;
+    width: 50%;
+}
+
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.top-right {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    top: 1%;
+    right: 0;
+}
+
+.bottom-right {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    bottom: 1%;
+    right: 0;
+}
+
+.bottom-left {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    bottom: 1%;
+    left: 0;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 1;
+    position: absolute;
+    /* Set it as per your need */
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text {
+    color: white;
+    /* Remove background if not needed */
+    background: rgba(0, 0, 0, 0.1);
+    font-size: 12px;
+    padding: 10px 24px;
+}
+
+.card-image:hover .image {
+    opacity: 0.3;
+}
+
+.card-image:hover .top-right,
+.card-image:hover .middle,
+.card-image:hover .bottom-left,
+.card-image:hover .bottom-right {
+    opacity: 1;
+}
+
+.fa-stack {
+    font-size: 1em;
+}
+
+.fa-stack i {
+    vertical-align: middle;
+}
+
+.fa-stack a {
+    cursor: pointer;
+}
+
+.img-hover-zoom {
+    /* Set it as per your need */
+    /* height: 360px; */
+    /* Hide the overflowing of child elements */
+    overflow: hidden;
+}
+
+.img-hover-zoom img {
+    transition: transform .5s ease;
+}
+
+.img-hover-zoom:hover img {
+    transform: scale(1.5);
+}

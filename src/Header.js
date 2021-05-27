@@ -5,6 +5,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState, useEffect } from "react";
 import PowerOffIcon from '@material-ui/icons/PowerOff';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { connectWallet, disconnectWallet } from "./utils/interact.js";
 
 const headersData = [
@@ -213,7 +214,7 @@ export default function Header() {
 
   const walletButton = () => {
       return (
-        <Button {...connected ? {className: connectedButton} : ""} onClick={connectWalletClicked} variant="contained" color="primary" endIcon={connected ? (<AccountCircleIcon />) : (<PowerOffIcon />)}>
+        <Button {...connected ? {className: connectedButton} : ""} onClick={connectWalletClicked} variant="contained" color="primary" startIcon={connected ? (<AccountCircleIcon />) : ("")} endIcon={connected ?  (<ArrowDropDownIcon />) : (<PowerOffIcon />)}>
           {connected ? ("0x"+shortAddress(walletAddress,8,5)) : "Connect Wallet"}
         </Button>
       )

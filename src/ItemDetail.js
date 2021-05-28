@@ -26,7 +26,7 @@ const ItemDetail = (props) => {
                                 </nav>
                             </div>
                             <div className="col-12">
-                                <img src={nftItemsJson[nftItemIndex].image} className="img-fluid" alt="" />
+                                <img src={nftItemsJson[nftItemIndex].image} className="img-responsive" alt={nftItemsJson[nftItemIndex].name} />
                             </div>
                             <div className="col-12">
                                 <div className="urip_follo_link">

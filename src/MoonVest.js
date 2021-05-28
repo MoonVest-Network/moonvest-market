@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { connectWallet, metaMask } from "./utils/interact.js";
+import { HashRouter, NavLink, Router } from "react-router-dom";
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
-//import nftItems from './nftItems.json';
+import nftItemsJson from './nftItems.json';
 import {listNftItems, listNftCollection, ListWallets} from './graphql/queries';
 import * as mutations from './graphql/mutations';
 import * as subscriptions from './graphql/subscriptions';
+import { data } from "jquery";
 
 Amplify.configure(awsconfig);
 
@@ -20,11 +22,10 @@ const MoonVest = (props) => {
 	const [price, setPrice] = useState("0.00");
 	const [marketCap, setMarketCap] = useState("0.00");
 	const [anchorEl, setAnchorEl] = useState(null);
-	const [nftItems, setNftItems] = useState(null);
+	const [nftItems, setNftItems] = useState(nftItemsJson);
 	
 	// Similar to componentDidMount and componentDidUpdate.
 	useEffect(async () => {
-
 		//await fetchNftItems();
 		//console.log(nftItems);
 
@@ -104,6 +105,51 @@ const MoonVest = (props) => {
 		setTotalSupply(metaMaskData.totalSupply);
 		setTotalBurn(walletSupply);
 	};
+
+	const nftItemsList = () => {
+		const nftItemsCard = nftItems.map((data, index) => {
+			return (
+				<div key={index} className="card card-image">
+					<img src={data.image} className="card-img-top" alt="..." />
+					<div className="top-right pr-2 pt-2">
+						<a href="" className="fa-stack fa-2x">
+							<i className="fa fa-square fa-stack-2x"></i>
+							<i className="fa fa-download fa-stack-1x fa-inverse"></i>
+						</a>
+					</div>
+					<div className="bottom-right pr-2 pb-2">
+						<a href="" className="fa-stack fa-2x">
+							<i className="fa fa-square fa-stack-2x"></i>
+							<i className="fa fa-heart fa-stack-1x fa-inverse"></i>
+						</a>
+						<a href="" className="fa-stack fa-2x">
+							<i className="fa fa-square fa-stack-2x"></i>
+							<i className="fa fa-plus fa-stack-1x fa-inverse"></i>
+						</a>
+					</div>
+					<div className="bottom-left pl-2 pb-2">
+						<div className="media">
+							<NavLink to={"/item-detail/" + index}><img src="http://via.placeholder.com/50x50" className="circle d-inline-block" /></NavLink>
+							<span className="d-inline-block pl-1">
+							<span className="font-bold d-block">
+								<NavLink to={"/item-detail/" + index} style={{color: "white"}}>{data.properties.artist}</NavLink>
+							</span>
+							<span className="font-light d-block">
+								<NavLink to={"/item-detail/" + index} style={{color: "white"}}>{data.name}</NavLink>
+							</span>
+							</span>
+						</div>
+					</div>
+				</div>
+			);
+		})
+
+		return(
+			<HashRouter>
+				{nftItemsCard}
+			</HashRouter>
+		);
+	};
 	
 	// The UI of our component.
 	return (
@@ -146,166 +192,7 @@ const MoonVest = (props) => {
 				<div className="container">
 					<div className="row justify-content-center">
 						<div className="card-columns col-sm-12">
-							<div className="card card-image">
-								<img src="https://picsum.photos/400/300" className="card-img-top" alt="..." />
-								<div className="top-right pr-2 pt-2">
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-download fa-stack-1x fa-inverse"></i>
-									</a>
-								</div>
-								<div className="bottom-right pr-2 pb-2">
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-heart fa-stack-1x fa-inverse"></i>
-									</a>
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-plus fa-stack-1x fa-inverse"></i>
-									</a>
-								</div>
-								<div className="bottom-left pl-2 pb-2">
-									<div className="media">
-										<img src="http://via.placeholder.com/50x50" className="circle d-inline-block" />
-										<span className="d-inline-block pl-1">
-										<span className="font-bold d-block">
-											Text Here
-										</span>
-										<span className="font-light d-block">
-											Text Here
-										</span>
-										</span>
-									</div>
-								</div>
-							</div>
-							<div className="card card-image">
-								<img src="https://picsum.photos/380/410" className="card-img-top" alt="..." />
-								<div className="top-right pr-2 pt-2">
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-download fa-stack-1x fa-inverse"></i>
-									</a>
-								</div>
-								<div className="bottom-right pr-2 pb-2">
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-heart fa-stack-1x fa-inverse"></i>
-									</a>
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-plus fa-stack-1x fa-inverse"></i>
-									</a>
-								</div>
-								<div className="bottom-left pl-2 pb-2">
-									<div className="media">
-										<img src="http://via.placeholder.com/50x50" className="circle d-inline-block" />
-										<span className="d-inline-block pl-1">
-										<span className="font-bold d-block">
-											Text Here
-										</span>
-										<span className="font-light d-block">
-											Text Here
-										</span>
-										</span>
-									</div>
-								</div>
-							</div>
-							<div className="card card-image">
-								<img src="https://picsum.photos/400/300" className="card-img-top" alt="..." />
-								<div className="top-right pr-2 pt-2">
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-download fa-stack-1x fa-inverse"></i>
-									</a>
-								</div>
-								<div className="bottom-right pr-2 pb-2">
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-heart fa-stack-1x fa-inverse"></i>
-									</a>
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-plus fa-stack-1x fa-inverse"></i>
-									</a>
-								</div>
-								<div className="bottom-left pl-2 pb-2">
-									<div className="media">
-										<img src="http://via.placeholder.com/50x50" className="circle d-inline-block" />
-										<span className="d-inline-block pl-1">
-										<span className="font-bold d-block">
-											Text Here
-										</span>
-										<span className="font-light d-block">
-											Text Here
-										</span>
-										</span>
-									</div>
-								</div>
-							</div>
-							<div className="card card-image">
-								<img src="https://picsum.photos/300/410" className="card-img-top" alt="..." />
-								<div className="top-right pr-2 pt-2">
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-download fa-stack-1x fa-inverse"></i>
-									</a>
-								</div>
-								<div className="bottom-right pr-2 pb-2">
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-heart fa-stack-1x fa-inverse"></i>
-									</a>
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-plus fa-stack-1x fa-inverse"></i>
-									</a>
-								</div>
-								<div className="bottom-left pl-2 pb-2">
-									<div className="media">
-										<img src="http://via.placeholder.com/50x50" className="circle d-inline-block" />
-										<span className="d-inline-block pl-1">
-										<span className="font-bold d-block">
-											Text Here
-										</span>
-										<span className="font-light d-block">
-											Text Here
-										</span>
-										</span>
-									</div>
-								</div>
-							</div>
-							<div className="card card-image">
-								<img src="https://picsum.photos/400/300" className="card-img-top" alt="..." />
-								<div className="top-right pr-2 pt-2">
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-download fa-stack-1x fa-inverse"></i>
-									</a>
-								</div>
-								<div className="bottom-right pr-2 pb-2">
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-heart fa-stack-1x fa-inverse"></i>
-									</a>
-									<a href="" className="fa-stack fa-2x">
-										<i className="fa fa-square fa-stack-2x"></i>
-										<i className="fa fa-plus fa-stack-1x fa-inverse"></i>
-									</a>
-								</div>
-								<div className="bottom-left pl-2 pb-2">
-									<div className="media">
-										<img src="http://via.placeholder.com/50x50" className="circle d-inline-block" />
-										<span className="d-inline-block pl-1">
-										<span className="font-bold d-block">
-											Text Here
-										</span>
-										<span className="font-light d-block">
-											Text Here
-										</span>
-										</span>
-									</div>
-								</div>
-							</div>
+							{nftItemsList()}
 						</div>
 					</div>
 					<div className="row">

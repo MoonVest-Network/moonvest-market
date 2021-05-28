@@ -7,7 +7,7 @@ const Routes = (props) => {
     return(
         <>
             <Route exact path="/" component={MoonVest}/>
-            <Route path="/item-detail" component={ItemDetail}/>
+            <Route path="/item-detail/:id?" component={ItemDetail}/>
             <Route path="/users" component={UserList}/>
         </>
     );

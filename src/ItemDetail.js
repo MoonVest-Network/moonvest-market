@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import nftItemsJson from './nftItems.json';
 
 const ItemDetail = (props) => {
+    const nftItemIndex = props.match.params.id || 0;
+    
     return(
         <>
             {/* <!-- ============================ Item Detail Start ================================== --> */}
@@ -11,7 +14,7 @@ const ItemDetail = (props) => {
                         <div className="col-lg-8 col-md-12 col-sm-12">
 
                             <div className="col-12">
-                                <h3>Odex - Online Organic Food & Grocery Store</h3>
+                                <h3>{nftItemsJson[nftItemIndex].name}</h3>
                                 <nav aria-label="breadcrumb">
                                     <ol className="breadcrumb light">
                                         <li className="breadcrumb-item"><a><i className="fa fa-home"></i></a></li>
@@ -23,7 +26,7 @@ const ItemDetail = (props) => {
                                 </nav>
                             </div>
                             <div className="col-12">
-                                <img src="img/browse.webp" className="img-fluid" alt="" />
+                                <img src={nftItemsJson[nftItemIndex].image} className="img-fluid" alt="" />
                             </div>
                             <div className="col-12">
                                 <div className="urip_follo_link">
@@ -35,16 +38,12 @@ const ItemDetail = (props) => {
                             </div>
                             <div className="col-12">
                                 <blockquote className="noted">
-                                    Note: This is only HTML Template
+                                    NOTE: This is an HTML template.
                                 </blockquote>
                             </div>
                             <div className="col-12">
                                 <div className="font-light mb-3 col-12 px-0">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                                    architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                                    sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                                    voluptatem sequi nesciunt.
+                                    {nftItemsJson[nftItemIndex].description}
                                 </div>
                                 <div className="font-light mb-3 col-12 px-0">
                                     At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium

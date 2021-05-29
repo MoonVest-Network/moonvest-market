@@ -40,11 +40,11 @@ export const connectWallet = async () => {
         cacheProvider: true, // optional
         providerOptions,
         theme: {
-            background: "rgb(39, 49, 56)",
-            main: "rgb(199, 199, 199)",
-            secondary: "rgb(136, 136, 136)",
-            border: "rgba(195, 195, 195, 0.14)",
-            hover: "rgb(16, 26, 32)"
+            background: "rgb(50, 70, 100, 0.85)",
+            main: "rgb(230, 240, 240)",
+            secondary: "rgb(185, 190, 190)",
+            border: "rgba(0, 5, 5, 1)",
+            hover: "rgb(130, 100, 150, 0.9)"
           }
     });
 

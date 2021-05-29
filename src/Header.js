@@ -220,6 +220,16 @@ export default function Header() {
       )
   }
 
+  const walletMenu = () => {
+    return (
+      <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
+        <li className="dropdown-item">MVN</li>
+        <li className="dropdown-item">BNB</li>
+        <li><a onClick={disconnectWalletClicked} className="dropdown-item">Disconnect</a></li>
+      </ul>
+    )
+  }
+
   return (
     // <header>
     //   <AppBar className={header}>
@@ -290,9 +300,11 @@ export default function Header() {
                                 <i className="fa fa-arrow-circle-right mr-1"></i>Wallet
                               </a> */}
                               <div>{walletButton()}</div>
-                              <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
+                              {connected ? walletMenu() : ""}
+
+                              {/* <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
                                   <li><a onClick={disconnectWalletClicked} className="dropdown-item">Disconnect</a></li>
-                              </ul>
+                              </ul> */}
                           </li>
                           {/* <li className="col-xs-4">
                               <a href="#" className="btn red-bg btn-sm mx-3">Create</a>

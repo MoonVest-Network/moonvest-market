@@ -272,9 +272,9 @@ export default function Header() {
                                   About
                               </a>
                               <ul className="dropdown-menu rounded-0" aria-labelledby="contactUsDropdown">
-                                  <li><a className="dropdown-item" href="#">MVN Token</a></li>
-                                  <li><a className="dropdown-item" href="#">Social</a></li>
-                                  <li><a className="dropdown-item" href="#">Contact Us</a></li>
+                                  <li><a className="dropdown-item" href="https://moonvest.network/index.html#token" target="_blank">MVN Token</a></li>
+                                  <li><a className="dropdown-item" href="https://moonvest.network/index.html#social" target="_blank">Social</a></li>
+                                  <li><a className="dropdown-item" href="https://t.me/moonvestnetwork" target="_blank">Contact Us</a></li>
                                   {/* <li className="dropdown-submenu"><a className="dropdown-item dropdown-toggle" href="">Hello</a>
                                       <ul className="dropdown-menu border-left-0 border-right-0 bg-light rounded-0">
                                           <li><a className="dropdown-item" href="#">Submenu</a></li>

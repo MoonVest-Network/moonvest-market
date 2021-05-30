@@ -221,6 +221,14 @@ export default function Header() {
   const formatNumber = (number) => {
     return new Intl.NumberFormat().format(number);
   }
+
+  const bscScanAddressLink = (address) => {
+    return "https://www.bscscan.com/address/" + address;
+  }
+
+  const bscScanMvnLink = (address) => {
+    return "https://www.bscscan.com/token/0x0323e7752c2d404718e2beaa57d7b6ee4021ae36?a=" + address;
+  }
   
   const walletButton = () => {
       return (
@@ -233,8 +241,8 @@ export default function Header() {
   const walletMenu = () => {
     return (
       <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
-        <li className="dropdown-item">{formatNumber(mvnBalance)} MVN</li>
-        <li className="dropdown-item">{formatNumber(bnbBalance)} BNB</li>
+        <a href={bscScanMvnLink(walletAddress)} target="_blank"><li className="dropdown-item">{formatNumber(mvnBalance)} MVN</li></a>
+        <a href={bscScanAddressLink(walletAddress)} target="_blank"><li className="dropdown-item">{formatNumber(bnbBalance)} BNB</li></a>
         <li><a onClick={disconnectWalletClicked} className="dropdown-item">Disconnect</a></li>
       </ul>
     )

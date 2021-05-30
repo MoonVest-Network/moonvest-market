@@ -114,7 +114,7 @@ const MoonVest = (props) => {
 					<div className="top-right pr-2 pt-2">
 						<a href="" className="fa-stack fa-2x">
 							<i className="fa fa-square fa-stack-2x"></i>
-							<i className="fas fa-info-circle fa-stack-1x fa-inverse"></i>
+							<i className="fa fa-info-circle fa-stack-1x fa-inverse"></i>
 						</a>
 					</div>
 					<div className="bottom-right pr-2 pb-2">
@@ -129,17 +129,22 @@ const MoonVest = (props) => {
 					</div>
 					<div className="bottom-left pl-2 pb-2">
 						<div className="media">
-							<NavLink to={"/item-detail/" + index}><img src="http://via.placeholder.com/50x50" className="circle d-inline-block" /></NavLink>
 							<span className="d-inline-block pl-1">
-							<span className="font-bold d-block">
-								<NavLink to={"/item-detail/" + index} style={{color: "white"}}>{data.properties.artist}</NavLink>
-							</span>
-							<span className="font-light d-block">
-								<NavLink to={"/item-detail/" + index} style={{color: "white"}}>{data.name}</NavLink>
-							</span>
+								<span className="font-bold d-block">
+									<NavLink to={"/item-detail/" + index}><h2 className="text-white">{data.name}</h2></NavLink>
+								</span>
+								{/* <span className="font-light d-block">
+									<NavLink to={"/item-detail/" + index} style={{color: "white"}}>{data.name}</NavLink>
+								</span> */}
 							</span>
 						</div>
 					</div>
+					{/* <h4>{data.name}</h4>
+					<div className="_ft76y">
+						<div className="_65ero"><a>Art</a></div>
+						<div className="_65ero"><a>Collectible</a></div>
+					</div> */}
+					
 				</div>
 			);
 		})
@@ -251,19 +256,59 @@ const MoonVest = (props) => {
 						<div className="col-lg-4 col-md-6 col-sm-12">
 							<div className="_45lio">
 								<div className="_jk58o">
-									<a href="#" className="_5gt9"><img src="https://picsum.photos/700/400" className="img-fluid" alt="" /></a>
+									<a href="#" className="_5gt9"><img src="https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0xc014b45d680b5a4bf51ccda778a68d5251c14b5e/889a2bda981db520e6c2a3cfa512afb3.png" className="img-fluid" alt="" /></a>
 									<div className="_io980">
-										<h4 className="_95lp"><a href="#" className="_50gt">Wedding & Marriage</a></h4>
-										<span className="_ip76n">5k Images</span>
+										<h4 className="_95lp"><a href="#" className="_50gt">Binance NFT</a></h4>
+										<span className="_ip76n">520 NFTs</span>
 									</div>
 								</div>
 								<div className="_45lik">
-									<p>Download amazing photos and pictures for free.</p>
-									<div className="_ft76y">
+									{/* <p>Download amazing photos and pictures for free.</p> */}
+									{/* <div className="_ft76y">
 										<div className="_65ero"><a>Nature Image</a></div>
 										<div className="_65ero"><a>Cool</a></div>
 										<div className="_65ero"><a>HD Images</a></div>
+									</div> */}
+								</div>
+							</div>
+						</div>
+
+						<div className="col-lg-4 col-md-6 col-sm-12">
+							<div className="_45lio">
+								<div className="_jk58o">
+									<a href="#" className="_5gt9"><img src="https://d3vi7ke2kcvale.cloudfront.net/images/official/a6702636fe00c6c40b668ff5e9fbae88.png" className="img-fluid" alt="" /></a>
+									<div className="_io980">
+										<h4 className="_95lp"><a href="#" className="_50gt">Pancake Bunnies</a></h4>
+										<span className="_ip76n">520 NFTs</span>
 									</div>
+								</div>
+								<div className="_45lik">
+									{/* <p>Download amazing photos and pictures for free.</p> */}
+									{/* <div className="_ft76y">
+										<div className="_65ero"><a>Nature Image</a></div>
+										<div className="_65ero"><a>Cool</a></div>
+										<div className="_65ero"><a>HD Images</a></div>
+									</div> */}
+								</div>
+							</div>
+						</div>
+
+						<div className="col-lg-4 col-md-6 col-sm-12">
+							<div className="_45lio">
+								<div className="_jk58o">
+									<a href="#" className="_5gt9"><img src="https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0x36633b70eac3d1c98a20a6ecef6033d1077372f5/abf561085422c18ba80b0611c775e79f_500x0.png" className="img-fluid" alt="" /></a>
+									<div className="_io980">
+										<h4 className="_95lp"><a href="#" className="_50gt">GEGO-V2</a></h4>
+										<span className="_ip76n">520 NFTs</span>
+									</div>
+								</div>
+								<div className="_45lik">
+									{/* <p>Download amazing photos and pictures for free.</p> */}
+									{/* <div className="_ft76y">
+										<div className="_65ero"><a>Nature Image</a></div>
+										<div className="_65ero"><a>Cool</a></div>
+										<div className="_65ero"><a>HD Images</a></div>
+									</div> */}
 								</div>
 							</div>
 						</div>

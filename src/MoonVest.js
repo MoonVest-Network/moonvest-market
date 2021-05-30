@@ -114,7 +114,7 @@ const MoonVest = (props) => {
 					<div className="top-right pr-2 pt-2">
 						<a href="" className="fa-stack fa-2x">
 							<i className="fa fa-square fa-stack-2x"></i>
-							<i className="fa fa-download fa-stack-1x fa-inverse"></i>
+							<i className="fas fa-info-circle fa-stack-1x fa-inverse"></i>
 						</a>
 					</div>
 					<div className="bottom-right pr-2 pb-2">
@@ -186,7 +186,7 @@ const MoonVest = (props) => {
 			</div>
 			{/* <!-- ============================ Hero Banner End ================================== --> */}
 
-			{/* <!-- ============================ All Images List Start ================================== --> */}
+			{/* <!-- ============================ Featured List Start ================================== --> */}
 
 			<section className="min-sec">
 				<div className="container">
@@ -202,9 +202,9 @@ const MoonVest = (props) => {
 					</div>
 				</div>
 			</section>
-			{/* <!-- ============================ All Images List End ================================== --> */}
+			{/* <!-- ============================ Featured List End ================================== --> */}
 
-			{/* <!-- ============================ Authors List ================================== --> */}
+			{/* <!-- ============================ Partners List ================================== --> */}
 			<section className="gray-light min-sec">
 				<div className="container">
 					<div className="row justify-content-center">
@@ -232,20 +232,19 @@ const MoonVest = (props) => {
 					</div>
 				</div>
 			</section>
-			{/* <!-- ============================ Author Lists End ================================== --></div> */}
+			{/* <!-- ============================ Partners Lists End ================================== --></div> */}
 
-			{/* <!-- ============================ Photo category List ================================== --> */}
+			{/* <!-- ============================ Collections List ================================== --> */}
 			<section className="min-sec">
 				<div className="container">
 					
-					{/* <div className="row justify-content-center">
+				<div className="row justify-content-center">
 						<div className="col-lg-7 col-md-9">
 							<div className="sec-heading">
-								<h2>Featured Images with Tags</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								<h2>Trending Collections</h2>
 							</div>
 						</div>
-					</div> */}
+					</div>
 					
 					<div className="row">
 					
@@ -268,212 +267,14 @@ const MoonVest = (props) => {
 								</div>
 							</div>
 						</div>
-						
-						<div className="col-lg-4 col-md-6 col-sm-12">
-							<div className="_45lio">
-								<div className="_jk58o">
-									<a href="#" className="_5gt9"><img src="https://picsum.photos/500/400" className="img-fluid" alt="" /></a>
-									<div className="_io980">
-										<h4 className="_95lp"><a href="#" className="_50gt">Work & Desk</a></h4>
-										<span className="_ip76n">3.2k Images</span>
-									</div>
-								</div>
-								<div className="_45lik">
-									<p>Download amazing photos and pictures for free.</p>
-									<div className="_ft76y">
-										<div className="_65ero"><a>Nature Image</a></div>
-										<div className="_65ero"><a>Cool</a></div>
-										<div className="_65ero"><a>HD Images</a></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div className="col-lg-4 col-md-6 col-sm-12">
-							<div className="_45lio">
-								<div className="_jk58o">
-									<a href="#" className="_5gt9"><img src="https://picsum.photos/450/400" className="img-fluid" alt="" /></a>
-									<div className="_io980">
-										<h4 className="_95lp"><a href="#" className="_50gt">Destinations</a></h4>
-										<span className="_ip76n">4.7k Images</span>
-									</div>
-								</div>
-								<div className="_45lik">
-									<p>Download amazing photos and pictures for free.</p>
-									<div className="_ft76y">
-										<div className="_65ero"><a>Nature Image</a></div>
-										<div className="_65ero"><a>Cool</a></div>
-										<div className="_65ero"><a>HD Images</a></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div className="col-lg-4 col-md-6 col-sm-12">
-							<div className="_45lio">
-								<div className="_jk58o">
-									<a href="#" className="_5gt9"><img src="https://picsum.photos/400/410" className="img-fluid" alt="" /></a>
-									<div className="_io980">
-										<h4 className="_95lp"><a href="#" className="_50gt">Flowers</a></h4>
-										<span className="_ip76n">5.2k Images</span>
-									</div>
-								</div>
-								<div className="_45lik">
-									<p>Download amazing photos and pictures for free.</p>
-									<div className="_ft76y">
-										<div className="_65ero"><a>Nature Image</a></div>
-										<div className="_65ero"><a>Cool</a></div>
-										<div className="_65ero"><a>HD Images</a></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div className="col-lg-4 col-md-6 col-sm-12">
-							<div className="_45lio">
-								<div className="_jk58o">
-									<a href="#" className="_5gt9"><img src="https://picsum.photos/400/405" className="img-fluid" alt="" /></a>
-									<div className="_io980">
-										<h4 className="_95lp"><a href="#" className="_50gt">Workspace</a></h4>
-										<span className="_ip76n">12k Images</span>
-									</div>
-								</div>
-								<div className="_45lik">
-									<p>Download amazing photos and pictures for free.</p>
-									<div className="_ft76y">
-										<div className="_65ero"><a>Nature Image</a></div>
-										<div className="_65ero"><a>Cool</a></div>
-										<div className="_65ero"><a>HD Images</a></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div className="col-lg-4 col-md-6 col-sm-12">
-							<div className="_45lio">
-								<div className="_jk58o">
-									<a href="#" className="_5gt9"><img src="https://picsum.photos/430/400" className="img-fluid" alt="" /></a>
-									<div className="_io980">
-										<h4 className="_95lp"><a href="#" className="_50gt">Interior Design</a></h4>
-										<span className="_ip76n">32k Images</span>
-									</div>
-								</div>
-								<div className="_45lik">
-									<p>Download amazing photos and pictures for free.</p>
-									<div className="_ft76y">
-										<div className="_65ero"><a>Nature Image</a></div>
-										<div className="_65ero"><a>Cool</a></div>
-										<div className="_65ero"><a>HD Images</a></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
+		
 					</div>
 					
 				</div>
 			</section>
 
-			<section className="min-sec image-section">
-				<div className="container">
-					<div className="row justify-content-center">
-						<div className="col-lg-7 col-md-9">
-							<div className="sec-heading">
-								<h2>Featured Images with Tags</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-							</div>
-						</div>
-					</div>
-					<div className="row">
-						<div className="card-columns col-sm-12">
-							<div className="card">
-								<img src="https://picsum.photos/700/400" className="card-img-top" alt="..." />
-								<div className="text-block">
-									<div className="card-body px-2">
-										<p>
-											<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
-										</p>
-										<button className="btn-sm bg-light mr-1">This is a tag</button>
-										<button className="btn-sm bg-light mr-1">Another tag</button>
-										<button className="btn-sm bg-light mr-1">Last tag</button>
-									</div>
-								</div>
-							</div>
-							<div className="card">
-								<img src="https://picsum.photos/500/400" className="card-img-top" alt="..." />
-								<div className="text-block">
-									<div className="card-body px-2">
-										<p>
-											<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
-										</p>
-										<button className="btn-sm bg-light mr-1">This is a tag</button>
-										<button className="btn-sm bg-light mr-1">Another tag</button>
-										<button className="btn-sm bg-light mr-1">Last tag</button>
-									</div>
-								</div>
-							</div>
-							<div className="card">
-								<img src="https://picsum.photos/450/400" className="card-img-top" alt="..." />
-								<div className="text-block">
-									<div className="card-body px-2">
-										<p>
-											<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
-										</p>
-										<button className="btn-sm bg-light mr-1">This is a tag</button>
-										<button className="btn-sm bg-light mr-1">Another tag</button>
-										<button className="btn-sm bg-light mr-1">Last tag</button>
-									</div>
-								</div>
-							</div>
-							<div className="card">
-								<img src="https://picsum.photos/400/410" className="card-img-top" alt="..." />
-								<div className="text-block">
-									<div className="card-body px-2">
-										<p>
-											<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
-										</p>
-										<button className="btn-sm bg-light mr-1">This is a tag</button>
-										<button className="btn-sm bg-light mr-1">Another tag</button>
-										<button className="btn-sm bg-light mr-1">Last tag</button>
-									</div>
-								</div>
-							</div>
-							<div className="card">
-								<img src="https://picsum.photos/400/405" className="card-img-top" alt="..." />
-								<div className="text-block">
-									<div className="card-body px-2">
-										<p>
-											<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
-										</p>
-										<button className="btn-sm bg-light mr-1">This is a tag</button>
-										<button className="btn-sm bg-light mr-1">Another tag</button>
-										<button className="btn-sm bg-light mr-1">Last tag</button>
-									</div>
-								</div>
-							</div>
-							<div className="card">
-								<img src="https://picsum.photos/430/400" className="card-img-top" alt="..." />
-								<div className="text-block">
-									<div className="card-body px-2">
-										<p>
-											<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
-										</p>
-										<button className="btn-sm bg-light mr-1">This is a tag</button>
-										<button className="btn-sm bg-light mr-1">Another tag</button>
-										<button className="btn-sm bg-light mr-1">Last tag</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div className="row">
-						<div className="col-lg-12 col-md-12 text-center">
-							<a href="#" className="btn btn-secondary border-0">Browse More</a>
-						</div>
-					</div>
-				</div>
-			</section>
-			{/* <!-- ============================ Photo category End ================================== --></div> */}
+		
+			{/* <!-- ============================ Collections End ================================== --></div> */}
 
 			{/* <!-- ============================ Call To Action Start ================================== --> */}
 			<section className="call-to-act" style={{background:"#5d47dd url(img/landing-bg.png) no-repeat"}}>

@@ -63,7 +63,8 @@ export default function Header() {
   // State hook variables.
 	const [connected, setConnected] = useState(false);
 	const [walletAddress, setWalletAddress] = useState("");
-	const [walletBalance, setWalletBalance] = useState(0);
+	const [mvnBalance, setMvnBalance] = useState(0);
+  const [bnbBalance, setBnbBalance] = useState(0);
   const { header, logo, menuButton, toolbar, drawerContainer, connectedButton } = useStyles();
 
   const [state, setState] = useState({
@@ -102,8 +103,10 @@ export default function Header() {
   
     setConnected(walletResponse.isConnected);
 
-    if (walletResponse.isConnected)
-      setWalletAddress(walletResponse.address);
+    if (walletResponse.isConnected) {
+      setWalletAddress(walletResponse.walletAddress);
+      setMvnBalance(walletResponse.mvnBalance);
+    }
 
 		// Update state hooks.
 		// setConnectedStatus(walletResponse.connectedStatus);
@@ -120,6 +123,7 @@ export default function Header() {
     await disconnectWallet();
     setConnected(false);
     setWalletAddress("");
+    setMvnBalance(0);
   };
 
   // const displayDesktop = () => {
@@ -212,6 +216,10 @@ export default function Header() {
     return address.substring(2).slice(0,startChars) + "..." + address.slice(-endChars);    
   }
 
+  const formatNumber = (number) => {
+    return new Intl.NumberFormat().format(number);
+  }
+  
   const walletButton = () => {
       return (
         <Button {...connected ? {className: connectedButton} : ""} onClick={connectWalletClicked} variant="contained" color="primary" startIcon={connected ? (<AccountCircleIcon />) : ("")} endIcon={connected ?  (<ArrowDropDownIcon />) : (<PowerOffIcon />)}>
@@ -223,7 +231,7 @@ export default function Header() {
   const walletMenu = () => {
     return (
       <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
-        <li className="dropdown-item">MVN</li>
+        <li className="dropdown-item">{formatNumber(mvnBalance)} MVN</li>
         <li className="dropdown-item">BNB</li>
         <li><a onClick={disconnectWalletClicked} className="dropdown-item">Disconnect</a></li>
       </ul>

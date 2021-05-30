@@ -1,4 +1,4 @@
-import abiJson from './abi.json';
+import mvnAbiJson from './abi.json';
 import Web3 from 'web3';
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
@@ -51,16 +51,21 @@ export const connectWallet = async () => {
     try{
         provider = await web3Modal.connect();
         const web3 = new Web3(provider);
-
         const accounts = await web3.eth.getAccounts();
-        const address = accounts[0];
+        const walletAddress = accounts[0];
         const networkId = await web3.eth.net.getId();
+        const mvnAddress = "0x0323e7752c2d404718e2beaa57d7b6ee4021ae36";
+        const tokenInst = new web3.eth.Contract(mvnAbiJson, mvnAddress);
+        const mvnBalance = await tokenInst.methods.balanceOf(walletAddress).call().then(function (bal) {
+            return String( Math.round(bal/(10**12)));
+        });
 
         if (networkId) {
             return {
                 isConnected: true,
                 networkId: networkId,
-                address: address
+                walletAddress: walletAddress,
+                mvnBalance: mvnBalance
             }
         }
     }
@@ -116,11 +121,10 @@ export const metaMask = async (walletAddress) => {
     const web3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed.binance.org/"));
 
     // Constant variables
-    const tokenAddress = "0x0323e7752c2d404718e2beaa57d7b6ee4021ae36";
-    const tokenABI = abiJson;
+    const mvnAddress = "0x0323e7752c2d404718e2beaa57d7b6ee4021ae36";
 
     // Create token instance for contract and user's wallet address.
-    const tokenInst = new web3.eth.Contract(tokenABI, tokenAddress);
+    const tokenInst = new web3.eth.Contract(mvnAbiJson, mvnAddress);
 
     // Get balance.
     const walletBalance = await tokenInst.methods.balanceOf(walletAddress).call().then(function (bal) {
@@ -141,14 +145,14 @@ export const metaMask = async (walletAddress) => {
     return obj;
 }
 
-export const testLiquidityPool = async() => {
-    const web3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed.binance.org/"));
-    const tokenAddress = "0x0323e7752c2d404718e2beaa57d7b6ee4021ae36";
-    const tokenABI = abiJson;
-    var UNIV2BSCADDRESS = "0x05ff2b0db69458a0750badebc4f9e13add608c7f";
-    const tokenInstUniv = new web3.eth.Contract(tokenABI, UNIV2BSCADDRESS);
+// export const testLiquidityPool = async() => {
+//     const web3 = new Web3(new Web3.providers.HttpProvider("https://bsc-dataseed.binance.org/"));
+//     const tokenAddress = "0x0323e7752c2d404718e2beaa57d7b6ee4021ae36";
+//     const tokenABI = abiJson;
+//     var UNIV2BSCADDRESS = "0x05ff2b0db69458a0750badebc4f9e13add608c7f";
+//     const tokenInstUniv = new web3.eth.Contract(tokenABI, UNIV2BSCADDRESS);
 
-    // Get liquidity pool.
-    const reserves = await tokenInstUniv.methods.getTokenReserves(tokenAddress, 56);
-    console.log(reserves);
-}
+//     // Get liquidity pool.
+//     const reserves = await tokenInstUniv.methods.getTokenReserves(tokenAddress, 56);
+//     console.log(reserves);
+// }

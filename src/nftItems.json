@@ -1,14 +1,5 @@
 [
 	{
-		"id":"1",
-		"name":"Bakery Swap",
-		"nftcollectionID":"1",
-		"tokenId":"2",
-		"image":"https://d3ggs2vjn5heyw.cloudfront.net/static/nfts/artworks/1f15052fad9548c68555773e9c6797f0.png",
-		"properties":{"artist":"Mariaggelo","image_min":"https://d3ggs2vjn5heyw.cloudfront.net/static/nfts/artworks/1f15052fad9548c68555773e9c6797f0.png"},
-		"description":"Bakery Swap's logo Pixelated Artwork.\nMade by Mariaggelo for the best NFT marketplace in Smart Chain"
-	},
-	{
 		"id":"2",
 		"name":"Clarity",
 		"nftcollectionID":"1",
@@ -25,6 +16,77 @@
 		"image":"https://d3ggs2vjn5heyw.cloudfront.net/static/nfts/artworks/f9c2bfd0e1e943ec855d06fc34286db4.jpg",
 		"properties":{"artist":"Nataliya","image_min":"https://d3ggs2vjn5heyw.cloudfront.net/static/nfts/artworks/f9c2bfd0e1e943ec855d06fc34286db4.jpg"},
 		"description":"or, Diamonds are Forever?\n\nEdition 1 of 1."
+	},
+	{
+		"id":"4",
+		"name":"Flipsie Easter ‘21",
+		"nftcollectionID":"2",
+		"tokenId":"3",
+		"image":"https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0xdf7952b35f24acf7fc0487d01c8d5690a60dba07/236d5424e458190a4f4eb808a075a8fd.png",
+		"properties":{"artist":"Nataliya","image_min":"https://d3ggs2vjn5heyw.cloudfront.net/static/nfts/artworks/f9c2bfd0e1e943ec855d06fc34286db4.jpg"},
+		"description":"Watch out for Flipsie’s spatula smash!"
+	},
+	{
+		"id":"5",
+		"name":"Tyrannosaurus Rex",
+		"nftcollectionID":"2",
+		"tokenId":"4",
+		"image":"https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0x36633b70eac3d1c98a20a6ecef6033d1077372f5/27c6c3d82f7dee0c8844bd0b730113b9.png",
+		"properties":{"artist":"Nataliya","image_min":"https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0x36633b70eac3d1c98a20a6ecef6033d1077372f5/27c6c3d82f7dee0c8844bd0b730113b9.png"},
+		"description":"Huge and hard skull gives it great bite power and crowns the land king."
+	},
+	{
+		"id":"6",
+		"name":"SILVER",
+		"nftcollectionID":"2",
+		"tokenId":"5",
+		"image":"https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0x4cde5683f5f5616a8919a1d487552f2454c47a33/18ded11ca13bd7ebd3ebd1e26c61b4ce.png",
+		"properties":{"artist":"Nataliya","image_min":"https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0x4cde5683f5f5616a8919a1d487552f2454c47a33/18ded11ca13bd7ebd3ebd1e26c61b4ce.png"},
+		"description":"Quality crafted equipment"
+	},
+	{
+		"id":"7",
+		"name":"Quicksand - Common",
+		"nftcollectionID":"2",
+		"tokenId":"8",
+		"image":"https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0xc54b96b04aa8828b63cf250408e1084e9f6ac6c8/ac4cd941894725af28acb1ec20dbc7c8.gif",
+		"properties":{"artist":"Nataliya","image_min":"https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0xc54b96b04aa8828b63cf250408e1084e9f6ac6c8/ac4cd941894725af28acb1ec20dbc7c8.gif"},
+		"description":"The time has finally come! At long last, I, Mcgregor? have attained the power of the Crown!"
+	},
+	{
+		"id":"8",
+		"name":"Swapsies",
+		"nftcollectionID":"2",
+		"tokenId":"11",
+		"image":"https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0xdf7952b35f24acf7fc0487d01c8d5690a60dba07/235b1151edcd4ede2924e09e1bf82d8a.png",
+		"properties":{"artist":"Nataliya","image_min":"https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0xdf7952b35f24acf7fc0487d01c8d5690a60dba07/235b1151edcd4ede2924e09e1bf82d8a.png"},
+		"description":"These bunnies love nothing more than swapping pancakes. Especially on BSC."
+	},
+	{
+		"id":"9",
+		"name":"SBI - SCV.finance Beta Invitation",
+		"nftcollectionID":"2",
+		"tokenId":"11",
+		"image":"https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0x86232f68b5bf2a3a03851d98556352512a3b12b9/6b44b482ef7b77c985a7fb1521666c46.png",
+		"properties":{"artist":"Nataliya","image_min":"https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0x86232f68b5bf2a3a03851d98556352512a3b12b9/6b44b482ef7b77c985a7fb1521666c46.png"},
+		"description":"A Beta invitation from SCV.finance team!"
+	},
+	{
+		"id":"10",
+		"name":"Suicide Squad",
+		"nftcollectionID":"2",
+		"tokenId":"11",
+		"image":"https://ipfs.io/ipfs/QmWMJSKf6WvmHveby5uNwtmXEiH6icx8Y84TNuVNtgPRUV",
+		"properties":{"artist":"Nataliya","image_min":"https://ipfs.io/ipfs/QmWMJSKf6WvmHveby5uNwtmXEiH6icx8Y84TNuVNtgPRUV"},
+		"description":"#1 NFT Limited Edition 2D 3D"
+	},
+	{
+		"id":"10",
+		"name":"Ethermon",
+		"nftcollectionID":"2",
+		"tokenId":"11",
+		"image":"https://ipfs.io/ipfs/QmaUCACRd1PURt5dC2W69jawVDViRzFu4dQxGqfDxSZn69",
+		"properties":{"artist":"Nataliya","image_min":"https://ipfs.io/ipfs/QmaUCACRd1PURt5dC2W69jawVDViRzFu4dQxGqfDxSZn69"},
+		"description":"EMON"
 	}
-
 ]

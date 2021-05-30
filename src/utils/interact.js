@@ -57,15 +57,17 @@ export const connectWallet = async () => {
         const mvnAddress = "0x0323e7752c2d404718e2beaa57d7b6ee4021ae36";
         const tokenInst = new web3.eth.Contract(mvnAbiJson, mvnAddress);
         const mvnBalance = await tokenInst.methods.balanceOf(walletAddress).call().then(function (bal) {
-            return String( Math.round(bal/(10**12)));
+            return String( Math.round(bal/(10**12)) );
         });
+        const bnbBalance = await web3.eth.getBalance(walletAddress) / 10**18;
 
         if (networkId) {
             return {
                 isConnected: true,
                 networkId: networkId,
                 walletAddress: walletAddress,
-                mvnBalance: mvnBalance
+                mvnBalance: mvnBalance,
+                bnbBalance: bnbBalance
             }
         }
     }

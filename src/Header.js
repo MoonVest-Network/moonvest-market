@@ -106,6 +106,7 @@ export default function Header() {
     if (walletResponse.isConnected) {
       setWalletAddress(walletResponse.walletAddress);
       setMvnBalance(walletResponse.mvnBalance);
+      setBnbBalance(walletResponse.bnbBalance);
     }
 
 		// Update state hooks.
@@ -124,6 +125,7 @@ export default function Header() {
     setConnected(false);
     setWalletAddress("");
     setMvnBalance(0);
+    setBnbBalance(0);
   };
 
   // const displayDesktop = () => {
@@ -232,7 +234,7 @@ export default function Header() {
     return (
       <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
         <li className="dropdown-item">{formatNumber(mvnBalance)} MVN</li>
-        <li className="dropdown-item">BNB</li>
+        <li className="dropdown-item">{formatNumber(bnbBalance)} BNB</li>
         <li><a onClick={disconnectWalletClicked} className="dropdown-item">Disconnect</a></li>
       </ul>
     )

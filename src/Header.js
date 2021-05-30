@@ -268,25 +268,13 @@ export default function Header() {
                               <NavLink to="/" className="nav-link">Home <span className="sr-only">(current)</span></NavLink>
                           </li>
                           <li className="nav-item dropdown border-bottom-sm">
-                              <NavLink className="nav-link dropdown-toggle" id="itemDetailsDropdown" to="/item-detail">Item Details <span className="sr-only">(current)</span></NavLink>
-                              <ul className="dropdown-menu rounded-0" aria-labelledby="itemDetailsDropdown">
-                                  <li><a className="dropdown-item">Checkout</a></li>
-                              </ul>
-                          </li>
-                          <li className="nav-item dropdown border-bottom-sm">
                               <a className="nav-link dropdown-toggle" href="#" id="aboutUsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Resources
                               </a>
                               <ul className="dropdown-menu rounded-0" aria-labelledby="aboutUsDropdown">
-                                  <li><NavLink to="/users" className="dropdown-item">Users List</NavLink></li>
-                                  <li><a className="dropdown-item">Stays</a></li>
-                                  <li><a className="dropdown-item">Adventures</a></li>
-                                  <li><a className="dropdown-item">Author Detail</a></li>
-                                  <li><a className="dropdown-item">FAQs</a></li>
-                                  <li><a className="dropdown-item">Jobs</a></li>
-                                  <li><a className="dropdown-item">Events</a></li>
-                                  <li><a className="dropdown-item">Press</a></li>
-                                  <li><a className="dropdown-item">Privacy & Terms</a></li>
+                                <li><a className="dropdown-item" href="https://academy.binance.com/en/articles/7-things-you-should-know-about-nfts" target="_blank">About NFTs</a></li>
+                                <li><a className="dropdown-item" href="https://academy.binance.com/en/articles/how-to-get-started-with-binance-smart-chain-bsc" target="_blank">Binance Smart Chain</a></li>
+                                <li><a className="dropdown-item" href="https://academy.binance.com/en/articles/how-to-use-metamask" target="_blank">Metamask</a></li>
                                   {/* <li className="dropdown-submenu"><a className="dropdown-item dropdown-toggle" href="">Hello</a>
                                       <ul className="dropdown-menu border-left-0 border-right-0 bg-light rounded-0">
                                           <li><a className="dropdown-item" href="#">Submenu</a></li>

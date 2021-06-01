@@ -75,6 +75,7 @@ export default function Header() {
   const { mobileView, drawerOpen } = state;
 
   useEffect(async () => {
+    console.log('test');
     const setResponsiveness = () => {
       return window.innerWidth < 900
         ? setState((prevState) => ({ ...prevState, mobileView: true }))

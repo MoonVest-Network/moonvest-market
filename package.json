@@ -12,6 +12,7 @@
     "@walletconnect/web3-provider": "^1.4.1",
     "aws-amplify": "^4.0.2",
     "bootstrap": "^5.0.1",
+    "eth-sig-util": "^1.4.2",
     "ion-rangeslider": "^2.3.1",
     "jquery": "^3.6.0",
     "morris.js": "^0.5.0",

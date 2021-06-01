@@ -258,70 +258,66 @@ export default function Header() {
       <div className="header header-light navbar-light bg-white">
         <div className="container px-0">
           <nav className="navbar navbar-expand-md navbar-light bg-white">
-                  <NavLink className="navbar-brand" to="/"><img src={"img/Logo.png"} height="20" className="logo" alt="" /></NavLink>
-                  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                      <span className="navbar-toggler-icon"></span>
-                  </button>
-                  <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                      <ul className="navbar-nav col">
-                          <li className="nav-item border-bottom-sm">
-                              <NavLink to="/" className="nav-link">Home <span className="sr-only">(current)</span></NavLink>
-                          </li>
-                          <li className="nav-item dropdown border-bottom-sm">
-                              <a className="nav-link dropdown-toggle" href="#" id="aboutUsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Resources
-                              </a>
-                              <ul className="dropdown-menu rounded-0" aria-labelledby="aboutUsDropdown">
-                                <li><a className="dropdown-item" href="https://academy.binance.com/en/articles/7-things-you-should-know-about-nfts" target="_blank">About NFTs</a></li>
-                                <li><a className="dropdown-item" href="https://academy.binance.com/en/articles/how-to-get-started-with-binance-smart-chain-bsc" target="_blank">Binance Smart Chain</a></li>
-                                <li><a className="dropdown-item" href="https://academy.binance.com/en/articles/how-to-use-metamask" target="_blank">Metamask</a></li>
-                                  {/* <li className="dropdown-submenu"><a className="dropdown-item dropdown-toggle" href="">Hello</a>
-                                      <ul className="dropdown-menu border-left-0 border-right-0 bg-light rounded-0">
-                                          <li><a className="dropdown-item" href="#">Submenu</a></li>
-                                          <li><a className="dropdown-item" href="#">Submenu0</a></li>
-                                      </ul>
-                                  </li> */}
-                              </ul>
-                          </li>
-                          <li className="nav-item dropdown border-bottom-sm">
-                              <a className="nav-link dropdown-toggle" href="#" id="contactUsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  About
-                              </a>
-                              <ul className="dropdown-menu rounded-0" aria-labelledby="contactUsDropdown">
-                                  <li><a className="dropdown-item" href="https://moonvest.network/index.html#token" target="_blank">MVN Token</a></li>
-                                  <li><a className="dropdown-item" href="https://moonvest.network/index.html#social" target="_blank">Social</a></li>
-                                  <li><a className="dropdown-item" href="https://t.me/moonvestnetwork" target="_blank">Contact Us</a></li>
-                                  {/* <li className="dropdown-submenu"><a className="dropdown-item dropdown-toggle" href="">Hello</a>
-                                      <ul className="dropdown-menu border-left-0 border-right-0 bg-light rounded-0">
-                                          <li><a className="dropdown-item" href="#">Submenu</a></li>
-                                          <li><a className="dropdown-item" href="#">Submenu0</a></li>
-                                      </ul>
-                                  </li> */}
-                              </ul>
-                          </li>
-                      </ul>
-                      <ul className="navbar-nav col d-sm-flex-spacing connect-wallet justify-content-md-end" style={{cursor: "pointer"}}>
-                          <li className="dropdown col-xs-4">
-                              {/* <a className="hv-red dropdown-toggle" id="connectWalletDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i className="fa fa-arrow-circle-right mr-1"></i>Wallet
-                              </a> */}
-                              <div>{walletButton()}</div>
-                              {connected ? walletMenu() : ""}
+            <NavLink className="navbar-brand" to="/"><img src={"img/Logo.png"} height="20" className="logo" alt="" /></NavLink>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="d-flex flex-sm-row order-sm-3 order-3 order-lg-3">
+              <ul className="navbar-nav col d-sm-flex-spacing connect-wallet justify-content-md-end" style={{cursor: "pointer"}}>
+                <li className="dropdown col-xs-4">
+                  {/* <a className="hv-red dropdown-toggle" id="connectWalletDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i className="fa fa-arrow-circle-right mr-1"></i>Wallet
+                  </a> */}
+                  <div>{walletButton()}</div>
+                  {connected ? walletMenu() : ""}
 
-                              {/* <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
-                                  <li><a onClick={disconnectWalletClicked} className="dropdown-item">Disconnect</a></li>
-                              </ul> */}
-                          </li>
-                          {/* <li className="col-xs-4">
-                              <a href="#" className="btn red-bg btn-sm mx-3">Create</a>
-                          </li>
-                          <li className="col-xs-4">
-                              <a href="#" className="btn theme-bg btn-sm">Explore</a>
-                          </li> */}
-                      </ul>
-                  </div>
-              </nav>
-          </div>
+                  {/* <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
+                      <li><a onClick={disconnectWalletClicked} className="dropdown-item">Disconnect</a></li>
+                  </ul> */}
+                </li>
+              </ul>
+            </div>
+            <div className="collapse navbar-collapse order-sm-2 order-2 order-lg-2" id="navbarNavDropdown">
+              <ul className="navbar-nav col">
+                <li className="nav-item border-bottom-sm">
+                  <NavLink to="/" className="nav-link">Home <span className="sr-only">(current)</span></NavLink>
+                </li>
+                <li className="nav-item dropdown border-bottom-sm">
+                  <a className="nav-link dropdown-toggle" href="#" id="aboutUsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Resources
+                  </a>
+                  <ul className="dropdown-menu rounded-0" aria-labelledby="aboutUsDropdown">
+                    <li><a className="dropdown-item" href="https://academy.binance.com/en/articles/7-things-you-should-know-about-nfts" target="_blank">About NFTs</a></li>
+                    <li><a className="dropdown-item" href="https://academy.binance.com/en/articles/how-to-get-started-with-binance-smart-chain-bsc" target="_blank">Binance Smart Chain</a></li>
+                    <li><a className="dropdown-item" href="https://academy.binance.com/en/articles/how-to-use-metamask" target="_blank">Metamask</a></li>
+                      {/* <li className="dropdown-submenu"><a className="dropdown-item dropdown-toggle" href="">Hello</a>
+                          <ul className="dropdown-menu border-left-0 border-right-0 bg-light rounded-0">
+                            <li><a className="dropdown-item" href="#">Submenu</a></li>
+                            <li><a className="dropdown-item" href="#">Submenu0</a></li>
+                          </ul>
+                      </li> */}
+                  </ul>
+                </li>
+                <li className="nav-item dropdown border-bottom-sm">
+                  <a className="nav-link dropdown-toggle" href="#" id="contactUsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      About
+                  </a>
+                  <ul className="dropdown-menu rounded-0" aria-labelledby="contactUsDropdown">
+                    <li><a className="dropdown-item" href="https://moonvest.network/index.html#token" target="_blank">MVN Token</a></li>
+                    <li><a className="dropdown-item" href="https://moonvest.network/index.html#social" target="_blank">Social</a></li>
+                    <li><a className="dropdown-item" href="https://t.me/moonvestnetwork" target="_blank">Contact Us</a></li>
+                    {/* <li className="dropdown-submenu"><a className="dropdown-item dropdown-toggle" href="">Hello</a>
+                        <ul className="dropdown-menu border-left-0 border-right-0 bg-light rounded-0">
+                          <li><a className="dropdown-item" href="#">Submenu</a></li>
+                          <li><a className="dropdown-item" href="#">Submenu0</a></li>
+                        </ul>
+                    </li> */}
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
       </div>
       <div className="clearfix"></div>
 

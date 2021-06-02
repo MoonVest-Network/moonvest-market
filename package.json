@@ -8,19 +8,15 @@
     "@popperjs/core": "^2.9.2",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^13.1.9",
     "@walletconnect/web3-provider": "^1.4.1",
     "aws-amplify": "^4.0.2",
     "bootstrap": "^5.0.1",
-    "ion-rangeslider": "^2.3.1",
     "jquery": "^3.6.0",
-    "morris.js": "^0.5.0",
-    "raphael": "^2.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2",
+    "web-vitals": "^2.0.0",
     "web3": "^1.3.6",
     "web3modal": "^1.9.3"
   },
@@ -47,8 +43,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/bootstrap": "^5.0.15"
   }
 }

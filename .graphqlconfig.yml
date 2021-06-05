@@ -1,6 +1,6 @@
 projects:
-  moonvestmarket:
-    schemaPath: amplify/backend/api/moonvestmarket/build/schema.graphql
+  moonvestmarketmanual:
+    schemaPath: amplify/backend/api/moonvestmarketmanual/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:
@@ -13,6 +13,3 @@ projects:
         region: ap-southeast-1
         apiId: null
         maxDepth: 2
-extensions:
-  amplify:
-    version: 3

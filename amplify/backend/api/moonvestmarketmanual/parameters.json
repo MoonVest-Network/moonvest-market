@@ -1,5 +1,5 @@
 {
-  "AppSyncApiName": "moonvestmarket",
+  "AppSyncApiName": "moonvestmarketmanual",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false
 }

@@ -4,11 +4,11 @@ import { schema } from './schema';
 
 
 
-const { NftItem, WalletNftItem, Wallet, NftCollection } = initSchema(schema);
+const { NftCollection, NftItem, WalletNftItem, Wallet } = initSchema(schema);
 
 export {
+  NftCollection,
   NftItem,
   WalletNftItem,
-  Wallet,
-  NftCollection
+  Wallet
 };

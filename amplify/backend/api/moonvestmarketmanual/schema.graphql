@@ -1,23 +1,9 @@
-type NftItem @model @auth(rules: [{allow: public}]) @key(name: "byNftCollection", fields: ["nftcollectionID"]) {
-  id: ID!
-  nftcollectionID: ID!
-  tokenId: Int!
-  name: String
-  description: String
-  image: AWSURL
-  url: AWSURL
-  properties: AWSJSON
-  qty: Int
-  wallets: [WalletNftItem] @connection(keyName: "byNftItem", fields: ["id"])
-}
-
 type NftCollection @model @auth(rules: [{allow: public}]) {
   id: ID!
-  address: String!
+  address: String
   name: String
   description: String
   url: AWSURL
-  totalSupply: Int
   NftItems: [NftItem] @connection(keyName: "byNftCollection", fields: ["id"])
 }
 
@@ -30,6 +16,18 @@ type Wallet @model @auth(rules: [{allow: public}]) {
   WalletNftItems: [WalletNftItem] @connection(keyName: "byWallet", fields: ["id"])
 }
 
+type NftItem @model @auth(rules: [{allow: public}]) @key(name: "byNftCollection", fields: ["nftcollectionID"]) {
+  id: ID!
+  nftcollectionID: ID
+  tokenId: String
+  name: String
+  description: String
+  image: AWSURL
+  url: AWSURL
+  properties: AWSJSON
+  wallets: [WalletNftItem] @connection(keyName: "byNftItem", fields: ["id"])
+}
+
 type WalletNftItem @model(queries: null) @key(name: "byWallet", fields: ["walletID", "nftitemID"]) @key(name: "byNftItem", fields: ["nftitemID", "walletID"]) @auth(rules: [{allow: public}, {allow: public}]) {
   id: ID!
   walletID: ID!
@@ -37,4 +35,3 @@ type WalletNftItem @model(queries: null) @key(name: "byWallet", fields: ["wallet
   wallet: Wallet! @connection(fields: ["walletID"])
   nftitem: NftItem! @connection(fields: ["nftitemID"])
 }
- 

@@ -799,6 +799,7 @@ html body .b-all {
 
 .text-white {
     color: #ffffff !important;
+    text-shadow: 4px 4px 5px #0f1218;
 }
 
 .text-danger {
@@ -9591,4 +9592,16 @@ textarea.form-control::placeholder {
 
 .img-hover-zoom:hover img {
     transform: scale(1.5);
+}
+
+.crop {
+    width: 350px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.crop img {
+    width: 400px;
+    height: 300px;
+    margin: -55px 0 0 0;
 }

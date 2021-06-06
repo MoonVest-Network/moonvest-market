@@ -213,10 +213,12 @@ export default function Header() {
   //     </Button>
   //   );
   // }
-  const shortAddress = (address, startChars, endChars) => {
+  const shortAddress = (address) => {
     if (!address) return "";
-    
-    return address.substring(2).slice(0,startChars) + "..." + address.slice(-endChars);    
+    if (mobileView) {
+      return address.substring(2).slice(0,5) + "..." + address.slice(-4);  
+    }
+    return address.substring(2).slice(0,8) + "..." + address.slice(-5);    
   }
 
   const formatNumber = (number) => {
@@ -233,8 +235,8 @@ export default function Header() {
   
   const walletButton = () => {
       return (
-        <Button {...connected ? {className: connectedButton} : ""} onClick={connectWalletClicked} variant="contained" color="primary" startIcon={connected ? (<AccountCircleIcon />) : ("")} endIcon={connected ?  (<ArrowDropDownIcon />) : (<PowerOffIcon />)}>
-          {connected ? ("0x"+shortAddress(walletAddress,8,5)) : "Connect Wallet"}
+        <Button {...connected ? {className: connectedButton} : ""} size={mobileView ? "small" : "large"} onClick={connectWalletClicked} variant="contained" color="primary" startIcon={connected ? (<AccountCircleIcon />) : ("")} endIcon={connected ?  (<ArrowDropDownIcon />) : (<PowerOffIcon />)}>
+          {connected ? ("0x"+shortAddress(walletAddress)) : "Connect Wallet"}
         </Button>
       )
   }
@@ -250,11 +252,6 @@ export default function Header() {
   }
 
   return (
-    // <header>
-    //   <AppBar className={header}>
-    //     {mobileView ? displayMobile() : displayDesktop()}
-    //   </AppBar>
-    // </header>
     <HashRouter>
       <div className="header header-light navbar-light bg-white">
         <div className="container px-0">
@@ -266,15 +263,8 @@ export default function Header() {
             <div className="d-flex flex-sm-row order-sm-3 order-3 order-lg-3">
               <ul className="navbar-nav col d-sm-flex-spacing connect-wallet justify-content-md-end" style={{cursor: "pointer"}}>
                 <li className="dropdown col-xs-4">
-                  {/* <a className="hv-red dropdown-toggle" id="connectWalletDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i className="fa fa-arrow-circle-right mr-1"></i>Wallet
-                  </a> */}
                   <div>{walletButton()}</div>
                   {connected ? walletMenu() : ""}
-
-                  {/* <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
-                      <li><a onClick={disconnectWalletClicked} className="dropdown-item">Disconnect</a></li>
-                  </ul> */}
                 </li>
               </ul>
             </div>

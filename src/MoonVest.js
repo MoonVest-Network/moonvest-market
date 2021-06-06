@@ -63,12 +63,9 @@ const MoonVest = (props) => {
 		// 		setStatus("🦊 Disconnect wallet from Metamask then reconnect with Connect Wallet button. " + walletAddress);
 		// 	}
 		// }
-	});
+	}, []);
 
 	async function fetchNftItems() {
-		console.log("fetchNFTStart");
-
-		//Get NFT Data
 		try{
 			const apiData = await API.graphql(graphqlOperation(listNftItems));
 			console.log("apiData: " + apiData);
@@ -80,8 +77,7 @@ const MoonVest = (props) => {
 			console.log("===== error end =====");
 		}
 
-		console.log("fetchNFTEnd");
-  	}
+  }
 
 	// On click event of Connect Wallet Button.
 	const connectWalletClicked = async () => {
@@ -108,30 +104,28 @@ const MoonVest = (props) => {
 
 	const nftItemsList = () => {
 		const nftItemsCard = nftItems.map((data, index) => {
-			return (
+			return (<NavLink to={"/item-detail/" + index}>
 				<div key={index} className="card card-image">
 					<img src={data.image} className="card-img-top" alt="..." />
 					<div className="top-right pr-2 pt-2">
-						<a href="" className="fa-stack fa-2x">
-							<i className="fa fa-square fa-stack-2x"></i>
-							<i className="fa fa-info-circle fa-stack-1x fa-inverse"></i>
-						</a>
-					</div>
-					<div className="bottom-right pr-2 pb-2">
-						<a href="" className="fa-stack fa-2x">
+					<a href="" className="fa-stack fa-2x">
 							<i className="fa fa-square fa-stack-2x"></i>
 							<i className="fa fa-heart fa-stack-1x fa-inverse"></i>
 						</a>
 						<a href="" className="fa-stack fa-2x">
 							<i className="fa fa-square fa-stack-2x"></i>
-							<i className="fa fa-plus fa-stack-1x fa-inverse"></i>
+							<i className="fa fa-credit-card fa-stack-1x fa-inverse"></i>
+						</a>
+						<a href="" className="fa-stack fa-2x">
+							<i className="fa fa-square fa-stack-2x"></i>
+							<i className="fa fa-info-circle fa-stack-1x fa-inverse"></i>
 						</a>
 					</div>
 					<div className="bottom-left pl-2 pb-2">
 						<div className="media">
 							<span className="d-inline-block pl-1">
 								<span className="font-bold d-block">
-									<NavLink to={"/item-detail/" + index}><h2 className="text-white">{data.name}</h2></NavLink>
+									<h2 className="text-white">{data.name}</h2>
 								</span>
 								{/* <span className="font-light d-block">
 									<NavLink to={"/item-detail/" + index} style={{color: "white"}}>{data.name}</NavLink>
@@ -146,6 +140,7 @@ const MoonVest = (props) => {
 					</div> */}
 					
 				</div>
+				</NavLink>
 			);
 		})
 
@@ -255,11 +250,11 @@ const MoonVest = (props) => {
 					
 						<div className="col-lg-4 col-md-6 col-sm-12">
 							<div className="_45lio">
-								<div className="_jk58o">
+								<div className="_jk58o crop">
 									<a href="#" className="_5gt9"><img src="https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0xc014b45d680b5a4bf51ccda778a68d5251c14b5e/889a2bda981db520e6c2a3cfa512afb3.png" className="img-fluid" alt="" /></a>
 									<div className="_io980">
-										<h4 className="_95lp"><a href="#" className="_50gt">Binance NFT</a></h4>
-										<span className="_ip76n">520 NFTs</span>
+										<h4 className="_95lp"><a href="#" className="_50gt text-white">Binance NFT</a></h4>
+										<span className="_ip76n">3248 NFTs</span>
 									</div>
 								</div>
 								<div className="_45lik">
@@ -275,11 +270,11 @@ const MoonVest = (props) => {
 
 						<div className="col-lg-4 col-md-6 col-sm-12">
 							<div className="_45lio">
-								<div className="_jk58o">
+								<div className="_jk58o crop">
 									<a href="#" className="_5gt9"><img src="https://d3vi7ke2kcvale.cloudfront.net/images/official/a6702636fe00c6c40b668ff5e9fbae88.png" className="img-fluid" alt="" /></a>
 									<div className="_io980">
-										<h4 className="_95lp"><a href="#" className="_50gt">Pancake Bunnies</a></h4>
-										<span className="_ip76n">520 NFTs</span>
+										<h4 className="_95lp"><a href="#" className="_50gt text-white">Pancake Bunnies</a></h4>
+										<span className="_ip76n">2046 NFTs</span>
 									</div>
 								</div>
 								<div className="_45lik">
@@ -295,11 +290,11 @@ const MoonVest = (props) => {
 
 						<div className="col-lg-4 col-md-6 col-sm-12">
 							<div className="_45lio">
-								<div className="_jk58o">
+								<div className="_jk58o crop">
 									<a href="#" className="_5gt9"><img src="https://d3vi7ke2kcvale.cloudfront.net/images/bsc/0x36633b70eac3d1c98a20a6ecef6033d1077372f5/abf561085422c18ba80b0611c775e79f_500x0.png" className="img-fluid" alt="" /></a>
 									<div className="_io980">
-										<h4 className="_95lp"><a href="#" className="_50gt">GEGO-V2</a></h4>
-										<span className="_ip76n">520 NFTs</span>
+										<h4 className="_95lp"><a href="#" className="_50gt text-white">GEGO-V2</a></h4>
+										<span className="_ip76n">626 NFTs</span>
 									</div>
 								</div>
 								<div className="_45lik">

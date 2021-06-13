@@ -3321,7 +3321,7 @@ nav a:hover {
 
 .nav-dropdown .submenu-indicator {
     right: 15px;
-    top: 16px;
+    top: 50px;
     position: absolute
 }
 

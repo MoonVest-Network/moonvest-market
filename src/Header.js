@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 // Routes file
 import Routes from "./utils/Routes";
-import { connectWallet } from "./utils/interact.js";
+import { connectWallet, disconnectWallet } from "./utils/interact.js";
 // react router
 import { HashRouter, NavLink } from "react-router-dom";
 // material core imports
@@ -13,6 +13,8 @@ import {
   Button,
   Container,
   Hidden,
+  MenuItem,
+  Menu
 } from "@material-ui/core";
 // material icons
 import PowerOffIcon from "@material-ui/icons/PowerOff";
@@ -34,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     [theme.breakpoints.down('xs')]: {
-      height:"11px"
+      height:"17px"
     }
   },
   menuButton: {
@@ -75,6 +77,11 @@ const aboutMenuData = [
   {name:"Social",url:"https://moonvest.network/index.html#social"},
   {name:"Contact Us",url:"https://t.me/moonvestnetwork"}
 ]
+const walletMenuData = [
+  {name:"MVN Token",url:"https://moonvest.network/index.html#token"},
+  {name:"Social",url:"https://moonvest.network/index.html#social"},
+  {name:"Contact Us",url:"https://t.me/moonvestnetwork"}
+]
 
 export default function Header() {
   // State hook variables.
@@ -94,6 +101,12 @@ export default function Header() {
 
   const { mobileView } = state;
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   useEffect(async () => {
     const setResponsiveness = () => {
       return window.innerWidth < 900
@@ -106,7 +119,13 @@ export default function Header() {
     window.addEventListener("resize", () => setResponsiveness());
   }, []);
 
-  const connectWalletClicked = async () => {
+  const connectWalletClicked = async (event) => {
+  
+    if (connected) {
+      setAnchorEl(event.currentTarget);
+      return;
+    }
+
     const walletResponse = await connectWallet();
 
     setConnected(walletResponse.isConnected);
@@ -118,6 +137,14 @@ export default function Header() {
     }
   };
 
+  const disconnectWalletClicked = async () => {
+    await disconnectWallet();
+    setAnchorEl(null);
+    setConnected(false);
+    setWalletAddress("");
+    setMvnBalance(0);
+    setBnbBalance(0);
+  };
 
   const shortAddress = (address) => {
     if (!address) return "";
@@ -127,21 +154,58 @@ export default function Header() {
     return address.substring(2).slice(0, 8) + "..." + address.slice(-5);
   };
 
+  const formatNumber = (number) => {
+    return new Intl.NumberFormat().format(number);
+  }
+
+  const bscScanAddressLink = (address) => {
+    return "https://www.bscscan.com/address/" + address;
+  }
+
+  const bscScanMvnLink = (address) => {
+    return "https://www.bscscan.com/token/0x0323e7752c2d404718e2beaa57d7b6ee4021ae36?a=" + address;
+  }
 
   const walletButton = () => {
     return (
-      <Button
-        {...(connected ? { className: connectedButton } : {className: connectButton})}
-        size={mobileView ? "small" : "large"}
-        onClick={connectWalletClicked}
-        variant="contained"
-        color="primary"
-        startIcon={connected ? <AccountCircleIcon /> : ""}
-        endIcon={connected ? <ArrowDropDownIcon /> : <PowerOffIcon />}
-      >
-        {connected ? "0x" + shortAddress(walletAddress) : "Connect Wallet"}
-      </Button>
+
+      <div>
+        <Button
+          {...(connected ? { className: connectedButton } : {className: connectButton})}
+          aria-controls="wallet-menu"
+          aria-haspopup="true" 
+          size={mobileView ? "medium" : "large"}
+          onClick={connectWalletClicked}
+          variant="contained"
+          color="primary"
+          startIcon={connected ? <AccountCircleIcon /> : ""}
+          endIcon={connected ? <ArrowDropDownIcon /> : <PowerOffIcon />}
+        >
+          {connected ? "0x" + shortAddress(walletAddress) : "Connect Wallet"}
+        </Button>
+        <Menu
+          id="wallet-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem><a href={bscScanMvnLink(walletAddress)} target="_blank">{formatNumber(mvnBalance)} MVN</a></MenuItem>
+          <MenuItem><a href={bscScanAddressLink(walletAddress)} target="_blank">{formatNumber(bnbBalance)} BNB</a></MenuItem>
+          <MenuItem onClick={disconnectWalletClicked}>Disconnect</MenuItem>
+        </Menu>
+      </div>
     );
+  };
+
+  const walletMenu = () => {
+    return (
+      <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
+        <a href={bscScanMvnLink(walletAddress)} target="_blank"><li className="dropdown-item">{formatNumber(mvnBalance)} MVN</li></a>
+        <a href={bscScanAddressLink(walletAddress)} target="_blank"><li className="dropdown-item">{formatNumber(bnbBalance)} BNB</li></a>
+        <li><a onClick={disconnectWalletClicked} className="dropdown-item">Disconnect</a></li>
+      </ul>
+    )
   };
 
   return (
@@ -158,18 +222,13 @@ export default function Header() {
             </NavLink>
             <Hidden smDown>
               <div className="d-flex align-items-center">
-                <NavLink to="/" className="nav-link">
-                  <Button className="text-capitalize">Home</Button>
-                </NavLink>
                 <NavMenu title="Resource" data={resourceMenuData} />
                 <NavMenu title="About" data={aboutMenuData} />
               </div>
               <div className="ml-auto">{walletButton()}</div>
             </Hidden>
             <Hidden mdUp>
-              <div className="mx-auto">
-                {walletButton()}
-              </div>
+              <div className="mx-auto">{walletButton()}</div>
             </Hidden>
             <Hidden mdUp>
               <div className="ml-auto">

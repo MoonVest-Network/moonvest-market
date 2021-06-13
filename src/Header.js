@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     background: "linear-gradient(to bottom right, #132639, #884dff)",
     paddingRight: "30px",
     paddingLeft: "180px",
-    "@media (max-width: 900px)": {
+    "@media (max-width: 750px)": {
       paddingLeft: 0,
     },
   },
@@ -109,7 +109,7 @@ export default function Header() {
 
   useEffect(async () => {
     const setResponsiveness = () => {
-      return window.innerWidth < 900
+      return window.innerWidth < 750
         ? setState((prevState) => ({ ...prevState, mobileView: true }))
         : setState((prevState) => ({ ...prevState, mobileView: false }));
     };
@@ -217,10 +217,11 @@ export default function Header() {
       >
         <Container fixed>
           <Toolbar>
-            <NavLink className="navbar-brand" to="/">
-              <img src={"img/Logo.png"} height="20" className={logo} alt="" />
-            </NavLink>
+
             <Hidden smDown>
+              <NavLink className="navbar-brand" to="/">
+                <img src={"img/Logo.png"} height="20" className={logo} alt="" />
+              </NavLink>
               <div className="d-flex align-items-center">
                 <NavMenu title="Resource" data={resourceMenuData} />
                 <NavMenu title="About" data={aboutMenuData} />
@@ -228,12 +229,13 @@ export default function Header() {
               <div className="ml-auto">{walletButton()}</div>
             </Hidden>
             <Hidden mdUp>
-              <div className="mx-auto">{walletButton()}</div>
-            </Hidden>
-            <Hidden mdUp>
               <div className="ml-auto">
                 <DialogMenu resourceData={resourceMenuData} aboutData={aboutMenuData} />
               </div>
+              <NavLink className="navbar-brand" to="/">
+                <img src={"img/Logo.png"} height="20" className={logo} alt="" />
+              </NavLink>
+              <div className="mx-auto">{walletButton()}</div>
             </Hidden>
           </Toolbar>
         </Container>

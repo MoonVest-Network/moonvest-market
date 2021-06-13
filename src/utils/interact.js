@@ -73,6 +73,7 @@ export const connectWallet = async () => {
     }
     catch (error){
         console.log(error);
+        window.alert("Can Not Connect. Please ensure you are connected to Binance Smart Chain, with a compatible Web3 wallet, such as MetaMask.");
     }
 
     return {

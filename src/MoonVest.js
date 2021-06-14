@@ -22,26 +22,26 @@ const MoonVest = (props) => {
 	const [price, setPrice] = useState("0.00");
 	const [marketCap, setMarketCap] = useState("0.00");
 	const [anchorEl, setAnchorEl] = useState(null);
-	const [nftItems, setNftItems] = useState(nftItemsJson);
+	const [nftItems, setNftItems] = useState(null);
 	
 	// Similar to componentDidMount and componentDidUpdate.
 	useEffect(async () => {
 		await fetchNftItems();
-		console.log(nftItems);
+		try {
+			//console.log(Object.values(nftItems[0]));
+			console.log(nftItems);
+		} catch {}
 	}, []);
 
 	async function fetchNftItems() {
 		try{
 			const apiData = await API.graphql(graphqlOperation(listNftItems));
-			console.log("apiData: " + apiData);
 			setNftItems(apiData.data.listNftItems.items);
 		}
 		catch (error){
-			console.log("===== error start =====");
+			console.log("===== API Error =====");
 			console.log(error);
-			console.log("===== error end =====");
 		}
-
   }
 
 	// On click event of Connect Wallet Button.
@@ -52,8 +52,7 @@ const MoonVest = (props) => {
 		setConnectedStatus(walletResponse.connectedStatus);
 		setStatus(walletResponse.status);
 		
-		if (isConnected) 
-		{
+		if (isConnected) {
 			setWallet(walletResponse.address);
 			await processWalletData();
 		}
@@ -68,9 +67,11 @@ const MoonVest = (props) => {
 	};
 
 	const nftItemsList = () => {
-		const nftItemsCard = nftItems.map((data, index) => {
-			return (<NavLink to={"/item-detail/" + index}>
-				<div key={index} className="card card-image">
+		if (nftItems == null) return;
+		console.log("here");
+		const nftItemsCard = nftItems.map(data => {
+			return (<NavLink to={"/item-detail/" + data.id}>
+				<div key={data.id} className="card card-image">
 					<img src={data.image} className="card-img-top" alt="..." />
 					<div className="top-right pr-2 pt-2">
 					<a href="" className="fa-stack fa-2x">

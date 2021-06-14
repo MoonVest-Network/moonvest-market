@@ -32,10 +32,10 @@ const Footer = (props) => {
                             <div className="footer-widget">
                                 <h4 className="widget-title">My Account</h4>
                                 <ul className="footer-menu">
-                                    <li><a href="#">Profile</a></li>
-                                    <li><a href="#">My NFTs</a></li>
-                                    <li><a href="#">Followers</a></li>
-                                    <li><a href="#">Settings</a></li>
+                                    <li><a href="">Profile</a></li>
+                                    <li><a href="">My NFTs</a></li>
+                                    <li><a href="">Followers</a></li>
+                                    <li><a href="">Settings</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -56,10 +56,10 @@ const Footer = (props) => {
                             <div className="footer-widget">
                                 <h4 className="widget-title">About Us</h4>
                                 <ul className="footer-menu">
-                                    <li><a href="https://moonvest.network/index.html#token" target="_blank">MVN Token</a></li>
-                                    <li><a href="https://moonvest.network/moonvest_network_whitepaper.pdf" target="_blank">Whitepaper</a></li>
-                                    <li><a href="https://t.me/moonvestnetwork" target="_blank">Contact Us</a></li>
-                                    <li><a href="https://moonvest.network/index.html#social" target="_blank">Follow Us</a></li>
+                                    <li><a href="https://moonvest.network/index.html#token" target="_blank" rel="noopener noreferrer">MVN Token</a></li>
+                                    <li><a href="https://moonvest.network/moonvest_network_whitepaper.pdf" target="_blank" rel="noopener noreferrer">Whitepaper</a></li>
+                                    <li><a href="https://t.me/moonvestnetwork" target="_blank" rel="noopener noreferrer">Contact Us</a></li>
+                                    <li><a href="https://moonvest.network/index.html#social" target="_blank" rel="noopener noreferrer">Follow Us</a></li>
                                 </ul>
                             </div>
                         </div>

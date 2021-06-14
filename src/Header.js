@@ -77,11 +77,6 @@ const aboutMenuData = [
   {name:"Social",url:"https://moonvest.network/index.html#social"},
   {name:"Contact Us",url:"https://t.me/moonvestnetwork"}
 ]
-const walletMenuData = [
-  {name:"MVN Token",url:"https://moonvest.network/index.html#token"},
-  {name:"Social",url:"https://moonvest.network/index.html#social"},
-  {name:"Contact Us",url:"https://t.me/moonvestnetwork"}
-]
 
 export default function Header() {
   // State hook variables.
@@ -190,8 +185,8 @@ export default function Header() {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem><a href={bscScanMvnLink(walletAddress)} target="_blank">{formatNumber(mvnBalance)} MVN</a></MenuItem>
-          <MenuItem><a href={bscScanAddressLink(walletAddress)} target="_blank">{formatNumber(bnbBalance)} BNB</a></MenuItem>
+          <MenuItem><a href={bscScanMvnLink(walletAddress)} target="_blank" rel="noopener noreferrer">{formatNumber(mvnBalance)} MVN</a></MenuItem>
+          <MenuItem><a href={bscScanAddressLink(walletAddress)} target="_blank" rel="noopener noreferrer">{formatNumber(bnbBalance)} BNB</a></MenuItem>
           <MenuItem onClick={disconnectWalletClicked}>Disconnect</MenuItem>
         </Menu>
       </div>
@@ -201,9 +196,9 @@ export default function Header() {
   const walletMenu = () => {
     return (
       <ul className="dropdown-menu rounded-0" aria-labelledby="connectWalletDropdown">
-        <a href={bscScanMvnLink(walletAddress)} target="_blank"><li className="dropdown-item">{formatNumber(mvnBalance)} MVN</li></a>
-        <a href={bscScanAddressLink(walletAddress)} target="_blank"><li className="dropdown-item">{formatNumber(bnbBalance)} BNB</li></a>
-        <li><a onClick={disconnectWalletClicked} className="dropdown-item">Disconnect</a></li>
+        <a href={bscScanMvnLink(walletAddress)} target="_blank" rel="noopener noreferrer"><li className="dropdown-item">{formatNumber(mvnBalance)} MVN</li></a>
+        <a href={bscScanAddressLink(walletAddress)} target="_blank" rel="noopener noreferrer"><li className="dropdown-item">{formatNumber(bnbBalance)} BNB</li></a>
+        <li><a onClick={disconnectWalletClicked} className="dropdown-item" rel="noopener noreferrer">Disconnect</a></li>
       </ul>
     )
   };

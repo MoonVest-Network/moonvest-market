@@ -2,6 +2,7 @@
   "name": "moonvestnetwork",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@aws-amplify/ui-react": "^1.2.1",
     "@material-ui/core": "^4.11.4",

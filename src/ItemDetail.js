@@ -1,8 +1,36 @@
 import { useEffect, useState } from "react";
-import nftItemsJson from './nftItems.json';
+import Amplify, { API, graphqlOperation } from 'aws-amplify';
+import { getMarketplace } from './graphql/queries';
 
 const ItemDetail = (props) => {
-    const nftItemIndex = props.match.params.id || 0;
+    const nftItemId = props.match.params.id || 0;
+    const [name, setName] = useState(null);
+    const [description, setDescription] = useState(null);
+    const [image, setImage] = useState(null);
+    const [properties, setProperties] = useState(null);
+
+    useEffect(async () => {
+		await fetchNftItem();
+	}, []);
+
+    async function fetchNftItem() {
+		try{
+			const apiData = await API.graphql(
+				graphqlOperation(
+					getMarketplace, { id: nftItemId }
+				)
+			);
+            console.log(apiData.data.getMarketplace)
+			setName(apiData.data.getMarketplace.name);
+            setDescription(apiData.data.getMarketplace.description);
+            setImage(apiData.data.getMarketplace.image);
+            setProperties(apiData.data.getMarketplace.properties);
+		}
+		catch (error){
+			console.log("===== API Error =====");
+			console.log(error);
+		}
+    }
     
     return(
         <>
@@ -14,7 +42,7 @@ const ItemDetail = (props) => {
                         <div className="col-lg-8 col-md-12 col-sm-12">
 
                             <div className="col-12">
-                                <h1>{nftItemsJson[nftItemIndex].name}</h1>
+                                <h1>{name}</h1>
                                 {/* <nav aria-label="breadcrumb">
                                     <ol className="breadcrumb light">
                                         <li className="breadcrumb-item"><a><i className="fa fa-home"></i></a></li>
@@ -26,7 +54,7 @@ const ItemDetail = (props) => {
                                 </nav> */}
                             </div>
                             <div className="col-12">
-                                <img src={nftItemsJson[nftItemIndex].image} className="img-responsive" alt={nftItemsJson[nftItemIndex].name} />
+                                <img src={image} className="img-responsive" alt={name} />
                             </div>
                             <div className="col-12">
                                 <div className="urip_follo_link">
@@ -43,7 +71,7 @@ const ItemDetail = (props) => {
                             </div>
                             <div className="col-12">
                                 <div className="font-light mb-3 col-12 px-0">
-                                    {nftItemsJson[nftItemIndex].description}
+                                    {description}
                                 </div>
                                 <div className="col-12 px-0 feature-list">
                                     <h4 className="">History</h4>

@@ -4,46 +4,18 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-export declare class NftCollection {
+export declare class Marketplace {
   readonly id: string;
   readonly address?: string;
   readonly name?: string;
   readonly description?: string;
-  readonly url?: string;
-  readonly NftItems?: (NftItem | null)[];
-  constructor(init: ModelInit<NftCollection>);
-  static copyOf(source: NftCollection, mutator: (draft: MutableModel<NftCollection>) => MutableModel<NftCollection> | void): NftCollection;
-}
-
-export declare class NftItem {
-  readonly id: string;
-  readonly nftcollectionID?: string;
-  readonly tokenId?: string;
-  readonly name?: string;
-  readonly description?: string;
   readonly image?: string;
+  readonly likes?: number;
+  readonly popularity?: number;
   readonly url?: string;
   readonly properties?: string;
-  readonly wallets?: (WalletNftItem | null)[];
-  constructor(init: ModelInit<NftItem>);
-  static copyOf(source: NftItem, mutator: (draft: MutableModel<NftItem>) => MutableModel<NftItem> | void): NftItem;
-}
-
-export declare class WalletNftItem {
-  readonly id: string;
-  readonly wallet: Wallet;
-  readonly nftitem: NftItem;
-  constructor(init: ModelInit<WalletNftItem>);
-  static copyOf(source: WalletNftItem, mutator: (draft: MutableModel<WalletNftItem>) => MutableModel<WalletNftItem> | void): WalletNftItem;
-}
-
-export declare class Wallet {
-  readonly id: string;
-  readonly address: string;
-  readonly name?: string;
-  readonly bnbBalance?: number;
-  readonly mvnBalance?: number;
-  readonly WalletNftItems?: (WalletNftItem | null)[];
-  constructor(init: ModelInit<Wallet>);
-  static copyOf(source: Wallet, mutator: (draft: MutableModel<Wallet>) => MutableModel<Wallet> | void): Wallet;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<Marketplace>);
+  static copyOf(source: Marketplace, mutator: (draft: MutableModel<Marketplace>) => MutableModel<Marketplace> | void): Marketplace;
 }

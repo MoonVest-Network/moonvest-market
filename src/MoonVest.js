@@ -4,7 +4,7 @@ import { HashRouter, NavLink, Router } from "react-router-dom";
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import nftItemsJson from './nftItems.json';
-import {listNftItems, listNftCollection, ListWallets} from './graphql/queries';
+import { listMarketplaces } from './graphql/queries';
 import * as mutations from './graphql/mutations';
 import * as subscriptions from './graphql/subscriptions';
 import { data } from "jquery";
@@ -34,9 +34,29 @@ const MoonVest = (props) => {
 	}, []);
 
 	async function fetchNftItems() {
+		let rand_int = Math.floor(Math.random() * 20000); 
 		try{
-			const apiData = await API.graphql(graphqlOperation(listNftItems));
-			setNftItems(apiData.data.listNftItems.items);
+			// let filter = {
+			// 	id: {
+			// 			gt: 0
+			// 	}
+			// 	popularity: {
+			// 			gt: 0.5
+			// 	}
+			// };
+			const apiData = await API.graphql(
+				graphqlOperation(
+					listMarketplaces, { 
+						filter: {
+							popularity: {
+								gt: 0.5
+							}
+						},
+						limit: 12
+					}
+				)
+			);
+			setNftItems(apiData.data.listMarketplaces.items);
 		}
 		catch (error){
 			console.log("===== API Error =====");

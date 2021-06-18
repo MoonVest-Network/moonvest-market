@@ -1,117 +1,73 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getNftCollection = /* GraphQL */ `
-  query GetNftCollection($id: ID!) {
-    getNftCollection(id: $id) {
+export const getMarketplace = /* GraphQL */ `
+  query GetMarketplace($id: ID!) {
+    getMarketplace(id: $id) {
       id
       address
-      name
-      description
-      url
-      createdAt
-      updatedAt
-      NftItems {
-        nextToken
-      }
-    }
-  }
-`;
-export const listNftCollections = /* GraphQL */ `
-  query ListNftCollections(
-    $filter: ModelNftCollectionFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listNftCollections(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        address
-        name
-        description
-        url
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getWallet = /* GraphQL */ `
-  query GetWallet($id: ID!) {
-    getWallet(id: $id) {
-      id
-      address
-      name
-      bnbBalance
-      mvnBalance
-      createdAt
-      updatedAt
-      WalletNftItems {
-        nextToken
-      }
-    }
-  }
-`;
-export const listWallets = /* GraphQL */ `
-  query ListWallets(
-    $filter: ModelWalletFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listWallets(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        address
-        name
-        bnbBalance
-        mvnBalance
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getNftItem = /* GraphQL */ `
-  query GetNftItem($id: ID!) {
-    getNftItem(id: $id) {
-      id
-      nftcollectionID
-      tokenId
       name
       description
       image
+      likes
+      popularity
       url
       properties
-      createdAt
-      updatedAt
-      wallets {
-        nextToken
-      }
     }
   }
 `;
-export const listNftItems = /* GraphQL */ `
-  query ListNftItems(
-    $filter: ModelNftItemFilterInput
+export const listMarketplaces = /* GraphQL */ `
+  query ListMarketplaces(
+    $filter: ModelMarketplaceFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listNftItems(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listMarketplaces(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        nftcollectionID
-        tokenId
         name
         description
         image
+        popularity
         url
         properties
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncMarketplaces = /* GraphQL */ `
+  query SyncMarketplaces(
+    $filter: ModelMarketplaceFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncMarketplaces(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        address
+        name
+        description
+        image
+        likes
+        popularity
+        url
+        properties
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
     }
   }
 `;

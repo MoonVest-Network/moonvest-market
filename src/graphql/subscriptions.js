@@ -5,7 +5,7 @@ export const onCreateMarketplace = /* GraphQL */ `
   subscription OnCreateMarketplace {
     onCreateMarketplace {
       id
-      address
+      collectionAddress
       name
       description
       image
@@ -13,6 +13,9 @@ export const onCreateMarketplace = /* GraphQL */ `
       popularity
       url
       properties
+      walletAddress
+      collectionID
+      tokenID
       _version
       _deleted
       _lastChangedAt
@@ -25,7 +28,7 @@ export const onUpdateMarketplace = /* GraphQL */ `
   subscription OnUpdateMarketplace {
     onUpdateMarketplace {
       id
-      address
+      collectionAddress
       name
       description
       image
@@ -33,6 +36,9 @@ export const onUpdateMarketplace = /* GraphQL */ `
       popularity
       url
       properties
+      walletAddress
+      collectionID
+      tokenID
       _version
       _deleted
       _lastChangedAt
@@ -45,7 +51,7 @@ export const onDeleteMarketplace = /* GraphQL */ `
   subscription OnDeleteMarketplace {
     onDeleteMarketplace {
       id
-      address
+      collectionAddress
       name
       description
       image
@@ -53,6 +59,9 @@ export const onDeleteMarketplace = /* GraphQL */ `
       popularity
       url
       properties
+      walletAddress
+      collectionID
+      tokenID
       _version
       _deleted
       _lastChangedAt

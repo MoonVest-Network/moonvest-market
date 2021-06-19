@@ -5,7 +5,7 @@ export const getMarketplace = /* GraphQL */ `
   query GetMarketplace($id: ID!) {
     getMarketplace(id: $id) {
       id
-      address
+      collectionAddress
       name
       description
       image
@@ -13,6 +13,9 @@ export const getMarketplace = /* GraphQL */ `
       popularity
       url
       properties
+      walletAddress
+      collectionID
+      tokenID
     }
   }
 `;
@@ -25,12 +28,17 @@ export const listMarketplaces = /* GraphQL */ `
     listMarketplaces(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        collectionAddress
         name
         description
         image
+        likes
         popularity
         url
         properties
+        walletAddress
+        collectionID
+        tokenID
       }
       nextToken
       startedAt
@@ -52,7 +60,7 @@ export const syncMarketplaces = /* GraphQL */ `
     ) {
       items {
         id
-        address
+        collectionAddress
         name
         description
         image
@@ -60,6 +68,9 @@ export const syncMarketplaces = /* GraphQL */ `
         popularity
         url
         properties
+        walletAddress
+        collectionID
+        tokenID
         _version
         _deleted
         _lastChangedAt

@@ -8,6 +8,7 @@ import { listMarketplaces } from './graphql/queries';
 import * as mutations from './graphql/mutations';
 import * as subscriptions from './graphql/subscriptions';
 import { data } from "jquery";
+import { Button } from "@material-ui/core";
 
 Amplify.configure(awsconfig);
 
@@ -23,6 +24,7 @@ const MoonVest = (props) => {
 	const [marketCap, setMarketCap] = useState("0.00");
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [nftItems, setNftItems] = useState(null);
+	const [nftResults, setNftResults] = useState(12);
 	
 	// Similar to componentDidMount and componentDidUpdate.
 	useEffect(async () => {
@@ -31,28 +33,23 @@ const MoonVest = (props) => {
 			//console.log(Object.values(nftItems[0]));
 			console.log(nftItems);
 		} catch {}
-	}, []);
+	}, [nftResults]);
 
 	async function fetchNftItems() {
 		let rand_int = Math.floor(Math.random() * 20000); 
 		try{
-			// let filter = {
-			// 	id: {
-			// 			gt: 0
-			// 	}
-			// 	popularity: {
-			// 			gt: 0.5
-			// 	}
-			// };
 			const apiData = await API.graphql(
 				graphqlOperation(
 					listMarketplaces, { 
-						filter: {
-							popularity: {
-								gt: 0.5
-							}
-						},
-						limit: 12
+						// filter: {
+						// 	popularity: {
+						// 		gt: 0.5
+						// 	},
+						// 	// collectionID: {
+						// 	// 	gt: 0
+						// 	// }
+						// },
+						limit: nftResults
 					}
 				)
 			);
@@ -64,26 +61,16 @@ const MoonVest = (props) => {
 		}
   }
 
-	// On click event of Connect Wallet Button.
-	const connectWalletClicked = async () => {
-		const walletResponse = await connectWallet();
-		
-		// Update state hooks.
-		setConnectedStatus(walletResponse.connectedStatus);
-		setStatus(walletResponse.status);
-		
-		if (isConnected) {
-			setWallet(walletResponse.address);
-			await processWalletData();
-		}
-	};
-
 	// Data filler for wallet state hooks.
 	const processWalletData = async () => {
 		const metaMaskData = await metaMask(String(walletAddress));
 		setBalance(metaMaskData.walletBalance);
 		setTotalSupply(metaMaskData.totalSupply);
 		setTotalBurn(walletSupply);
+	};
+
+	const moreClicked = async () => {
+		setNftResults(nftResults + 12);
 	};
 
 	const nftItemsList = () => {
@@ -183,7 +170,7 @@ const MoonVest = (props) => {
 					</div>
 					<div className="row">
 						<div className="col-lg-12 col-md-12 text-center mt-4">
-							<a href="#" className="btn btn-secondary border-0">Browse More</a>
+						<Button variant="outlined" size="large" onClick={moreClicked}>More</Button>
 						</div>
 					</div>
 				</div>

@@ -1,12 +1,15 @@
 type Marketplace @model @auth(rules: [{allow: public}]) {
   id: ID!
-  address: String
+  collectionAddress: String
   name: String
   description: String
   image: String
   likes: Int
   popularity: Float
   url: String
-  properties: String
+  properties: AWSJSON
+  walletAddress: String
+  collectionID: Int
+  tokenID: Int
 }
  

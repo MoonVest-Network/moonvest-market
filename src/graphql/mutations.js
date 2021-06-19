@@ -8,7 +8,7 @@ export const createMarketplace = /* GraphQL */ `
   ) {
     createMarketplace(input: $input, condition: $condition) {
       id
-      address
+      collectionAddress
       name
       description
       image
@@ -16,6 +16,9 @@ export const createMarketplace = /* GraphQL */ `
       popularity
       url
       properties
+      walletAddress
+      collectionID
+      tokenID
       _version
       _deleted
       _lastChangedAt
@@ -31,7 +34,7 @@ export const updateMarketplace = /* GraphQL */ `
   ) {
     updateMarketplace(input: $input, condition: $condition) {
       id
-      address
+      collectionAddress
       name
       description
       image
@@ -39,6 +42,9 @@ export const updateMarketplace = /* GraphQL */ `
       popularity
       url
       properties
+      walletAddress
+      collectionID
+      tokenID
       _version
       _deleted
       _lastChangedAt
@@ -54,7 +60,7 @@ export const deleteMarketplace = /* GraphQL */ `
   ) {
     deleteMarketplace(input: $input, condition: $condition) {
       id
-      address
+      collectionAddress
       name
       description
       image
@@ -62,6 +68,9 @@ export const deleteMarketplace = /* GraphQL */ `
       popularity
       url
       properties
+      walletAddress
+      collectionID
+      tokenID
       _version
       _deleted
       _lastChangedAt

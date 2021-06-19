@@ -10,8 +10,8 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "address": {
-                    "name": "address",
+                "collectionAddress": {
+                    "name": "collectionAddress",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -62,7 +62,28 @@ export const schema = {
                 "properties": {
                     "name": "properties",
                     "isArray": false,
+                    "type": "AWSJSON",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "walletAddress": {
+                    "name": "walletAddress",
+                    "isArray": false,
                     "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "collectionID": {
+                    "name": "collectionID",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "tokenID": {
+                    "name": "tokenID",
+                    "isArray": false,
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -111,5 +132,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "733b84e95e1370607b8eac901b562cd0"
+    "version": "a240ce11d6b9dcc1a34f755f1f6d8d5e"
 };

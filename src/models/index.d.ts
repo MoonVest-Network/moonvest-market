@@ -6,7 +6,7 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 export declare class Marketplace {
   readonly id: string;
-  readonly address?: string;
+  readonly collectionAddress?: string;
   readonly name?: string;
   readonly description?: string;
   readonly image?: string;
@@ -14,6 +14,9 @@ export declare class Marketplace {
   readonly popularity?: number;
   readonly url?: string;
   readonly properties?: string;
+  readonly walletAddress?: string;
+  readonly collectionID?: number;
+  readonly tokenID?: number;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Marketplace>);

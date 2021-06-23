@@ -8,21 +8,42 @@ import { listMarketplaces } from './graphql/queries';
 import * as mutations from './graphql/mutations';
 import * as subscriptions from './graphql/subscriptions';
 import { data } from "jquery";
-import { Button } from "@material-ui/core";
+import SearchIcon from '@material-ui/icons/Search';
+import { 
+	Button, 
+	InputBase,
+	IconButton,
+	makeStyles,
+	TextField,
+	Paper
+} from "@material-ui/core";
+
 
 Amplify.configure(awsconfig);
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: '2px 4px',
+    display: 'flex',
+    alignItems: 'center',
+    width: 500,
+  },
+  input: {
+    marginLeft: theme.spacing(1),
+    flex: 1,
+  },
+  iconButton: {
+    padding: 10,
+  },
+  divider: {
+    height: 28,
+    margin: 4,
+  },
+}));
+
 const MoonVest = (props) => {
 	// State hook variables.
-	const [isConnected, setConnectedStatus] = useState(false);
-	const [status, setStatus] = useState("");
-	const [walletAddress, setWallet] = useState("");
-	const [walletBalance, setBalance] = useState("00.00");
-	const [walletSupply, setTotalSupply] = useState("00.00");
-	const [totalBurn, setTotalBurn] = useState("00.00");
-	const [price, setPrice] = useState("0.00");
-	const [marketCap, setMarketCap] = useState("0.00");
-	const [anchorEl, setAnchorEl] = useState(null);
+	const classes = useStyles();
 	const [nftItems, setNftItems] = useState(null);
 	const [nftResults, setNftResults] = useState(12);
 	
@@ -61,13 +82,12 @@ const MoonVest = (props) => {
 		}
   }
 
-	// Data filler for wallet state hooks.
-	const processWalletData = async () => {
-		const metaMaskData = await metaMask(String(walletAddress));
-		setBalance(metaMaskData.walletBalance);
-		setTotalSupply(metaMaskData.totalSupply);
-		setTotalBurn(walletSupply);
-	};
+	const searchSubmit = (event) => {
+		console.log('submit')
+    console.log(event)
+    event.preventDefault()
+
+  }
 
 	const moreClicked = async () => {
 		setNftResults(nftResults + 12);
@@ -137,10 +157,18 @@ const MoonVest = (props) => {
 							<div className="col-lg-7 col-md-9 col-sm-12">
 								<div className="banner-search style-1">
 									<div className="input-group">
-										<input type="text" className="form-control radiup" placeholder="Search NFTs" />
-										<div className="input-group-append b-l">
-											<button type="button" className="btn bt-round trans"><i className="ti-search"></i></button>
-										</div>
+									<form onSubmit={searchSubmit}>
+										<Paper className={classes.root} >										
+											<InputBase
+												className={classes.input}
+												placeholder="Search NFTs"
+												inputProps={{ 'aria-label': 'search' }}
+											/>
+											<IconButton type="submit" className={classes.iconButton} aria-label="search">
+												<SearchIcon />
+											</IconButton>		
+										</Paper>
+									</form>
 									</div>
 								</div>
 								<div className="featured-category">

@@ -16,6 +16,9 @@ export const onCreateMarketplace = /* GraphQL */ `
       walletAddress
       collectionID
       tokenID
+      tokenIndex
+      ownerAddress
+      creatorAddress
       _version
       _deleted
       _lastChangedAt
@@ -39,6 +42,9 @@ export const onUpdateMarketplace = /* GraphQL */ `
       walletAddress
       collectionID
       tokenID
+      tokenIndex
+      ownerAddress
+      creatorAddress
       _version
       _deleted
       _lastChangedAt
@@ -62,6 +68,9 @@ export const onDeleteMarketplace = /* GraphQL */ `
       walletAddress
       collectionID
       tokenID
+      tokenIndex
+      ownerAddress
+      creatorAddress
       _version
       _deleted
       _lastChangedAt

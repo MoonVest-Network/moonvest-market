@@ -16,6 +16,14 @@ export const getMarketplace = /* GraphQL */ `
       walletAddress
       collectionID
       tokenID
+      tokenIndex
+      ownerAddress
+      creatorAddress
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -39,6 +47,58 @@ export const listMarketplaces = /* GraphQL */ `
         walletAddress
         collectionID
         tokenID
+        tokenIndex
+        ownerAddress
+        creatorAddress
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const popularity = /* GraphQL */ `
+  query Popularity(
+    $likes: Int
+    $popularity: ModelFloatKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelMarketplaceFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    popularity(
+      likes: $likes
+      popularity: $popularity
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        collectionAddress
+        name
+        description
+        image
+        likes
+        popularity
+        url
+        properties
+        walletAddress
+        collectionID
+        tokenID
+        tokenIndex
+        ownerAddress
+        creatorAddress
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
       }
       nextToken
       startedAt
@@ -71,6 +131,9 @@ export const syncMarketplaces = /* GraphQL */ `
         walletAddress
         collectionID
         tokenID
+        tokenIndex
+        ownerAddress
+        creatorAddress
         _version
         _deleted
         _lastChangedAt

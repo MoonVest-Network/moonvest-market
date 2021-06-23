@@ -87,6 +87,27 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "tokenIndex": {
+                    "name": "tokenIndex",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "ownerAddress": {
+                    "name": "ownerAddress",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "creatorAddress": {
+                    "name": "creatorAddress",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -112,6 +133,17 @@ export const schema = {
                     "properties": {}
                 },
                 {
+                    "type": "key",
+                    "properties": {
+                        "name": "popularity",
+                        "fields": [
+                            "likes",
+                            "popularity"
+                        ],
+                        "queryField": "popularity"
+                    }
+                },
+                {
                     "type": "auth",
                     "properties": {
                         "rules": [
@@ -132,5 +164,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "a240ce11d6b9dcc1a34f755f1f6d8d5e"
+    "version": "dd91cf7eacf19993690156dd5459a39a"
 };

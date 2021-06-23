@@ -1,4 +1,8 @@
-type Marketplace @model @auth(rules: [{allow: public}]) {
+type Marketplace @model @auth(rules: [{allow: public}]) 
+@key(name: "popularity",
+fields: ["likes", "popularity"],
+queryField: "popularity")
+{
   id: ID!
   collectionAddress: String
   name: String
@@ -11,5 +15,8 @@ type Marketplace @model @auth(rules: [{allow: public}]) {
   walletAddress: String
   collectionID: Int
   tokenID: Int
+  tokenIndex: Int
+  ownerAddress: String
+  creatorAddress: String
 }
  

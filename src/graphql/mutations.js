@@ -19,6 +19,9 @@ export const createMarketplace = /* GraphQL */ `
       walletAddress
       collectionID
       tokenID
+      tokenIndex
+      ownerAddress
+      creatorAddress
       _version
       _deleted
       _lastChangedAt
@@ -45,6 +48,9 @@ export const updateMarketplace = /* GraphQL */ `
       walletAddress
       collectionID
       tokenID
+      tokenIndex
+      ownerAddress
+      creatorAddress
       _version
       _deleted
       _lastChangedAt
@@ -71,6 +77,9 @@ export const deleteMarketplace = /* GraphQL */ `
       walletAddress
       collectionID
       tokenID
+      tokenIndex
+      ownerAddress
+      creatorAddress
       _version
       _deleted
       _lastChangedAt

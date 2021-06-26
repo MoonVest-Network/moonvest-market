@@ -1,74 +1,14 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateBlockchain = /* GraphQL */ `
-  subscription OnCreateBlockchain {
-    onCreateBlockchain {
-      id
-      name
-      description
-      explorer
-      nativeToken
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      Collections {
-        nextToken
-        startedAt
-      }
-    }
-  }
-`;
-export const onUpdateBlockchain = /* GraphQL */ `
-  subscription OnUpdateBlockchain {
-    onUpdateBlockchain {
-      id
-      name
-      description
-      explorer
-      nativeToken
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      Collections {
-        nextToken
-        startedAt
-      }
-    }
-  }
-`;
-export const onDeleteBlockchain = /* GraphQL */ `
-  subscription OnDeleteBlockchain {
-    onDeleteBlockchain {
-      id
-      name
-      description
-      explorer
-      nativeToken
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      Collections {
-        nextToken
-        startedAt
-      }
-    }
-  }
-`;
 export const onCreateCollection = /* GraphQL */ `
   subscription OnCreateCollection {
     onCreateCollection {
-      id
-      blockchainID
+      blockChain
+      collectionID
+      address
       name
       description
-      address
       _version
       _deleted
       _lastChangedAt
@@ -80,11 +20,11 @@ export const onCreateCollection = /* GraphQL */ `
 export const onUpdateCollection = /* GraphQL */ `
   subscription OnUpdateCollection {
     onUpdateCollection {
-      id
-      blockchainID
+      blockChain
+      collectionID
+      address
       name
       description
-      address
       _version
       _deleted
       _lastChangedAt
@@ -96,11 +36,11 @@ export const onUpdateCollection = /* GraphQL */ `
 export const onDeleteCollection = /* GraphQL */ `
   subscription OnDeleteCollection {
     onDeleteCollection {
-      id
-      blockchainID
-      name
-      description
+      blockChain
+      collectionID
       address
+      name
+      description
       _version
       _deleted
       _lastChangedAt
@@ -109,9 +49,9 @@ export const onDeleteCollection = /* GraphQL */ `
     }
   }
 `;
-export const onCreateNftItem = /* GraphQL */ `
-  subscription OnCreateNftItem {
-    onCreateNftItem {
+export const onCreateNft = /* GraphQL */ `
+  subscription OnCreateNft {
+    onCreateNft {
       collectionID
       tokenID
       tokenIndex
@@ -132,9 +72,9 @@ export const onCreateNftItem = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateNftItem = /* GraphQL */ `
-  subscription OnUpdateNftItem {
-    onUpdateNftItem {
+export const onUpdateNft = /* GraphQL */ `
+  subscription OnUpdateNft {
+    onUpdateNft {
       collectionID
       tokenID
       tokenIndex
@@ -155,9 +95,9 @@ export const onUpdateNftItem = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteNftItem = /* GraphQL */ `
-  subscription OnDeleteNftItem {
-    onDeleteNftItem {
+export const onDeleteNft = /* GraphQL */ `
+  subscription OnDeleteNft {
+    onDeleteNft {
       collectionID
       tokenID
       tokenIndex

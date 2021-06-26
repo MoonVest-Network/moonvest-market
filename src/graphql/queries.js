@@ -1,88 +1,14 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getBlockchain = /* GraphQL */ `
-  query GetBlockchain($id: ID!) {
-    getBlockchain(id: $id) {
-      id
-      name
-      description
-      explorer
-      nativeToken
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      Collections {
-        nextToken
-        startedAt
-      }
-    }
-  }
-`;
-export const listBlockchains = /* GraphQL */ `
-  query ListBlockchains(
-    $filter: ModelBlockchainFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listBlockchains(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        description
-        explorer
-        nativeToken
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncBlockchains = /* GraphQL */ `
-  query SyncBlockchains(
-    $filter: ModelBlockchainFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncBlockchains(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        description
-        explorer
-        nativeToken
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
 export const getCollection = /* GraphQL */ `
-  query GetCollection($id: ID!) {
-    getCollection(id: $id) {
-      id
-      blockchainID
+  query GetCollection($blockChain: String!, $collectionID: Int!) {
+    getCollection(blockChain: $blockChain, collectionID: $collectionID) {
+      blockChain
+      collectionID
+      address
       name
       description
-      address
       _version
       _deleted
       _lastChangedAt
@@ -93,17 +19,61 @@ export const getCollection = /* GraphQL */ `
 `;
 export const listCollections = /* GraphQL */ `
   query ListCollections(
+    $blockChain: String
+    $collectionID: ModelIntKeyConditionInput
+    $filter: ModelCollectionFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listCollections(
+      blockChain: $blockChain
+      collectionID: $collectionID
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        blockChain
+        collectionID
+        address
+        name
+        description
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const address = /* GraphQL */ `
+  query Address(
+    $blockChain: String
+    $address: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
     $filter: ModelCollectionFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listCollections(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    address(
+      blockChain: $blockChain
+      address: $address
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
       items {
-        id
-        blockchainID
+        blockChain
+        collectionID
+        address
         name
         description
-        address
         _version
         _deleted
         _lastChangedAt
@@ -129,11 +99,11 @@ export const syncCollections = /* GraphQL */ `
       lastSync: $lastSync
     ) {
       items {
-        id
-        blockchainID
+        blockChain
+        collectionID
+        address
         name
         description
-        address
         _version
         _deleted
         _lastChangedAt
@@ -145,9 +115,9 @@ export const syncCollections = /* GraphQL */ `
     }
   }
 `;
-export const getNftItem = /* GraphQL */ `
-  query GetNftItem($collectionID: ID!, $tokenID: Int!) {
-    getNftItem(collectionID: $collectionID, tokenID: $tokenID) {
+export const getNft = /* GraphQL */ `
+  query GetNft($collectionID: Int!, $tokenID: Int!) {
+    getNft(collectionID: $collectionID, tokenID: $tokenID) {
       collectionID
       tokenID
       tokenIndex
@@ -168,16 +138,16 @@ export const getNftItem = /* GraphQL */ `
     }
   }
 `;
-export const listNftItems = /* GraphQL */ `
-  query ListNftItems(
-    $collectionID: ID
+export const listNfts = /* GraphQL */ `
+  query ListNfts(
+    $collectionID: Int
     $tokenID: ModelIntKeyConditionInput
-    $filter: ModelNftItemFilterInput
+    $filter: ModelNftFilterInput
     $limit: Int
     $nextToken: String
     $sortDirection: ModelSortDirection
   ) {
-    listNftItems(
+    listNfts(
       collectionID: $collectionID
       tokenID: $tokenID
       filter: $filter
@@ -209,14 +179,14 @@ export const listNftItems = /* GraphQL */ `
     }
   }
 `;
-export const syncNftItems = /* GraphQL */ `
-  query SyncNftItems(
-    $filter: ModelNftItemFilterInput
+export const syncNfts = /* GraphQL */ `
+  query SyncNfts(
+    $filter: ModelNftFilterInput
     $limit: Int
     $nextToken: String
     $lastSync: AWSTimestamp
   ) {
-    syncNftItems(
+    syncNfts(
       filter: $filter
       limit: $limit
       nextToken: $nextToken

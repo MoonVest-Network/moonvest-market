@@ -1,22 +1,18 @@
-type Blockchain @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  name: String
-  description: String
-  explorer: AWSURL
-  nativeToken: String
-  Collections: [Collection] @connection(keyName: "byBlockchain", fields: ["id"])
-}
-
-type Collection @model @auth(rules: [{allow: public}]) @key(name: "byBlockchain", fields: ["blockchainID"]) {
-  id: ID!
-  blockchainID: ID
-  name: String
-  description: String
+type Collection @model @auth(rules: [{allow: public}]) 
+  @key(fields: ["blockChain", "collectionID"]) 
+  @key(name: "address", fields: ["blockChain", "address"], queryField: "address")
+{
+  blockChain: String!
+  collectionID: Int!
   address: String
+  name: String
+  description: String
 }
 
-type NftItem @model @auth(rules: [{allow: public}]) @key(fields: ["collectionID", "tokenID"])  {
-  collectionID: ID!
+type Nft @model @auth(rules: [{allow: public}]) 
+  @key(fields: ["collectionID", "tokenID"])  
+{
+  collectionID: Int!
   tokenID: Int!
   tokenIndex: Int
   name: String

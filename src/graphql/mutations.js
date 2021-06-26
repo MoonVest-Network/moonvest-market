@@ -1,86 +1,17 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createBlockchain = /* GraphQL */ `
-  mutation CreateBlockchain(
-    $input: CreateBlockchainInput!
-    $condition: ModelBlockchainConditionInput
-  ) {
-    createBlockchain(input: $input, condition: $condition) {
-      id
-      name
-      description
-      explorer
-      nativeToken
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      Collections {
-        nextToken
-        startedAt
-      }
-    }
-  }
-`;
-export const updateBlockchain = /* GraphQL */ `
-  mutation UpdateBlockchain(
-    $input: UpdateBlockchainInput!
-    $condition: ModelBlockchainConditionInput
-  ) {
-    updateBlockchain(input: $input, condition: $condition) {
-      id
-      name
-      description
-      explorer
-      nativeToken
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      Collections {
-        nextToken
-        startedAt
-      }
-    }
-  }
-`;
-export const deleteBlockchain = /* GraphQL */ `
-  mutation DeleteBlockchain(
-    $input: DeleteBlockchainInput!
-    $condition: ModelBlockchainConditionInput
-  ) {
-    deleteBlockchain(input: $input, condition: $condition) {
-      id
-      name
-      description
-      explorer
-      nativeToken
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      Collections {
-        nextToken
-        startedAt
-      }
-    }
-  }
-`;
 export const createCollection = /* GraphQL */ `
   mutation CreateCollection(
     $input: CreateCollectionInput!
     $condition: ModelCollectionConditionInput
   ) {
     createCollection(input: $input, condition: $condition) {
-      id
-      blockchainID
+      blockChain
+      collectionID
+      address
       name
       description
-      address
       _version
       _deleted
       _lastChangedAt
@@ -95,11 +26,11 @@ export const updateCollection = /* GraphQL */ `
     $condition: ModelCollectionConditionInput
   ) {
     updateCollection(input: $input, condition: $condition) {
-      id
-      blockchainID
+      blockChain
+      collectionID
+      address
       name
       description
-      address
       _version
       _deleted
       _lastChangedAt
@@ -114,11 +45,11 @@ export const deleteCollection = /* GraphQL */ `
     $condition: ModelCollectionConditionInput
   ) {
     deleteCollection(input: $input, condition: $condition) {
-      id
-      blockchainID
-      name
-      description
+      blockChain
+      collectionID
       address
+      name
+      description
       _version
       _deleted
       _lastChangedAt
@@ -127,12 +58,12 @@ export const deleteCollection = /* GraphQL */ `
     }
   }
 `;
-export const createNftItem = /* GraphQL */ `
-  mutation CreateNftItem(
-    $input: CreateNftItemInput!
-    $condition: ModelNftItemConditionInput
+export const createNft = /* GraphQL */ `
+  mutation CreateNft(
+    $input: CreateNftInput!
+    $condition: ModelNftConditionInput
   ) {
-    createNftItem(input: $input, condition: $condition) {
+    createNft(input: $input, condition: $condition) {
       collectionID
       tokenID
       tokenIndex
@@ -153,12 +84,12 @@ export const createNftItem = /* GraphQL */ `
     }
   }
 `;
-export const updateNftItem = /* GraphQL */ `
-  mutation UpdateNftItem(
-    $input: UpdateNftItemInput!
-    $condition: ModelNftItemConditionInput
+export const updateNft = /* GraphQL */ `
+  mutation UpdateNft(
+    $input: UpdateNftInput!
+    $condition: ModelNftConditionInput
   ) {
-    updateNftItem(input: $input, condition: $condition) {
+    updateNft(input: $input, condition: $condition) {
       collectionID
       tokenID
       tokenIndex
@@ -179,12 +110,12 @@ export const updateNftItem = /* GraphQL */ `
     }
   }
 `;
-export const deleteNftItem = /* GraphQL */ `
-  mutation DeleteNftItem(
-    $input: DeleteNftItemInput!
-    $condition: ModelNftItemConditionInput
+export const deleteNft = /* GraphQL */ `
+  mutation DeleteNft(
+    $input: DeleteNftInput!
+    $condition: ModelNftConditionInput
   ) {
-    deleteNftItem(input: $input, condition: $condition) {
+    deleteNft(input: $input, condition: $condition) {
       collectionID
       tokenID
       tokenIndex

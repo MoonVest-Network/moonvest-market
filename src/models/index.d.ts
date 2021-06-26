@@ -4,34 +4,22 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-export declare class Blockchain {
-  readonly id: string;
-  readonly name?: string;
-  readonly description?: string;
-  readonly explorer?: string;
-  readonly nativeToken?: string;
-  readonly Collections?: (Collection | null)[];
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
-  constructor(init: ModelInit<Blockchain>);
-  static copyOf(source: Blockchain, mutator: (draft: MutableModel<Blockchain>) => MutableModel<Blockchain> | void): Blockchain;
-}
-
 export declare class Collection {
   readonly id: string;
-  readonly blockchainID?: string;
+  readonly blockChain: string;
+  readonly collectionID: number;
+  readonly address?: string;
   readonly name?: string;
   readonly description?: string;
-  readonly address?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Collection>);
   static copyOf(source: Collection, mutator: (draft: MutableModel<Collection>) => MutableModel<Collection> | void): Collection;
 }
 
-export declare class NftItem {
+export declare class Nft {
   readonly id: string;
-  readonly collectionID: string;
+  readonly collectionID: number;
   readonly tokenID: number;
   readonly tokenIndex?: number;
   readonly name?: string;
@@ -45,8 +33,8 @@ export declare class NftItem {
   readonly creatorAddress?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
-  constructor(init: ModelInit<NftItem>);
-  static copyOf(source: NftItem, mutator: (draft: MutableModel<NftItem>) => MutableModel<NftItem> | void): NftItem;
+  constructor(init: ModelInit<Nft>);
+  static copyOf(source: Nft, mutator: (draft: MutableModel<Nft>) => MutableModel<Nft> | void): Nft;
 }
 
 export declare class Marketplace {

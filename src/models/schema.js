@@ -1,99 +1,5 @@
 export const schema = {
     "models": {
-        "Blockchain": {
-            "name": "Blockchain",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "name": {
-                    "name": "name",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "description": {
-                    "name": "description",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "explorer": {
-                    "name": "explorer",
-                    "isArray": false,
-                    "type": "AWSURL",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "nativeToken": {
-                    "name": "nativeToken",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "Collections": {
-                    "name": "Collections",
-                    "isArray": true,
-                    "type": {
-                        "model": "Collection"
-                    },
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": "blockchainID"
-                    }
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                }
-            },
-            "syncable": true,
-            "pluralName": "Blockchains",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
         "Collection": {
             "name": "Collection",
             "fields": {
@@ -104,10 +10,24 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "blockchainID": {
-                    "name": "blockchainID",
+                "blockChain": {
+                    "name": "blockChain",
                     "isArray": false,
-                    "type": "ID",
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "collectionID": {
+                    "name": "collectionID",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "address": {
+                    "name": "address",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -120,13 +40,6 @@ export const schema = {
                 },
                 "description": {
                     "name": "description",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "address": {
-                    "name": "address",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -159,10 +72,21 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byBlockchain",
                         "fields": [
-                            "blockchainID"
+                            "blockChain",
+                            "collectionID"
                         ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "address",
+                        "fields": [
+                            "blockChain",
+                            "address"
+                        ],
+                        "queryField": "address"
                     }
                 },
                 {
@@ -183,8 +107,8 @@ export const schema = {
                 }
             ]
         },
-        "NftItem": {
-            "name": "NftItem",
+        "Nft": {
+            "name": "Nft",
             "fields": {
                 "id": {
                     "name": "id",
@@ -196,7 +120,7 @@ export const schema = {
                 "collectionID": {
                     "name": "collectionID",
                     "isArray": false,
-                    "type": "ID",
+                    "type": "Int",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -295,7 +219,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "NftItems",
+            "pluralName": "Nfts",
             "attributes": [
                 {
                     "type": "model",
@@ -492,5 +416,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "abc867315e0cebf0ed31b8c4c83ab374"
+    "version": "3877d2068b34b20b34085ca425521739"
 };

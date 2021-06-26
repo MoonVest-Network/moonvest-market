@@ -1,8 +1,36 @@
-type Marketplace @model @auth(rules: [{allow: public}]) 
-@key(name: "popularity",
-fields: ["likes", "popularity"],
-queryField: "popularity")
-{
+type Blockchain @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  description: String
+  explorer: AWSURL
+  nativeToken: String
+  Collections: [Collection] @connection(keyName: "byBlockchain", fields: ["id"])
+}
+
+type Collection @model @auth(rules: [{allow: public}]) @key(name: "byBlockchain", fields: ["blockchainID"]) {
+  id: ID!
+  blockchainID: ID
+  name: String
+  description: String
+  address: String
+}
+
+type NftItem @model @auth(rules: [{allow: public}]) @key(fields: ["collectionID", "tokenID"])  {
+  collectionID: ID!
+  tokenID: Int!
+  tokenIndex: Int
+  name: String
+  description: String
+  image: String
+  url: String
+  properties: AWSJSON
+  likes: Int
+  popularity: Int 
+  ownerAddress: String
+  creatorAddress: String
+}
+
+type Marketplace @model @auth(rules: [{allow: public}]) @key(name: "popularity", fields: ["likes", "popularity"], queryField: "popularity") {
   id: ID!
   collectionAddress: String
   name: String

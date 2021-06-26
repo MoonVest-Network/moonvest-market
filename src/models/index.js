@@ -4,8 +4,11 @@ import { schema } from './schema';
 
 
 
-const { Marketplace } = initSchema(schema);
+const { Blockchain, Collection, NftItem, Marketplace } = initSchema(schema);
 
 export {
+  Blockchain,
+  Collection,
+  NftItem,
   Marketplace
 };

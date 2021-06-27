@@ -51,8 +51,8 @@ export const listCollections = /* GraphQL */ `
     }
   }
 `;
-export const address = /* GraphQL */ `
-  query Address(
+export const collectionByAddress = /* GraphQL */ `
+  query CollectionByAddress(
     $blockChain: String
     $address: ModelStringKeyConditionInput
     $sortDirection: ModelSortDirection
@@ -60,7 +60,7 @@ export const address = /* GraphQL */ `
     $limit: Int
     $nextToken: String
   ) {
-    address(
+    collectionByAddress(
       blockChain: $blockChain
       address: $address
       sortDirection: $sortDirection
@@ -205,6 +205,196 @@ export const syncNfts = /* GraphQL */ `
         popularity
         ownerAddress
         creatorAddress
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getTransfer = /* GraphQL */ `
+  query GetTransfer($blockNumber: Int!, $logIndex: Int!) {
+    getTransfer(blockNumber: $blockNumber, logIndex: $logIndex) {
+      blockNumber
+      logIndex
+      transactionHash
+      collectionID
+      tokenID
+      fromAddress
+      toAddress
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listTransfers = /* GraphQL */ `
+  query ListTransfers(
+    $blockNumber: Int
+    $logIndex: ModelIntKeyConditionInput
+    $filter: ModelTransferFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listTransfers(
+      blockNumber: $blockNumber
+      logIndex: $logIndex
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        blockNumber
+        logIndex
+        transactionHash
+        collectionID
+        tokenID
+        fromAddress
+        toAddress
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const transfersByToken = /* GraphQL */ `
+  query TransfersByToken(
+    $collectionID: Int
+    $tokenID: ModelIntKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelTransferFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    transfersByToken(
+      collectionID: $collectionID
+      tokenID: $tokenID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        blockNumber
+        logIndex
+        transactionHash
+        collectionID
+        tokenID
+        fromAddress
+        toAddress
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const transfersBySender = /* GraphQL */ `
+  query TransfersBySender(
+    $fromAddress: String
+    $sortDirection: ModelSortDirection
+    $filter: ModelTransferFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    transfersBySender(
+      fromAddress: $fromAddress
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        blockNumber
+        logIndex
+        transactionHash
+        collectionID
+        tokenID
+        fromAddress
+        toAddress
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const transfersByReciever = /* GraphQL */ `
+  query TransfersByReciever(
+    $toAddress: String
+    $sortDirection: ModelSortDirection
+    $filter: ModelTransferFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    transfersByReciever(
+      toAddress: $toAddress
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        blockNumber
+        logIndex
+        transactionHash
+        collectionID
+        tokenID
+        fromAddress
+        toAddress
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncTransfers = /* GraphQL */ `
+  query SyncTransfers(
+    $filter: ModelTransferFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncTransfers(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        blockNumber
+        logIndex
+        transactionHash
+        collectionID
+        tokenID
+        fromAddress
+        toAddress
         _version
         _deleted
         _lastChangedAt

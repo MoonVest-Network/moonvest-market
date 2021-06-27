@@ -81,12 +81,12 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "address",
+                        "name": "collectionByAddress",
                         "fields": [
                             "blockChain",
                             "address"
                         ],
-                        "queryField": "address"
+                        "queryField": "collectionByAddress"
                     }
                 },
                 {
@@ -232,6 +232,147 @@ export const schema = {
                             "collectionID",
                             "tokenID"
                         ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "Transfer": {
+            "name": "Transfer",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "blockNumber": {
+                    "name": "blockNumber",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "logIndex": {
+                    "name": "logIndex",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "transactionHash": {
+                    "name": "transactionHash",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "collectionID": {
+                    "name": "collectionID",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "tokenID": {
+                    "name": "tokenID",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "fromAddress": {
+                    "name": "fromAddress",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "toAddress": {
+                    "name": "toAddress",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "Transfers",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "fields": [
+                            "blockNumber",
+                            "logIndex"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "transfersByToken",
+                        "fields": [
+                            "collectionID",
+                            "tokenID"
+                        ],
+                        "queryField": "transfersByToken"
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "transfersBySender",
+                        "fields": [
+                            "fromAddress"
+                        ],
+                        "queryField": "transfersBySender"
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "transfersByReciever",
+                        "fields": [
+                            "toAddress"
+                        ],
+                        "queryField": "transfersByReciever"
                     }
                 },
                 {
@@ -416,5 +557,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "3877d2068b34b20b34085ca425521739"
+    "version": "dbc57e53f1a3d2e2ef3f46aa608f52d6"
 };

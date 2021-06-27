@@ -136,6 +136,69 @@ export const deleteNft = /* GraphQL */ `
     }
   }
 `;
+export const createTransfer = /* GraphQL */ `
+  mutation CreateTransfer(
+    $input: CreateTransferInput!
+    $condition: ModelTransferConditionInput
+  ) {
+    createTransfer(input: $input, condition: $condition) {
+      blockNumber
+      logIndex
+      transactionHash
+      collectionID
+      tokenID
+      fromAddress
+      toAddress
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateTransfer = /* GraphQL */ `
+  mutation UpdateTransfer(
+    $input: UpdateTransferInput!
+    $condition: ModelTransferConditionInput
+  ) {
+    updateTransfer(input: $input, condition: $condition) {
+      blockNumber
+      logIndex
+      transactionHash
+      collectionID
+      tokenID
+      fromAddress
+      toAddress
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteTransfer = /* GraphQL */ `
+  mutation DeleteTransfer(
+    $input: DeleteTransferInput!
+    $condition: ModelTransferConditionInput
+  ) {
+    deleteTransfer(input: $input, condition: $condition) {
+      blockNumber
+      logIndex
+      transactionHash
+      collectionID
+      tokenID
+      fromAddress
+      toAddress
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createMarketplace = /* GraphQL */ `
   mutation CreateMarketplace(
     $input: CreateMarketplaceInput!

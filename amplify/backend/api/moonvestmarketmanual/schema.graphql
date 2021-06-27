@@ -1,6 +1,6 @@
 type Collection @model @auth(rules: [{allow: public}]) 
   @key(fields: ["blockChain", "collectionID"]) 
-  @key(name: "address", fields: ["blockChain", "address"], queryField: "address")
+  @key(name: "collectionByAddress", fields: ["blockChain", "address"], queryField: "collectionByAddress")
 {
   blockChain: String!
   collectionID: Int!
@@ -24,6 +24,21 @@ type Nft @model @auth(rules: [{allow: public}])
   popularity: Int 
   ownerAddress: String
   creatorAddress: String
+}
+
+type Transfer @model @auth(rules: [{allow: public}]) 
+  @key(fields: ["blockNumber", "logIndex"])  
+  @key(name: "transfersByToken", fields: ["collectionID", "tokenID"], queryField: "transfersByToken")
+  @key(name: "transfersBySender", fields: ["fromAddress"], queryField: "transfersBySender")
+  @key(name: "transfersByReciever", fields: ["toAddress"], queryField: "transfersByReciever")
+{
+  blockNumber: Int!
+  logIndex: Int!
+  transactionHash: String!
+  collectionID: Int!
+  tokenID: Int!
+  fromAddress: String
+  toAddress: String
 }
 
 type Marketplace @model @auth(rules: [{allow: public}]) @key(name: "popularity", fields: ["likes", "popularity"], queryField: "popularity") {

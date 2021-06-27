@@ -118,6 +118,60 @@ export const onDeleteNft = /* GraphQL */ `
     }
   }
 `;
+export const onCreateTransfer = /* GraphQL */ `
+  subscription OnCreateTransfer {
+    onCreateTransfer {
+      blockNumber
+      logIndex
+      transactionHash
+      collectionID
+      tokenID
+      fromAddress
+      toAddress
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateTransfer = /* GraphQL */ `
+  subscription OnUpdateTransfer {
+    onUpdateTransfer {
+      blockNumber
+      logIndex
+      transactionHash
+      collectionID
+      tokenID
+      fromAddress
+      toAddress
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteTransfer = /* GraphQL */ `
+  subscription OnDeleteTransfer {
+    onDeleteTransfer {
+      blockNumber
+      logIndex
+      transactionHash
+      collectionID
+      tokenID
+      fromAddress
+      toAddress
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateMarketplace = /* GraphQL */ `
   subscription OnCreateMarketplace {
     onCreateMarketplace {

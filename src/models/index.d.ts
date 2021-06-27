@@ -37,6 +37,21 @@ export declare class Nft {
   static copyOf(source: Nft, mutator: (draft: MutableModel<Nft>) => MutableModel<Nft> | void): Nft;
 }
 
+export declare class Transfer {
+  readonly id: string;
+  readonly blockNumber: number;
+  readonly logIndex: number;
+  readonly transactionHash: string;
+  readonly collectionID: number;
+  readonly tokenID: number;
+  readonly fromAddress?: string;
+  readonly toAddress?: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<Transfer>);
+  static copyOf(source: Transfer, mutator: (draft: MutableModel<Transfer>) => MutableModel<Transfer> | void): Transfer;
+}
+
 export declare class Marketplace {
   readonly id: string;
   readonly collectionAddress?: string;

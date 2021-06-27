@@ -6,5 +6,10 @@
             "ConflictHandler": "AUTOMERGE",
             "ConflictDetection": "VERSION"
         }
+    },
+    "StackMapping": {
+        "QuerytransfersByTokenResolver": "Transfers",
+        "QuerytransfersBySenderResolver": "Transfers",
+        "QuerytransfersByRecieverResolver": "Transfers"
     }
 }

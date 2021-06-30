@@ -7,7 +7,7 @@ export const createCollection = /* GraphQL */ `
     $condition: ModelCollectionConditionInput
   ) {
     createCollection(input: $input, condition: $condition) {
-      blockChain
+      blockchain
       collectionID
       address
       name
@@ -26,7 +26,7 @@ export const updateCollection = /* GraphQL */ `
     $condition: ModelCollectionConditionInput
   ) {
     updateCollection(input: $input, condition: $condition) {
-      blockChain
+      blockchain
       collectionID
       address
       name
@@ -45,7 +45,7 @@ export const deleteCollection = /* GraphQL */ `
     $condition: ModelCollectionConditionInput
   ) {
     deleteCollection(input: $input, condition: $condition) {
-      blockChain
+      blockchain
       collectionID
       address
       name
@@ -76,6 +76,7 @@ export const createNft = /* GraphQL */ `
       popularity
       ownerAddress
       creatorAddress
+      creationBlock
       _version
       _deleted
       _lastChangedAt
@@ -102,6 +103,7 @@ export const updateNft = /* GraphQL */ `
       popularity
       ownerAddress
       creatorAddress
+      creationBlock
       _version
       _deleted
       _lastChangedAt
@@ -128,6 +130,7 @@ export const deleteNft = /* GraphQL */ `
       popularity
       ownerAddress
       creatorAddress
+      creationBlock
       _version
       _deleted
       _lastChangedAt

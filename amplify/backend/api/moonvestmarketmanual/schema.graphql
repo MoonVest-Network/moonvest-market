@@ -1,8 +1,8 @@
 type Collection @model @auth(rules: [{allow: public}]) 
-  @key(fields: ["blockChain", "collectionID"]) 
-  @key(name: "collectionByAddress", fields: ["blockChain", "address"], queryField: "collectionByAddress")
+  @key(fields: ["blockchain", "collectionID"]) 
+  @key(name: "collectionByAddress", fields: ["blockchain", "address"], queryField: "collectionByAddress")
 {
-  blockChain: String!
+  blockchain: String!
   collectionID: Int!
   address: String
   name: String
@@ -11,6 +11,10 @@ type Collection @model @auth(rules: [{allow: public}])
 
 type Nft @model @auth(rules: [{allow: public}]) 
   @key(fields: ["collectionID", "tokenID"])  
+  @key(name: "nftsByCreationBlock", fields: ["creationBlock"], queryField: "nftsByCreationBlock")
+  @key(name: "nftsByOwner", fields: ["ownerAddress"], queryField: "nftsByOwner")
+  @key(name: "nftsByCreator", fields: ["creatorAddress"], queryField: "nftsByCreator")
+  @key(name: "nftsByPopularity", fields: ["popularity"], queryField: "nftsByPopularity")
 {
   collectionID: Int!
   tokenID: Int!
@@ -24,6 +28,7 @@ type Nft @model @auth(rules: [{allow: public}])
   popularity: Int 
   ownerAddress: String
   creatorAddress: String
+  creationBlock: String
 }
 
 type Transfer @model @auth(rules: [{allow: public}]) 
@@ -32,7 +37,7 @@ type Transfer @model @auth(rules: [{allow: public}])
   @key(name: "transfersBySender", fields: ["fromAddress"], queryField: "transfersBySender")
   @key(name: "transfersByReciever", fields: ["toAddress"], queryField: "transfersByReciever")
 {
-  blockNumber: Int!
+  blockNumber: String!
   logIndex: Int!
   transactionHash: String!
   collectionID: Int!

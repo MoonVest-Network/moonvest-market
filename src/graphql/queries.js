@@ -2,9 +2,9 @@
 // this is an auto generated file. This will be overwritten
 
 export const getCollection = /* GraphQL */ `
-  query GetCollection($blockChain: String!, $collectionID: Int!) {
-    getCollection(blockChain: $blockChain, collectionID: $collectionID) {
-      blockChain
+  query GetCollection($blockchain: String!, $collectionID: Int!) {
+    getCollection(blockchain: $blockchain, collectionID: $collectionID) {
+      blockchain
       collectionID
       address
       name
@@ -19,7 +19,7 @@ export const getCollection = /* GraphQL */ `
 `;
 export const listCollections = /* GraphQL */ `
   query ListCollections(
-    $blockChain: String
+    $blockchain: String
     $collectionID: ModelIntKeyConditionInput
     $filter: ModelCollectionFilterInput
     $limit: Int
@@ -27,7 +27,7 @@ export const listCollections = /* GraphQL */ `
     $sortDirection: ModelSortDirection
   ) {
     listCollections(
-      blockChain: $blockChain
+      blockchain: $blockchain
       collectionID: $collectionID
       filter: $filter
       limit: $limit
@@ -35,7 +35,7 @@ export const listCollections = /* GraphQL */ `
       sortDirection: $sortDirection
     ) {
       items {
-        blockChain
+        blockchain
         collectionID
         address
         name
@@ -53,7 +53,7 @@ export const listCollections = /* GraphQL */ `
 `;
 export const collectionByAddress = /* GraphQL */ `
   query CollectionByAddress(
-    $blockChain: String
+    $blockchain: String
     $address: ModelStringKeyConditionInput
     $sortDirection: ModelSortDirection
     $filter: ModelCollectionFilterInput
@@ -61,7 +61,7 @@ export const collectionByAddress = /* GraphQL */ `
     $nextToken: String
   ) {
     collectionByAddress(
-      blockChain: $blockChain
+      blockchain: $blockchain
       address: $address
       sortDirection: $sortDirection
       filter: $filter
@@ -69,7 +69,7 @@ export const collectionByAddress = /* GraphQL */ `
       nextToken: $nextToken
     ) {
       items {
-        blockChain
+        blockchain
         collectionID
         address
         name
@@ -99,7 +99,7 @@ export const syncCollections = /* GraphQL */ `
       lastSync: $lastSync
     ) {
       items {
-        blockChain
+        blockchain
         collectionID
         address
         name
@@ -130,6 +130,7 @@ export const getNft = /* GraphQL */ `
       popularity
       ownerAddress
       creatorAddress
+      creationBlock
       _version
       _deleted
       _lastChangedAt
@@ -168,6 +169,167 @@ export const listNfts = /* GraphQL */ `
         popularity
         ownerAddress
         creatorAddress
+        creationBlock
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const nftsByCreationBlock = /* GraphQL */ `
+  query NftsByCreationBlock(
+    $creationBlock: String
+    $sortDirection: ModelSortDirection
+    $filter: ModelNftFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    nftsByCreationBlock(
+      creationBlock: $creationBlock
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        collectionID
+        tokenID
+        tokenIndex
+        name
+        description
+        image
+        url
+        properties
+        likes
+        popularity
+        ownerAddress
+        creatorAddress
+        creationBlock
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const nftsByOwner = /* GraphQL */ `
+  query NftsByOwner(
+    $ownerAddress: String
+    $sortDirection: ModelSortDirection
+    $filter: ModelNftFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    nftsByOwner(
+      ownerAddress: $ownerAddress
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        collectionID
+        tokenID
+        tokenIndex
+        name
+        description
+        image
+        url
+        properties
+        likes
+        popularity
+        ownerAddress
+        creatorAddress
+        creationBlock
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const nftsByCreator = /* GraphQL */ `
+  query NftsByCreator(
+    $creatorAddress: String
+    $sortDirection: ModelSortDirection
+    $filter: ModelNftFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    nftsByCreator(
+      creatorAddress: $creatorAddress
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        collectionID
+        tokenID
+        tokenIndex
+        name
+        description
+        image
+        url
+        properties
+        likes
+        popularity
+        ownerAddress
+        creatorAddress
+        creationBlock
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const nftsByPopularity = /* GraphQL */ `
+  query NftsByPopularity(
+    $popularity: Int
+    $sortDirection: ModelSortDirection
+    $filter: ModelNftFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    nftsByPopularity(
+      popularity: $popularity
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        collectionID
+        tokenID
+        tokenIndex
+        name
+        description
+        image
+        url
+        properties
+        likes
+        popularity
+        ownerAddress
+        creatorAddress
+        creationBlock
         _version
         _deleted
         _lastChangedAt
@@ -205,6 +367,7 @@ export const syncNfts = /* GraphQL */ `
         popularity
         ownerAddress
         creatorAddress
+        creationBlock
         _version
         _deleted
         _lastChangedAt
@@ -217,7 +380,7 @@ export const syncNfts = /* GraphQL */ `
   }
 `;
 export const getTransfer = /* GraphQL */ `
-  query GetTransfer($blockNumber: Int!, $logIndex: Int!) {
+  query GetTransfer($blockNumber: String!, $logIndex: Int!) {
     getTransfer(blockNumber: $blockNumber, logIndex: $logIndex) {
       blockNumber
       logIndex
@@ -236,7 +399,7 @@ export const getTransfer = /* GraphQL */ `
 `;
 export const listTransfers = /* GraphQL */ `
   query ListTransfers(
-    $blockNumber: Int
+    $blockNumber: String
     $logIndex: ModelIntKeyConditionInput
     $filter: ModelTransferFilterInput
     $limit: Int

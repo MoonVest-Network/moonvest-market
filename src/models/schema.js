@@ -10,8 +10,8 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "blockChain": {
-                    "name": "blockChain",
+                "blockchain": {
+                    "name": "blockchain",
                     "isArray": false,
                     "type": "String",
                     "isRequired": true,
@@ -73,7 +73,7 @@ export const schema = {
                     "type": "key",
                     "properties": {
                         "fields": [
-                            "blockChain",
+                            "blockchain",
                             "collectionID"
                         ]
                     }
@@ -83,7 +83,7 @@ export const schema = {
                     "properties": {
                         "name": "collectionByAddress",
                         "fields": [
-                            "blockChain",
+                            "blockchain",
                             "address"
                         ],
                         "queryField": "collectionByAddress"
@@ -201,6 +201,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "creationBlock": {
+                    "name": "creationBlock",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -235,6 +242,46 @@ export const schema = {
                     }
                 },
                 {
+                    "type": "key",
+                    "properties": {
+                        "name": "nftsByCreationBlock",
+                        "fields": [
+                            "creationBlock"
+                        ],
+                        "queryField": "nftsByCreationBlock"
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "nftsByOwner",
+                        "fields": [
+                            "ownerAddress"
+                        ],
+                        "queryField": "nftsByOwner"
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "nftsByCreator",
+                        "fields": [
+                            "creatorAddress"
+                        ],
+                        "queryField": "nftsByCreator"
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "nftsByPopularity",
+                        "fields": [
+                            "popularity"
+                        ],
+                        "queryField": "nftsByPopularity"
+                    }
+                },
+                {
                     "type": "auth",
                     "properties": {
                         "rules": [
@@ -265,7 +312,7 @@ export const schema = {
                 "blockNumber": {
                     "name": "blockNumber",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -557,5 +604,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "dbc57e53f1a3d2e2ef3f46aa608f52d6"
+    "version": "e7dd541aecfdf75ede2e740aae294659"
 };

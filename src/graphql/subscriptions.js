@@ -4,7 +4,7 @@
 export const onCreateCollection = /* GraphQL */ `
   subscription OnCreateCollection {
     onCreateCollection {
-      blockChain
+      blockchain
       collectionID
       address
       name
@@ -20,7 +20,7 @@ export const onCreateCollection = /* GraphQL */ `
 export const onUpdateCollection = /* GraphQL */ `
   subscription OnUpdateCollection {
     onUpdateCollection {
-      blockChain
+      blockchain
       collectionID
       address
       name
@@ -36,7 +36,7 @@ export const onUpdateCollection = /* GraphQL */ `
 export const onDeleteCollection = /* GraphQL */ `
   subscription OnDeleteCollection {
     onDeleteCollection {
-      blockChain
+      blockchain
       collectionID
       address
       name
@@ -64,6 +64,7 @@ export const onCreateNft = /* GraphQL */ `
       popularity
       ownerAddress
       creatorAddress
+      creationBlock
       _version
       _deleted
       _lastChangedAt
@@ -87,6 +88,7 @@ export const onUpdateNft = /* GraphQL */ `
       popularity
       ownerAddress
       creatorAddress
+      creationBlock
       _version
       _deleted
       _lastChangedAt
@@ -110,6 +112,7 @@ export const onDeleteNft = /* GraphQL */ `
       popularity
       ownerAddress
       creatorAddress
+      creationBlock
       _version
       _deleted
       _lastChangedAt

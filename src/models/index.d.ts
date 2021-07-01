@@ -32,7 +32,7 @@ export declare class Nft {
   readonly ownerAddress?: string;
   readonly creatorAddress?: string;
   readonly keywords?: string;
-  readonly creationBlock?: string;
+  readonly creationBlock?: number;
   readonly lastTransferBlock?: number;
   readonly createdAt?: string;
   readonly updatedAt?: string;

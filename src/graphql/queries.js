@@ -187,7 +187,7 @@ export const listNfts = /* GraphQL */ `
 `;
 export const nftsByCreationBlock = /* GraphQL */ `
   query NftsByCreationBlock(
-    $creationBlock: String
+    $creationBlock: Int
     $sortDirection: ModelSortDirection
     $filter: ModelNftFilterInput
     $limit: Int

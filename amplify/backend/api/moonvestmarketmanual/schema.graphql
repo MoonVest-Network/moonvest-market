@@ -30,7 +30,7 @@ type Nft @model @auth(rules: [{allow: public}])
   ownerAddress: String
   creatorAddress: String
   keywords: String
-  creationBlock: String
+  creationBlock: Int
   lastTransferBlock: Int
 }
 

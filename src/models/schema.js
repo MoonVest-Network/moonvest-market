@@ -211,7 +211,7 @@ export const schema = {
                 "creationBlock": {
                     "name": "creationBlock",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -628,5 +628,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "7c34b1c04ed41000289bb47030578a82"
+    "version": "ee7a73ff29cde704092953b1e82d2338"
 };

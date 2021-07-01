@@ -130,7 +130,9 @@ export const getNft = /* GraphQL */ `
       popularity
       ownerAddress
       creatorAddress
+      keywords
       creationBlock
+      lastTransferBlock
       _version
       _deleted
       _lastChangedAt
@@ -169,7 +171,9 @@ export const listNfts = /* GraphQL */ `
         popularity
         ownerAddress
         creatorAddress
+        keywords
         creationBlock
+        lastTransferBlock
         _version
         _deleted
         _lastChangedAt
@@ -209,7 +213,9 @@ export const nftsByCreationBlock = /* GraphQL */ `
         popularity
         ownerAddress
         creatorAddress
+        keywords
         creationBlock
+        lastTransferBlock
         _version
         _deleted
         _lastChangedAt
@@ -249,7 +255,9 @@ export const nftsByOwner = /* GraphQL */ `
         popularity
         ownerAddress
         creatorAddress
+        keywords
         creationBlock
+        lastTransferBlock
         _version
         _deleted
         _lastChangedAt
@@ -289,7 +297,9 @@ export const nftsByCreator = /* GraphQL */ `
         popularity
         ownerAddress
         creatorAddress
+        keywords
         creationBlock
+        lastTransferBlock
         _version
         _deleted
         _lastChangedAt
@@ -329,7 +339,51 @@ export const nftsByPopularity = /* GraphQL */ `
         popularity
         ownerAddress
         creatorAddress
+        keywords
         creationBlock
+        lastTransferBlock
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const nftsByKeywords = /* GraphQL */ `
+  query NftsByKeywords(
+    $keywords: String
+    $sortDirection: ModelSortDirection
+    $filter: ModelNftFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    nftsByKeywords(
+      keywords: $keywords
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        collectionID
+        tokenID
+        tokenIndex
+        name
+        description
+        image
+        url
+        properties
+        likes
+        popularity
+        ownerAddress
+        creatorAddress
+        keywords
+        creationBlock
+        lastTransferBlock
         _version
         _deleted
         _lastChangedAt
@@ -367,7 +421,9 @@ export const syncNfts = /* GraphQL */ `
         popularity
         ownerAddress
         creatorAddress
+        keywords
         creationBlock
+        lastTransferBlock
         _version
         _deleted
         _lastChangedAt

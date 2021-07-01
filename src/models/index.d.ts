@@ -31,7 +31,9 @@ export declare class Nft {
   readonly popularity?: number;
   readonly ownerAddress?: string;
   readonly creatorAddress?: string;
+  readonly keywords?: string;
   readonly creationBlock?: string;
+  readonly lastTransferBlock?: number;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Nft>);

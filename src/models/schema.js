@@ -201,10 +201,24 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "keywords": {
+                    "name": "keywords",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "creationBlock": {
                     "name": "creationBlock",
                     "isArray": false,
                     "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "lastTransferBlock": {
+                    "name": "lastTransferBlock",
+                    "isArray": false,
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -279,6 +293,16 @@ export const schema = {
                             "popularity"
                         ],
                         "queryField": "nftsByPopularity"
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "nftsByKeywords",
+                        "fields": [
+                            "keywords"
+                        ],
+                        "queryField": "nftsByKeywords"
                     }
                 },
                 {
@@ -604,5 +628,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "e7dd541aecfdf75ede2e740aae294659"
+    "version": "7c34b1c04ed41000289bb47030578a82"
 };

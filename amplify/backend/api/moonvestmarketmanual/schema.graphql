@@ -15,6 +15,7 @@ type Nft @model @auth(rules: [{allow: public}])
   @key(name: "nftsByOwner", fields: ["ownerAddress"], queryField: "nftsByOwner")
   @key(name: "nftsByCreator", fields: ["creatorAddress"], queryField: "nftsByCreator")
   @key(name: "nftsByPopularity", fields: ["popularity"], queryField: "nftsByPopularity")
+  @key(name: "nftsByKeywords", fields: ["keywords"], queryField: "nftsByKeywords")
 {
   collectionID: Int!
   tokenID: Int!
@@ -28,7 +29,9 @@ type Nft @model @auth(rules: [{allow: public}])
   popularity: Int 
   ownerAddress: String
   creatorAddress: String
+  keywords: String
   creationBlock: String
+  lastTransferBlock: Int
 }
 
 type Transfer @model @auth(rules: [{allow: public}]) 

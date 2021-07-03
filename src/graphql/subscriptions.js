@@ -181,6 +181,141 @@ export const onDeleteTransfer = /* GraphQL */ `
     }
   }
 `;
+export const onCreateWallet = /* GraphQL */ `
+  subscription OnCreateWallet {
+    onCreateWallet {
+      address
+      name
+      description
+      popularity
+      bnbBalance
+      ethBalance
+      mvnBalance
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateWallet = /* GraphQL */ `
+  subscription OnUpdateWallet {
+    onUpdateWallet {
+      address
+      name
+      description
+      popularity
+      bnbBalance
+      ethBalance
+      mvnBalance
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteWallet = /* GraphQL */ `
+  subscription OnDeleteWallet {
+    onDeleteWallet {
+      address
+      name
+      description
+      popularity
+      bnbBalance
+      ethBalance
+      mvnBalance
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateLike = /* GraphQL */ `
+  subscription OnCreateLike {
+    onCreateLike {
+      address
+      collectionID
+      tokenID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateLike = /* GraphQL */ `
+  subscription OnUpdateLike {
+    onUpdateLike {
+      address
+      collectionID
+      tokenID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteLike = /* GraphQL */ `
+  subscription OnDeleteLike {
+    onDeleteLike {
+      address
+      collectionID
+      tokenID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateFollow = /* GraphQL */ `
+  subscription OnCreateFollow {
+    onCreateFollow {
+      followerAddress
+      targetAddress
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateFollow = /* GraphQL */ `
+  subscription OnUpdateFollow {
+    onUpdateFollow {
+      followerAddress
+      targetAddress
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteFollow = /* GraphQL */ `
+  subscription OnDeleteFollow {
+    onDeleteFollow {
+      followerAddress
+      targetAddress
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateMarketplace = /* GraphQL */ `
   subscription OnCreateMarketplace {
     onCreateMarketplace {

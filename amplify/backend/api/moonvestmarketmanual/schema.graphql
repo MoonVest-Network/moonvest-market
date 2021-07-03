@@ -18,7 +18,7 @@ type Nft @model @auth(rules: [{allow: public}])
   @key(name: "nftsByKeywords", fields: ["keywords"], queryField: "nftsByKeywords")
 {
   collectionID: Int!
-  tokenID: Int!
+  tokenID: String!
   tokenIndex: Int
   name: String
   description: String
@@ -44,9 +44,37 @@ type Transfer @model @auth(rules: [{allow: public}])
   logIndex: Int!
   transactionHash: String!
   collectionID: Int!
-  tokenID: Int!
+  tokenID: String!
   fromAddress: String
   toAddress: String
+}
+
+type Wallet @model @auth(rules: [{allow: public}]) 
+  @key(fields: ["address"])  
+{
+  address: String!
+  name: String
+  description: String
+  popularity: Int
+  bnbBalance: Float
+  ethBalance: Float
+  mvnBalance: Float
+}
+
+type Like @model @auth(rules: [{allow: public}]) 
+  @key(fields: ["address", "collectionID", "tokenID"])  
+{
+  address: String!
+  collectionID: Int!
+  tokenID: String!
+}
+
+type Follow @model @auth(rules: [{allow: public}]) 
+  @key(fields: ["followerAddress", "targetAddress"])  
+  @key(name: "followers", fields: ["targetAddress"], queryField: "followers")
+{
+  followerAddress: String!
+  targetAddress: String!
 }
 
 type Marketplace @model @auth(rules: [{allow: public}]) @key(name: "popularity", fields: ["likes", "popularity"], queryField: "popularity") {

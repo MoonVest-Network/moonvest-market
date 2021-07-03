@@ -116,7 +116,7 @@ export const syncCollections = /* GraphQL */ `
   }
 `;
 export const getNft = /* GraphQL */ `
-  query GetNft($collectionID: Int!, $tokenID: Int!) {
+  query GetNft($collectionID: Int!, $tokenID: String!) {
     getNft(collectionID: $collectionID, tokenID: $tokenID) {
       collectionID
       tokenID
@@ -144,7 +144,7 @@ export const getNft = /* GraphQL */ `
 export const listNfts = /* GraphQL */ `
   query ListNfts(
     $collectionID: Int
-    $tokenID: ModelIntKeyConditionInput
+    $tokenID: ModelStringKeyConditionInput
     $filter: ModelNftFilterInput
     $limit: Int
     $nextToken: String
@@ -492,7 +492,7 @@ export const listTransfers = /* GraphQL */ `
 export const transfersByToken = /* GraphQL */ `
   query TransfersByToken(
     $collectionID: Int
-    $tokenID: ModelIntKeyConditionInput
+    $tokenID: ModelStringKeyConditionInput
     $sortDirection: ModelSortDirection
     $filter: ModelTransferFilterInput
     $limit: Int
@@ -614,6 +614,267 @@ export const syncTransfers = /* GraphQL */ `
         tokenID
         fromAddress
         toAddress
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getWallet = /* GraphQL */ `
+  query GetWallet($address: String!) {
+    getWallet(address: $address) {
+      address
+      name
+      description
+      popularity
+      bnbBalance
+      ethBalance
+      mvnBalance
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listWallets = /* GraphQL */ `
+  query ListWallets(
+    $address: String
+    $filter: ModelWalletFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listWallets(
+      address: $address
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        address
+        name
+        description
+        popularity
+        bnbBalance
+        ethBalance
+        mvnBalance
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncWallets = /* GraphQL */ `
+  query SyncWallets(
+    $filter: ModelWalletFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncWallets(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        address
+        name
+        description
+        popularity
+        bnbBalance
+        ethBalance
+        mvnBalance
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getLike = /* GraphQL */ `
+  query GetLike($address: String!, $collectionID: Int!, $tokenID: String!) {
+    getLike(address: $address, collectionID: $collectionID, tokenID: $tokenID) {
+      address
+      collectionID
+      tokenID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listLikes = /* GraphQL */ `
+  query ListLikes(
+    $address: String
+    $collectionIDTokenID: ModelLikePrimaryCompositeKeyConditionInput
+    $filter: ModelLikeFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listLikes(
+      address: $address
+      collectionIDTokenID: $collectionIDTokenID
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        address
+        collectionID
+        tokenID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncLikes = /* GraphQL */ `
+  query SyncLikes(
+    $filter: ModelLikeFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncLikes(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        address
+        collectionID
+        tokenID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getFollow = /* GraphQL */ `
+  query GetFollow($followerAddress: String!, $targetAddress: String!) {
+    getFollow(
+      followerAddress: $followerAddress
+      targetAddress: $targetAddress
+    ) {
+      followerAddress
+      targetAddress
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listFollows = /* GraphQL */ `
+  query ListFollows(
+    $followerAddress: String
+    $targetAddress: ModelStringKeyConditionInput
+    $filter: ModelFollowFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listFollows(
+      followerAddress: $followerAddress
+      targetAddress: $targetAddress
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        followerAddress
+        targetAddress
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const followers = /* GraphQL */ `
+  query Followers(
+    $targetAddress: String
+    $sortDirection: ModelSortDirection
+    $filter: ModelFollowFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    followers(
+      targetAddress: $targetAddress
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        followerAddress
+        targetAddress
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncFollows = /* GraphQL */ `
+  query SyncFollows(
+    $filter: ModelFollowFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncFollows(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        followerAddress
+        targetAddress
         _version
         _deleted
         _lastChangedAt

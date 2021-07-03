@@ -20,7 +20,7 @@ export declare class Collection {
 export declare class Nft {
   readonly id: string;
   readonly collectionID: number;
-  readonly tokenID: number;
+  readonly tokenID: string;
   readonly tokenIndex?: number;
   readonly name?: string;
   readonly description?: string;
@@ -46,13 +46,49 @@ export declare class Transfer {
   readonly logIndex: number;
   readonly transactionHash: string;
   readonly collectionID: number;
-  readonly tokenID: number;
+  readonly tokenID: string;
   readonly fromAddress?: string;
   readonly toAddress?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Transfer>);
   static copyOf(source: Transfer, mutator: (draft: MutableModel<Transfer>) => MutableModel<Transfer> | void): Transfer;
+}
+
+export declare class Wallet {
+  readonly id: string;
+  readonly address: string;
+  readonly name?: string;
+  readonly description?: string;
+  readonly popularity?: number;
+  readonly bnbBalance?: number;
+  readonly ethBalance?: number;
+  readonly mvnBalance?: number;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<Wallet>);
+  static copyOf(source: Wallet, mutator: (draft: MutableModel<Wallet>) => MutableModel<Wallet> | void): Wallet;
+}
+
+export declare class Like {
+  readonly id: string;
+  readonly address: string;
+  readonly collectionID: number;
+  readonly tokenID: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<Like>);
+  static copyOf(source: Like, mutator: (draft: MutableModel<Like>) => MutableModel<Like> | void): Like;
+}
+
+export declare class Follow {
+  readonly id: string;
+  readonly followerAddress: string;
+  readonly targetAddress: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<Follow>);
+  static copyOf(source: Follow, mutator: (draft: MutableModel<Follow>) => MutableModel<Follow> | void): Follow;
 }
 
 export declare class Marketplace {

@@ -198,10 +198,12 @@ const ItemDetail = (props) => {
                                         <div className="card-body">
                                             <div className="row my-3">
                                                 <div className="col">
-                                                    <span className="font-light">Created:</span>
+                                                    <span className="font-light">Collection:</span>
                                                 </div>
                                                 <div className="col">
-                                                    <span className="align-content-end"><a href={bscScanBlockLink(creationBlock)} target="_blank">{creationBlock}</a></span>
+                                                    <a href={bscScanTokenLink(collectionAddress)} _target="blank">
+                                                        <span className="align-content-end">{collectionName}</span>
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div className="row my-3">
@@ -214,12 +216,10 @@ const ItemDetail = (props) => {
                                             </div>
                                             <div className="row my-3">
                                                 <div className="col">
-                                                    <span className="font-light">Collection:</span>
+                                                    <span className="font-light">Created:</span>
                                                 </div>
                                                 <div className="col">
-                                                    <a href={bscScanTokenLink(collectionAddress)} _target="blank">
-                                                        <span className="align-content-end">{collectionName}</span>
-                                                    </a>
+                                                    <span className="align-content-end"><a href={bscScanBlockLink(creationBlock)} target="_blank">{creationBlock}</a></span>
                                                 </div>
                                             </div>
                                             <div className="row my-3">

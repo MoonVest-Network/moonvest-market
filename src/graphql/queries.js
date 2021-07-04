@@ -9,11 +9,6 @@ export const getCollection = /* GraphQL */ `
       address
       name
       description
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -133,11 +128,6 @@ export const getNft = /* GraphQL */ `
       keywords
       creationBlock
       lastTransferBlock
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -174,11 +164,6 @@ export const listNfts = /* GraphQL */ `
         keywords
         creationBlock
         lastTransferBlock
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -342,11 +327,6 @@ export const nftsByPopularity = /* GraphQL */ `
         keywords
         creationBlock
         lastTransferBlock
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt

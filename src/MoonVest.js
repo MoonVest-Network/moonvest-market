@@ -3,8 +3,7 @@ import { connectWallet, metaMask } from "./utils/interact.js";
 import { HashRouter, NavLink, Router } from "react-router-dom";
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
-import nftItemsJson from './nftItems.json';
-import { listMarketplaces } from './graphql/queries';
+import { listNfts } from './graphql/queries';
 import * as mutations from './graphql/mutations';
 import * as subscriptions from './graphql/subscriptions';
 import { data } from "jquery";
@@ -61,11 +60,13 @@ const MoonVest = (props) => {
 		try{
 			const apiData = await API.graphql(
 				graphqlOperation(
-					listMarketplaces, { 
+					listNfts, { 
+						// sortDirection: 'DESC',
 						// filter: {
 						// 	popularity: {
-						// 		gt: 0.5
-						// 	},
+						// 		gt: 5
+						// 	}
+						// },
 						// 	// collectionID: {
 						// 	// 	gt: 0
 						// 	// }
@@ -74,7 +75,7 @@ const MoonVest = (props) => {
 					}
 				)
 			);
-			setNftItems(apiData.data.listMarketplaces.items);
+			setNftItems(apiData.data.listNfts.items);
 		}
 		catch (error){
 			console.log("===== API Error =====");
@@ -93,13 +94,24 @@ const MoonVest = (props) => {
 		setNftResults(nftResults + 12);
 	};
 
+	const nftImage = (imageUrl, name) => {
+		imageUrl = imageUrl.replace('ipfs://', 'https://ipfs.infura.io:5001/api/v0/cat?arg=')
+		return <img src={imageUrl} className="card-img-top" alt={name} />
+	}
+
+	// const details = (properties) => {
+	// 	// if (!properties) return "";
+	// 	console.log(properties.length);
+	// 	console.log(_.isEmpty(properties));
+	// }
+
 	const nftItemsList = () => {
 		if (nftItems == null) return;
 		console.log("here");
 		const nftItemsCard = nftItems.map(data => {
-			return (<NavLink to={"/item-detail/" + data.id}>
-				<div key={data.id} className="card card-image">
-					<img src={data.image} className="card-img-top" alt="..." />
+			return (<NavLink to={"/nft/" + data.collectionID + '/' + data.tokenID}>
+				<div key={data.collectionID + '#' + data.tokenID} className="card card-image">
+					{nftImage(data.image, data.name)}	
 					<div className="top-right pr-2 pt-2">
 					<a href="" className="fa-stack fa-2x">
 							<i className="fa fa-square fa-stack-2x"></i>

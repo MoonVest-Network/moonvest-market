@@ -35,7 +35,7 @@ const ItemDetail = (props) => {
 			setName(nftData.data.getNft.name);
             setDescription(nftData.data.getNft.description);
             setImage(nftData.data.getNft.image);
-            setProperties(nftData.data.getNft.properties);
+            setProperties(JSON.parse(nftData.data.getNft.properties));
             setOwner(nftData.data.getNft.ownerAddress);
             setCreator(nftData.data.getNft.creatorAddress);
             setCreationBlock(nftData.data.getNft.creationBlock);
@@ -62,8 +62,9 @@ const ItemDetail = (props) => {
 		return <img src={imageUrl} className="img-responsive" alt={name} />  
 	}
 
-    const shortAddress = (address) => {
+    const shortString = (address) => {
         if (!address) return "";
+        if (address.length < 15) return address;
         return address.substring(2).slice(0, 8) + "..." + address.slice(-5);
     };
 
@@ -77,6 +78,35 @@ const ItemDetail = (props) => {
 
     const bscScanBlockLink = (blockNumber) => {
         return "https://www.bscscan.com/block/" + blockNumber;
+    }
+
+    const listProperties = (properties) => {
+        let html = [];
+        try {
+            for (let key in properties) {
+                console.log(key);
+                if(properties[key].hasOwnProperty("trait_type")){
+                    html.push(
+                        <div className="row my-3">
+                            <div className="col"><span className="font-light">{properties[key]["trait_type"]}:</span></div>
+                            <div className="col"><span className="align-content-end" title={properties[key]["value"]}>{shortString(properties[key]["value"])}</span></div>
+                        </div>
+                    );
+                } else {
+                    html.push(
+                        <div className="row my-3">
+                            <div className="col"><span className="font-light">{key}:</span></div>
+                            <div className="col"><span className="align-content-end" title={properties[key]}>{shortString(properties[key])}</span></div>
+                        </div>
+                    );
+                }
+            }
+        } catch (error){
+            console.log("===== Properties Error =====");
+            console.log(error);
+            console.log(properties);
+        }
+        return html;
     }
 
     return(
@@ -206,6 +236,9 @@ const ItemDetail = (props) => {
                                                     </a>
                                                 </div>
                                             </div>
+
+                                            {listProperties(properties)}
+                                    
                                             <div className="row my-3">
                                                 <div className="col">
                                                     <span className="font-light">Last Transfer:</span>
@@ -243,7 +276,7 @@ const ItemDetail = (props) => {
                                     <div className="veryfied_author"><img src="img/verified.svg" className="img-fluid" width="15" alt=""/></div>
                                 </div>
                                 <div className="widget_avater_124">
-                                    <h4 className="avater_name_214"><a href={bscScanAddressLink(owner)}>{shortAddress(owner)}</a></h4>
+                                    <h4 className="avater_name_214"><a href={bscScanAddressLink(owner)}>{shortString(owner)}</a></h4>
                                     <span>Owner</span>
                                 </div>
                                 {/* <div className="widget_avater_124">
@@ -291,7 +324,7 @@ const ItemDetail = (props) => {
                                     <div className="veryfied_author"><img src="img/verified.svg" className="img-fluid" width="15" alt=""/></div>
                                 </div>
                                 <div className="widget_avater_124">
-                                    <h4 className="avater_name_214"><a href={bscScanAddressLink(creator)}>{shortAddress(creator)}</a></h4>
+                                    <h4 className="avater_name_214"><a href={bscScanAddressLink(creator)}>{shortString(creator)}</a></h4>
                                     <span>Creator</span>
                                 </div>
                                 {/* <div className="widget_avater_124">

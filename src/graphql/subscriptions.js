@@ -4,8 +4,8 @@
 export const onCreateCollection = /* GraphQL */ `
   subscription OnCreateCollection {
     onCreateCollection {
-      blockchain
       collectionID
+      blockchain
       address
       name
       description
@@ -20,8 +20,8 @@ export const onCreateCollection = /* GraphQL */ `
 export const onUpdateCollection = /* GraphQL */ `
   subscription OnUpdateCollection {
     onUpdateCollection {
-      blockchain
       collectionID
+      blockchain
       address
       name
       description
@@ -36,8 +36,8 @@ export const onUpdateCollection = /* GraphQL */ `
 export const onDeleteCollection = /* GraphQL */ `
   subscription OnDeleteCollection {
     onDeleteCollection {
-      blockchain
       collectionID
+      blockchain
       address
       name
       description
@@ -66,7 +66,11 @@ export const onCreateNft = /* GraphQL */ `
       creatorAddress
       keywords
       creationBlock
+      creationTimestamp
+      creationHash
       lastTransferBlock
+      lastTransferTimestamp
+      lastTransferHash
       _version
       _deleted
       _lastChangedAt
@@ -92,7 +96,11 @@ export const onUpdateNft = /* GraphQL */ `
       creatorAddress
       keywords
       creationBlock
+      creationTimestamp
+      creationHash
       lastTransferBlock
+      lastTransferTimestamp
+      lastTransferHash
       _version
       _deleted
       _lastChangedAt
@@ -118,7 +126,11 @@ export const onDeleteNft = /* GraphQL */ `
       creatorAddress
       keywords
       creationBlock
+      creationTimestamp
+      creationHash
       lastTransferBlock
+      lastTransferTimestamp
+      lastTransferHash
       _version
       _deleted
       _lastChangedAt
@@ -135,6 +147,7 @@ export const onCreateTransfer = /* GraphQL */ `
       transactionHash
       collectionID
       tokenID
+      blockTimestamp
       fromAddress
       toAddress
       _version
@@ -153,6 +166,7 @@ export const onUpdateTransfer = /* GraphQL */ `
       transactionHash
       collectionID
       tokenID
+      blockTimestamp
       fromAddress
       toAddress
       _version
@@ -171,6 +185,7 @@ export const onDeleteTransfer = /* GraphQL */ `
       transactionHash
       collectionID
       tokenID
+      blockTimestamp
       fromAddress
       toAddress
       _version

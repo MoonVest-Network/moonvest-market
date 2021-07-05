@@ -2,27 +2,30 @@
 // this is an auto generated file. This will be overwritten
 
 export const getCollection = /* GraphQL */ `
-  query GetCollection($blockchain: String!, $collectionID: Int!) {
-    getCollection(blockchain: $blockchain, collectionID: $collectionID) {
-      blockchain
+  query GetCollection($collectionID: Int!) {
+    getCollection(collectionID: $collectionID) {
       collectionID
+      blockchain
       address
       name
       description
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
     }
   }
 `;
 export const listCollections = /* GraphQL */ `
   query ListCollections(
-    $blockchain: String
-    $collectionID: ModelIntKeyConditionInput
+    $collectionID: Int
     $filter: ModelCollectionFilterInput
     $limit: Int
     $nextToken: String
     $sortDirection: ModelSortDirection
   ) {
     listCollections(
-      blockchain: $blockchain
       collectionID: $collectionID
       filter: $filter
       limit: $limit
@@ -30,8 +33,8 @@ export const listCollections = /* GraphQL */ `
       sortDirection: $sortDirection
     ) {
       items {
-        blockchain
         collectionID
+        blockchain
         address
         name
         description
@@ -64,8 +67,8 @@ export const collectionByAddress = /* GraphQL */ `
       nextToken: $nextToken
     ) {
       items {
-        blockchain
         collectionID
+        blockchain
         address
         name
         description
@@ -94,8 +97,8 @@ export const syncCollections = /* GraphQL */ `
       lastSync: $lastSync
     ) {
       items {
-        blockchain
         collectionID
+        blockchain
         address
         name
         description
@@ -127,7 +130,16 @@ export const getNft = /* GraphQL */ `
       creatorAddress
       keywords
       creationBlock
+      creationTimestamp
+      creationHash
       lastTransferBlock
+      lastTransferTimestamp
+      lastTransferHash
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -163,7 +175,16 @@ export const listNfts = /* GraphQL */ `
         creatorAddress
         keywords
         creationBlock
+        creationTimestamp
+        creationHash
         lastTransferBlock
+        lastTransferTimestamp
+        lastTransferHash
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
       }
       nextToken
       startedAt
@@ -200,7 +221,11 @@ export const nftsByCreationBlock = /* GraphQL */ `
         creatorAddress
         keywords
         creationBlock
+        creationTimestamp
+        creationHash
         lastTransferBlock
+        lastTransferTimestamp
+        lastTransferHash
         _version
         _deleted
         _lastChangedAt
@@ -242,7 +267,11 @@ export const nftsByOwner = /* GraphQL */ `
         creatorAddress
         keywords
         creationBlock
+        creationTimestamp
+        creationHash
         lastTransferBlock
+        lastTransferTimestamp
+        lastTransferHash
         _version
         _deleted
         _lastChangedAt
@@ -284,7 +313,11 @@ export const nftsByCreator = /* GraphQL */ `
         creatorAddress
         keywords
         creationBlock
+        creationTimestamp
+        creationHash
         lastTransferBlock
+        lastTransferTimestamp
+        lastTransferHash
         _version
         _deleted
         _lastChangedAt
@@ -326,7 +359,16 @@ export const nftsByPopularity = /* GraphQL */ `
         creatorAddress
         keywords
         creationBlock
+        creationTimestamp
+        creationHash
         lastTransferBlock
+        lastTransferTimestamp
+        lastTransferHash
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
       }
       nextToken
       startedAt
@@ -363,7 +405,11 @@ export const nftsByKeywords = /* GraphQL */ `
         creatorAddress
         keywords
         creationBlock
+        creationTimestamp
+        creationHash
         lastTransferBlock
+        lastTransferTimestamp
+        lastTransferHash
         _version
         _deleted
         _lastChangedAt
@@ -403,7 +449,11 @@ export const syncNfts = /* GraphQL */ `
         creatorAddress
         keywords
         creationBlock
+        creationTimestamp
+        creationHash
         lastTransferBlock
+        lastTransferTimestamp
+        lastTransferHash
         _version
         _deleted
         _lastChangedAt
@@ -423,6 +473,7 @@ export const getTransfer = /* GraphQL */ `
       transactionHash
       collectionID
       tokenID
+      blockTimestamp
       fromAddress
       toAddress
       _version
@@ -456,6 +507,7 @@ export const listTransfers = /* GraphQL */ `
         transactionHash
         collectionID
         tokenID
+        blockTimestamp
         fromAddress
         toAddress
         _version
@@ -492,6 +544,7 @@ export const transfersByToken = /* GraphQL */ `
         transactionHash
         collectionID
         tokenID
+        blockTimestamp
         fromAddress
         toAddress
         _version
@@ -526,6 +579,7 @@ export const transfersBySender = /* GraphQL */ `
         transactionHash
         collectionID
         tokenID
+        blockTimestamp
         fromAddress
         toAddress
         _version
@@ -560,6 +614,7 @@ export const transfersByReciever = /* GraphQL */ `
         transactionHash
         collectionID
         tokenID
+        blockTimestamp
         fromAddress
         toAddress
         _version
@@ -592,6 +647,7 @@ export const syncTransfers = /* GraphQL */ `
         transactionHash
         collectionID
         tokenID
+        blockTimestamp
         fromAddress
         toAddress
         _version

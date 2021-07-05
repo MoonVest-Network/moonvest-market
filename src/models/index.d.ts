@@ -6,8 +6,8 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 export declare class Collection {
   readonly id: string;
-  readonly blockchain: string;
   readonly collectionID: number;
+  readonly blockchain?: string;
   readonly address?: string;
   readonly name?: string;
   readonly description?: string;
@@ -33,7 +33,11 @@ export declare class Nft {
   readonly creatorAddress?: string;
   readonly keywords?: string;
   readonly creationBlock?: number;
+  readonly creationTimestamp?: number;
+  readonly creationHash?: string;
   readonly lastTransferBlock?: number;
+  readonly lastTransferTimestamp?: number;
+  readonly lastTransferHash?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Nft>);
@@ -47,6 +51,7 @@ export declare class Transfer {
   readonly transactionHash: string;
   readonly collectionID: number;
   readonly tokenID: string;
+  readonly blockTimestamp?: number;
   readonly fromAddress?: string;
   readonly toAddress?: string;
   readonly createdAt?: string;

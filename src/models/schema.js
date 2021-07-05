@@ -10,18 +10,18 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "blockchain": {
-                    "name": "blockchain",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
                 "collectionID": {
                     "name": "collectionID",
                     "isArray": false,
                     "type": "Int",
                     "isRequired": true,
+                    "attributes": []
+                },
+                "blockchain": {
+                    "name": "blockchain",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "address": {
@@ -73,7 +73,6 @@ export const schema = {
                     "type": "key",
                     "properties": {
                         "fields": [
-                            "blockchain",
                             "collectionID"
                         ]
                     }
@@ -215,10 +214,38 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "creationTimestamp": {
+                    "name": "creationTimestamp",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "creationHash": {
+                    "name": "creationHash",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "lastTransferBlock": {
                     "name": "lastTransferBlock",
                     "isArray": false,
                     "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "lastTransferTimestamp": {
+                    "name": "lastTransferTimestamp",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "lastTransferHash": {
+                    "name": "lastTransferHash",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -366,6 +393,13 @@ export const schema = {
                     "isArray": false,
                     "type": "String",
                     "isRequired": true,
+                    "attributes": []
+                },
+                "blockTimestamp": {
+                    "name": "blockTimestamp",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "fromAddress": {
@@ -905,5 +939,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "9acdc6fd3a90cfe6f12d8bd838c038e3"
+    "version": "68b38df8f86b603c2b3ac78cf3b47d91"
 };

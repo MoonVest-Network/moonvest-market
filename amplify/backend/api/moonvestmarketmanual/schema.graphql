@@ -1,9 +1,9 @@
 type Collection @model @auth(rules: [{allow: public}]) 
-  @key(fields: ["blockchain", "collectionID"]) 
+  @key(fields: ["collectionID"]) 
   @key(name: "collectionByAddress", fields: ["blockchain", "address"], queryField: "collectionByAddress")
 {
-  blockchain: String!
   collectionID: Int!
+  blockchain: String 
   address: String
   name: String
   description: String
@@ -31,7 +31,11 @@ type Nft @model @auth(rules: [{allow: public}])
   creatorAddress: String
   keywords: String
   creationBlock: Int
+  creationTimestamp: Int
+  creationHash: String
   lastTransferBlock: Int
+  lastTransferTimestamp: Int
+  lastTransferHash: String
 }
 
 type Transfer @model @auth(rules: [{allow: public}]) 
@@ -45,6 +49,7 @@ type Transfer @model @auth(rules: [{allow: public}])
   transactionHash: String!
   collectionID: Int!
   tokenID: String!
+  blockTimestamp: Int
   fromAddress: String
   toAddress: String
 }

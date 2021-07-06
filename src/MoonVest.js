@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { connectWallet, metaMask } from "./utils/interact.js";
-import { HashRouter, NavLink, Router } from "react-router-dom";
+import { HashRouter, NavLink, Router, useHistory } from "react-router-dom";
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { listNfts } from './graphql/queries';
@@ -16,7 +15,6 @@ import {
 	TextField,
 	Paper
 } from "@material-ui/core";
-
 
 Amplify.configure(awsconfig);
 
@@ -43,6 +41,8 @@ const useStyles = makeStyles((theme) => ({
 const MoonVest = (props) => {
 	// State hook variables.
 	const classes = useStyles();
+	const history = useHistory();
+	const [query, setQuery] = useState('');
 	const [nftItems, setNftItems] = useState(null);
 	const [nftResults, setNftResults] = useState(12);
 	
@@ -83,11 +83,9 @@ const MoonVest = (props) => {
 		}
   }
 
-	const searchSubmit = (event) => {
-		console.log('submit')
-    console.log(event)
-    event.preventDefault()
-
+	function searchSubmit(event) {
+    event.preventDefault();
+		history.push('/search/' + query);
   }
 
 	const moreClicked = async () => {
@@ -107,7 +105,7 @@ const MoonVest = (props) => {
 
 	const nftItemsList = () => {
 		if (nftItems == null) return;
-		console.log("here");
+		console.log(query);
 		const nftItemsCard = nftItems.map(data => {
 			return (<NavLink to={"/nft/" + data.collectionID + '/' + data.tokenID}>
 				<div key={data.collectionID + '#' + data.tokenID} className="card card-image">
@@ -164,23 +162,23 @@ const MoonVest = (props) => {
 				<div className="container">
 					<h1>Collect and Trade NFTs</h1>
 					<p className="lead">Digital Assets Secured by Blockchain Technology</p>
-					<form className="mt-4">
+					<form className="mt-4" onSubmit={searchSubmit}>
 						<div className="row">
 							<div className="col-lg-7 col-md-9 col-sm-12">
 								<div className="banner-search style-1">
 									<div className="input-group">
-									<form onSubmit={searchSubmit}>
-										<Paper className={classes.root} >										
+										<Paper className={classes.root} >			
 											<InputBase
 												className={classes.input}
 												placeholder="Search NFTs"
 												inputProps={{ 'aria-label': 'search' }}
+												value={query}
+                        onInput={ e=>setQuery(e.target.value)}
 											/>
 											<IconButton type="submit" className={classes.iconButton} aria-label="search">
 												<SearchIcon />
-											</IconButton>		
-										</Paper>
-									</form>
+											</IconButton>				
+										</Paper>									
 									</div>
 								</div>
 								<div className="featured-category">

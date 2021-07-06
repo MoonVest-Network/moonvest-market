@@ -4051,6 +4051,13 @@ li.login-attri .account-drop a {
     width: 100%;
 }
 
+.hero-banner-small {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
 .hero-banner.center {
     justify-content: center;
     text-align: center;

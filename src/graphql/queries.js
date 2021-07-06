@@ -9,11 +9,6 @@ export const getCollection = /* GraphQL */ `
       address
       name
       description
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -38,11 +33,6 @@ export const listCollections = /* GraphQL */ `
         address
         name
         description
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -72,11 +62,6 @@ export const collectionByAddress = /* GraphQL */ `
         address
         name
         description
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -102,11 +87,6 @@ export const syncCollections = /* GraphQL */ `
         address
         name
         description
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -135,11 +115,6 @@ export const getNft = /* GraphQL */ `
       lastTransferBlock
       lastTransferTimestamp
       lastTransferHash
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -180,11 +155,6 @@ export const listNfts = /* GraphQL */ `
         lastTransferBlock
         lastTransferTimestamp
         lastTransferHash
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -226,11 +196,6 @@ export const nftsByCreationBlock = /* GraphQL */ `
         lastTransferBlock
         lastTransferTimestamp
         lastTransferHash
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -272,11 +237,6 @@ export const nftsByOwner = /* GraphQL */ `
         lastTransferBlock
         lastTransferTimestamp
         lastTransferHash
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -318,11 +278,6 @@ export const nftsByCreator = /* GraphQL */ `
         lastTransferBlock
         lastTransferTimestamp
         lastTransferHash
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -364,11 +319,6 @@ export const nftsByPopularity = /* GraphQL */ `
         lastTransferBlock
         lastTransferTimestamp
         lastTransferHash
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -410,11 +360,6 @@ export const nftsByKeywords = /* GraphQL */ `
         lastTransferBlock
         lastTransferTimestamp
         lastTransferHash
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -454,11 +399,6 @@ export const syncNfts = /* GraphQL */ `
         lastTransferBlock
         lastTransferTimestamp
         lastTransferHash
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -476,11 +416,6 @@ export const getTransfer = /* GraphQL */ `
       blockTimestamp
       fromAddress
       toAddress
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -510,11 +445,6 @@ export const listTransfers = /* GraphQL */ `
         blockTimestamp
         fromAddress
         toAddress
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -547,11 +477,6 @@ export const transfersByToken = /* GraphQL */ `
         blockTimestamp
         fromAddress
         toAddress
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -582,11 +507,6 @@ export const transfersBySender = /* GraphQL */ `
         blockTimestamp
         fromAddress
         toAddress
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -617,11 +537,6 @@ export const transfersByReciever = /* GraphQL */ `
         blockTimestamp
         fromAddress
         toAddress
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -650,11 +565,6 @@ export const syncTransfers = /* GraphQL */ `
         blockTimestamp
         fromAddress
         toAddress
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -671,11 +581,6 @@ export const getWallet = /* GraphQL */ `
       bnbBalance
       ethBalance
       mvnBalance
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -702,11 +607,6 @@ export const listWallets = /* GraphQL */ `
         bnbBalance
         ethBalance
         mvnBalance
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -734,11 +634,6 @@ export const syncWallets = /* GraphQL */ `
         bnbBalance
         ethBalance
         mvnBalance
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -751,11 +646,6 @@ export const getLike = /* GraphQL */ `
       address
       collectionID
       tokenID
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -780,11 +670,6 @@ export const listLikes = /* GraphQL */ `
         address
         collectionID
         tokenID
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -808,11 +693,6 @@ export const syncLikes = /* GraphQL */ `
         address
         collectionID
         tokenID
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -827,11 +707,6 @@ export const getFollow = /* GraphQL */ `
     ) {
       followerAddress
       targetAddress
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -855,11 +730,6 @@ export const listFollows = /* GraphQL */ `
       items {
         followerAddress
         targetAddress
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -884,11 +754,6 @@ export const followers = /* GraphQL */ `
       items {
         followerAddress
         targetAddress
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -911,11 +776,6 @@ export const syncFollows = /* GraphQL */ `
       items {
         followerAddress
         targetAddress
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -940,11 +800,6 @@ export const getMarketplace = /* GraphQL */ `
       tokenIndex
       ownerAddress
       creatorAddress
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -971,11 +826,6 @@ export const listMarketplaces = /* GraphQL */ `
         tokenIndex
         ownerAddress
         creatorAddress
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -1015,11 +865,6 @@ export const popularity = /* GraphQL */ `
         tokenIndex
         ownerAddress
         creatorAddress
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -1055,11 +900,6 @@ export const syncMarketplaces = /* GraphQL */ `
         tokenIndex
         ownerAddress
         creatorAddress
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt

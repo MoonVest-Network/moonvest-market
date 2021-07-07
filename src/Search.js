@@ -41,7 +41,7 @@ const Search = (props) => {
 	const classes = useStyles();
 	const [query, setQuery] = useState(props.match.params.query || '');
 	const [nftItems, setNftItems] = useState(null);
-	const [nftResults, setNftResults] = useState(12);
+	const [nftResults, setNftResults] = useState(10000);
 	console.log(query);
 	
 	// Similar to componentDidMount and componentDidUpdate.
@@ -60,15 +60,11 @@ const Search = (props) => {
 				graphqlOperation(
 					listNfts, { 
 						// sortDirection: 'DESC',
-						// filter: {
-						// 	popularity: {
-						// 		gt: 5
-						// 	}
-						// },
-						// 	// collectionID: {
-						// 	// 	gt: 0
-						// 	// }
-						// },
+						filter: {
+							keywords: {
+								contains: query
+							}
+						},
 						limit: nftResults
 					}
 				)
@@ -86,7 +82,7 @@ const Search = (props) => {
   }
 
 	const moreClicked = async () => {
-		setNftResults(nftResults + 12);
+		setNftResults(nftResults + 100);
 	};
 
 	const nftImage = (imageUrl, name) => {

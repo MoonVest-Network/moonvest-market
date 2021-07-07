@@ -184,10 +184,10 @@ const MoonVest = (props) => {
 								<div className="featured-category">
 									<ul>
 										<li>Browse:</li>
-										<li><a href="#">Art</a></li>
-										<li><a href="#">Collectibles</a></li>
-										<li><a href="#">DeFi</a></li>
-										<li><a href="#">Gaming</a></li>
+										<li><NavLink to={"/search/art"}>Art</NavLink></li>
+										<li><NavLink to={"/search/game"}>Gaming</NavLink></li>
+										<li><NavLink to={"/search/collectible"}>Collectibles</NavLink></li>
+										<li><NavLink to={"/search/defi"}>DeFi</NavLink></li>
 									</ul>
 								</div>
 							</div>

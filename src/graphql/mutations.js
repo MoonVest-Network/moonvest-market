@@ -74,8 +74,11 @@ export const createNft = /* GraphQL */ `
       properties
       likes
       popularity
+      tier
       ownerAddress
       creatorAddress
+      topTag
+      tags
       keywords
       creationBlock
       creationTimestamp
@@ -107,8 +110,11 @@ export const updateNft = /* GraphQL */ `
       properties
       likes
       popularity
+      tier
       ownerAddress
       creatorAddress
+      topTag
+      tags
       keywords
       creationBlock
       creationTimestamp
@@ -140,8 +146,11 @@ export const deleteNft = /* GraphQL */ `
       properties
       likes
       popularity
+      tier
       ownerAddress
       creatorAddress
+      topTag
+      tags
       keywords
       creationBlock
       creationTimestamp

@@ -14,8 +14,8 @@ type Nft @model @auth(rules: [{allow: public}])
   @key(name: "nftsByCreationBlock", fields: ["creationBlock"], queryField: "nftsByCreationBlock")
   @key(name: "nftsByOwner", fields: ["ownerAddress"], queryField: "nftsByOwner")
   @key(name: "nftsByCreator", fields: ["creatorAddress"], queryField: "nftsByCreator")
-  @key(name: "nftsByPopularity", fields: ["popularity"], queryField: "nftsByPopularity")
-  @key(name: "nftsByKeywords", fields: ["keywords"], queryField: "nftsByKeywords")
+  @key(name: "nftsByTier", fields: ["tier", "popularity"], queryField: "nftsByTier")
+  @key(name: "nftsByTags", fields: ["topTag", "tier"], queryField: "nftsByKeywords")
 {
   collectionID: Int!
   tokenID: String!
@@ -27,8 +27,11 @@ type Nft @model @auth(rules: [{allow: public}])
   properties: AWSJSON
   likes: Int
   popularity: Int 
+  tier: Int
   ownerAddress: String
   creatorAddress: String
+  topTag: String
+  tags: String
   keywords: String
   creationBlock: Int
   creationTimestamp: Int

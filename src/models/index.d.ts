@@ -29,8 +29,11 @@ export declare class Nft {
   readonly properties?: string;
   readonly likes?: number;
   readonly popularity?: number;
+  readonly tier?: number;
   readonly ownerAddress?: string;
   readonly creatorAddress?: string;
+  readonly topTag?: string;
+  readonly tags?: string;
   readonly keywords?: string;
   readonly creationBlock?: number;
   readonly creationTimestamp?: number;

@@ -186,6 +186,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "tier": {
+                    "name": "tier",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "ownerAddress": {
                     "name": "ownerAddress",
                     "isArray": false,
@@ -195,6 +202,20 @@ export const schema = {
                 },
                 "creatorAddress": {
                     "name": "creatorAddress",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "topTag": {
+                    "name": "topTag",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "tags": {
+                    "name": "tags",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -315,19 +336,21 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "nftsByPopularity",
+                        "name": "nftsByTier",
                         "fields": [
+                            "tier",
                             "popularity"
                         ],
-                        "queryField": "nftsByPopularity"
+                        "queryField": "nftsByTier"
                     }
                 },
                 {
                     "type": "key",
                     "properties": {
-                        "name": "nftsByKeywords",
+                        "name": "nftsByTags",
                         "fields": [
-                            "keywords"
+                            "topTag",
+                            "tier"
                         ],
                         "queryField": "nftsByKeywords"
                     }
@@ -939,5 +962,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "68b38df8f86b603c2b3ac78cf3b47d91"
+    "version": "ece4030aefa8bb45aa7f3010e5150f5a"
 };

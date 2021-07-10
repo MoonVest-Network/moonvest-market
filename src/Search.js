@@ -42,7 +42,6 @@ const Search = (props) => {
 	const [query, setQuery] = useState(props.match.params.query || '');
 	const [nftItems, setNftItems] = useState(null);
 	const [nftResults, setNftResults] = useState(10000);
-	console.log(query);
 	
 	// Similar to componentDidMount and componentDidUpdate.
 	useEffect(async () => {
@@ -54,7 +53,6 @@ const Search = (props) => {
 	}, [nftResults]);
 
 	async function fetchNftItems() {
-		let rand_int = Math.floor(Math.random() * 20000); 
 		try{
 			const apiData = await API.graphql(
 				graphqlOperation(
@@ -78,11 +76,12 @@ const Search = (props) => {
   }
 
 	function searchSubmit(event) {
+		setNftResults(nftResults + 1000);
     event.preventDefault();
   }
 
 	const moreClicked = async () => {
-		setNftResults(nftResults + 100);
+		setNftResults(nftResults + 10000);
 	};
 
 	const nftImage = (imageUrl, name) => {
@@ -188,11 +187,11 @@ const Search = (props) => {
 							{nftItemsList()}
 						</div>
 					</div>
-					<div className="row">
+					{/* <div className="row">
 						<div className="col-lg-12 col-md-12 text-center mt-4">
 						<Button variant="outlined" size="large" onClick={moreClicked}>More</Button>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</section>
 			{/* <!-- ============================ Featured List End ================================== --> */}
